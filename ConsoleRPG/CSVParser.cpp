@@ -23,14 +23,26 @@ void CSVParser::parseCSV()
 
 	while (fileIn.good())
 	{
-		fileIn.getline(type, 1024, ';');
-		fileIn.getline(price, 1024, ';');
-		fileIn.getline(loadSpace, 1024, ';');
-		fileIn.getline(cannonry, 1024, ';');
-		fileIn.getline(damagePoint, 1024, ';');
-		fileIn.getline(specialty, 1024);
+		fileIn.getline(type, 256, ';');
+		fileIn.getline(price, 256, ';');
+		fileIn.getline(loadSpace, 256, ';');
+		fileIn.getline(cannonry, 256, ';');
+		fileIn.getline(damagePoint, 256, ';');
+		fileIn.getline(specialty, 256);
 		
-		cout << price << endl;
+		char *output = nullptr;
+		output = std::strstr(type, "Pinnace");
+
+		if (output)
+		{
+			cout << "Found substring" << endl;
+		}
+		else
+		{
+			cout << "Not found substring" << endl;
+		}
+
+		
 	}
 
 	cout << "Done reading CSV " << endl;
