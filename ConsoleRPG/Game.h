@@ -1,6 +1,8 @@
 #pragma once
 
 #include <iostream>
+#include "CSVParser.h"
+#include "CityBuilder.h"
 
 using namespace std;
 
@@ -17,5 +19,9 @@ public:
 private:
 	int choice;
 	bool playing;
+	CSVParser parser;
+	CityBuilder cityBuilder;
+
+	
 
 };

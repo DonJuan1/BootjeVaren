@@ -5,6 +5,11 @@ Game::Game()
 {
 	choice = 0;
 	playing = true;
+
+	parser.parseCSV();
+
+	cin.get();
+
 }
 
 Game::~Game()

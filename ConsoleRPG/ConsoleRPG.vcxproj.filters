@@ -16,8 +16,20 @@
     <Filter Include="CSV Files">
       <UniqueIdentifier>{597e9d63-bebd-458d-8ca9-190e4f486faa}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Models">
+    <Filter Include="Builders / Factories">
+      <UniqueIdentifier>{81a70a27-2095-40a5-8cfc-f45f8d6639be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Ship">
       <UniqueIdentifier>{5bfc82c3-523e-4435-be1e-df00f5ca14bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Canon">
+      <UniqueIdentifier>{962241e4-6e97-40f0-a313-fa5377d0ba3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LocationStates">
+      <UniqueIdentifier>{02dd5908-7acc-4500-8c01-b7bc73f88c18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WindHandlers">
+      <UniqueIdentifier>{c090f33f-2cba-46ef-83d9-43ee766e0aca}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -27,25 +39,139 @@
     <ClCompile Include="Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Ship.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="CSVParser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CityBuilder.cpp">
+      <Filter>Builders / Factories</Filter>
+    </ClCompile>
+    <ClCompile Include="CityFactory.cpp">
+      <Filter>Builders / Factories</Filter>
+    </ClCompile>
+    <ClCompile Include="ShipFactory.cpp">
+      <Filter>Builders / Factories</Filter>
+    </ClCompile>
+    <ClCompile Include="GoodsFactory.cpp">
+      <Filter>Builders / Factories</Filter>
+    </ClCompile>
+    <ClCompile Include="Ship.cpp">
+      <Filter>Ship</Filter>
+    </ClCompile>
+    <ClCompile Include="LightShip.cpp">
+      <Filter>Ship</Filter>
+    </ClCompile>
+    <ClCompile Include="NormalShip.cpp">
+      <Filter>Ship</Filter>
+    </ClCompile>
+    <ClCompile Include="LogShip.cpp">
+      <Filter>Ship</Filter>
+    </ClCompile>
+    <ClCompile Include="Canon.cpp">
+      <Filter>Canon</Filter>
+    </ClCompile>
+    <ClCompile Include="LightCanon.cpp">
+      <Filter>Canon</Filter>
+    </ClCompile>
+    <ClCompile Include="MediumCanon.cpp">
+      <Filter>Canon</Filter>
+    </ClCompile>
+    <ClCompile Include="HeavyCanon.cpp">
+      <Filter>Canon</Filter>
+    </ClCompile>
+    <ClCompile Include="LocationState.cpp">
+      <Filter>LocationStates</Filter>
+    </ClCompile>
+    <ClCompile Include="City.cpp">
+      <Filter>LocationStates</Filter>
+    </ClCompile>
+    <ClCompile Include="Battle.cpp">
+      <Filter>LocationStates</Filter>
+    </ClCompile>
+    <ClCompile Include="Sea.cpp">
+      <Filter>LocationStates</Filter>
+    </ClCompile>
+    <ClCompile Include="Pirate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Goods.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WindHandler.cpp">
+      <Filter>WindHandlers</Filter>
+    </ClCompile>
+    <ClCompile Include="NoneHandler.cpp">
+      <Filter>WindHandlers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Game.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="CityBuilder.h">
+      <Filter>Builders / Factories</Filter>
     </ClInclude>
-    <ClInclude Include="Main.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="CityFactory.h">
+      <Filter>Builders / Factories</Filter>
+    </ClInclude>
+    <ClInclude Include="ShipFactory.h">
+      <Filter>Builders / Factories</Filter>
+    </ClInclude>
+    <ClInclude Include="GoodsFactory.h">
+      <Filter>Builders / Factories</Filter>
     </ClInclude>
     <ClInclude Include="Ship.h">
-      <Filter>Header Files</Filter>
+      <Filter>Ship</Filter>
+    </ClInclude>
+    <ClInclude Include="LightShip.h">
+      <Filter>Ship</Filter>
+    </ClInclude>
+    <ClInclude Include="NormalShip.h">
+      <Filter>Ship</Filter>
+    </ClInclude>
+    <ClInclude Include="LogShip.h">
+      <Filter>Ship</Filter>
+    </ClInclude>
+    <ClInclude Include="Canon.h">
+      <Filter>Canon</Filter>
+    </ClInclude>
+    <ClInclude Include="LightCanon.h">
+      <Filter>Canon</Filter>
+    </ClInclude>
+    <ClInclude Include="MediumCanon.h">
+      <Filter>Canon</Filter>
+    </ClInclude>
+    <ClInclude Include="HeavyCanon.h">
+      <Filter>Canon</Filter>
+    </ClInclude>
+    <ClInclude Include="LocationState.h">
+      <Filter>LocationStates</Filter>
+    </ClInclude>
+    <ClInclude Include="Battle.h">
+      <Filter>LocationStates</Filter>
+    </ClInclude>
+    <ClInclude Include="City.h">
+      <Filter>LocationStates</Filter>
+    </ClInclude>
+    <ClInclude Include="Sea.h">
+      <Filter>LocationStates</Filter>
     </ClInclude>
     <ClInclude Include="CSVParser.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Main.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Pirate.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Goods.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WindHandler.h">
+      <Filter>WindHandlers</Filter>
+    </ClInclude>
+    <ClInclude Include="NoneHandler.h">
+      <Filter>WindHandlers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
