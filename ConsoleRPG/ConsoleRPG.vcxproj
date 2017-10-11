@@ -120,8 +120,6 @@
     <ClInclude Include="CSVParser.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Main.h" />
-    <ClInclude Include="resource.h" />
-    <ClInclude Include="resource1.h" />
     <ClInclude Include="Ship.h" />
   </ItemGroup>
   <ItemGroup>
