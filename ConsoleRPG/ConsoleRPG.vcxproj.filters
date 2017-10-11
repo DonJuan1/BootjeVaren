@@ -50,5 +50,22 @@
     <ClInclude Include="CSVParser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="resource1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="afstanden tussen steden.csv">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="goederen hoeveelheid.csv">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="goederen prijzen.csv">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="schepen.csv">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

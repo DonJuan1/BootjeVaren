@@ -121,7 +121,14 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="Main.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="resource1.h" />
     <ClInclude Include="Ship.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="afstanden tussen steden.csv" />
+    <None Include="goederen hoeveelheid.csv" />
+    <None Include="goederen prijzen.csv" />
+    <None Include="schepen.csv" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

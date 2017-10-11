@@ -12,7 +12,7 @@ CSVParser::~CSVParser()
 
 void CSVParser::parseCSV()
 {
-	ifstream fileIn("C:/Users/Jonathan/Desktop/csv/schepen.csv");
+	ifstream fileIn("./schepen.csv");
 	
 	char type[256];
 	char price[256];
