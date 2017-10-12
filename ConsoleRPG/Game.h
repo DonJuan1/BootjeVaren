@@ -3,25 +3,33 @@
 #include <iostream>
 #include "CSVParser.h"
 #include "CityBuilder.h"
+#include "Ship.h"
+#include "LocationState.h"
+#include "City.h"
 
-using namespace std;
 
 class Game
 {
 public:
 	Game();
-	virtual ~Game();
+	~Game();
 
-	void mainMenu();
+	void setState(LocationState *s);
+	
+	void setNextCity(City *c);
+	
 
-	bool getPlaying() const;
+	City* nextCity;
 
 private:
-	int choice;
-	bool playing;
+
+	int gold = 100;
+
 	CSVParser parser;
 	CityBuilder cityBuilder;
 
-	
+	LocationState* state;
+
+	Ship* ship;
 
 };

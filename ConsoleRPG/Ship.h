@@ -1,10 +1,12 @@
 #pragma once
 
+#include "Canon.h"
+
 class Ship
 {
 public:
 	Ship();
-	virtual ~Ship();
+	~Ship();
 
 private:
 
@@ -12,7 +14,8 @@ private:
 	int price;
 	int loadSpace;
 	int cannonry;
-	int damagePoint;
-	int specialty;
+	int damagePoints;
+	bool isSmall;
+
 };
 

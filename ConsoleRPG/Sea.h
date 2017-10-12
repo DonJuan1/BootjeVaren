@@ -1,13 +1,17 @@
 #pragma once
 
+#include "Game.h"
 #include "LocationState.h"
 
-class Sea : LocationState
+class Sea : public LocationState
 {
 public:
 	Sea();
-	virtual ~Sea();
+	~Sea() {};
+
+	void processState(Game* game) override;
 
 private:
+	int turns;
 
 };

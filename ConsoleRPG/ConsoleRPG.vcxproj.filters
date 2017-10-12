@@ -102,6 +102,21 @@
     <ClCompile Include="NoneHandler.cpp">
       <Filter>WindHandlers</Filter>
     </ClCompile>
+    <ClCompile Include="BreezeHandler.cpp">
+      <Filter>WindHandlers</Filter>
+    </ClCompile>
+    <ClCompile Include="WeakHandler.cpp">
+      <Filter>WindHandlers</Filter>
+    </ClCompile>
+    <ClCompile Include="NormalHandler.cpp">
+      <Filter>WindHandlers</Filter>
+    </ClCompile>
+    <ClCompile Include="StrongHandler.cpp">
+      <Filter>WindHandlers</Filter>
+    </ClCompile>
+    <ClCompile Include="StormHandler.cpp">
+      <Filter>WindHandlers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CityBuilder.h">
@@ -171,6 +186,21 @@
       <Filter>WindHandlers</Filter>
     </ClInclude>
     <ClInclude Include="NoneHandler.h">
+      <Filter>WindHandlers</Filter>
+    </ClInclude>
+    <ClInclude Include="BreezeHandler.h">
+      <Filter>WindHandlers</Filter>
+    </ClInclude>
+    <ClInclude Include="WeakHandler.h">
+      <Filter>WindHandlers</Filter>
+    </ClInclude>
+    <ClInclude Include="NormalHandler.h">
+      <Filter>WindHandlers</Filter>
+    </ClInclude>
+    <ClInclude Include="StrongHandler.h">
+      <Filter>WindHandlers</Filter>
+    </ClInclude>
+    <ClInclude Include="StormHandler.h">
       <Filter>WindHandlers</Filter>
     </ClInclude>
   </ItemGroup>
