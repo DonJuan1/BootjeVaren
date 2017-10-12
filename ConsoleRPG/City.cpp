@@ -8,6 +8,7 @@ void City::processState(Game* game)
 
 	int choice;
 	cin >> choice;
+	cin.clear();
 	cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignore char input
 
 	switch (choice) {

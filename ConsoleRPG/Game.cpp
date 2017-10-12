@@ -16,7 +16,6 @@ Game::Game()
 	setState(new City());
 
 
-	int choice;
 	while (state != nullptr) {
 		
 		system("cls");
