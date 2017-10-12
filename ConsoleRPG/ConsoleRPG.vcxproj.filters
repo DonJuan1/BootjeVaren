@@ -22,14 +22,14 @@
     <Filter Include="Ship">
       <UniqueIdentifier>{5bfc82c3-523e-4435-be1e-df00f5ca14bf}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Canon">
-      <UniqueIdentifier>{962241e4-6e97-40f0-a313-fa5377d0ba3b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="LocationStates">
       <UniqueIdentifier>{02dd5908-7acc-4500-8c01-b7bc73f88c18}</UniqueIdentifier>
     </Filter>
     <Filter Include="WindHandlers">
       <UniqueIdentifier>{c090f33f-2cba-46ef-83d9-43ee766e0aca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Cannon">
+      <UniqueIdentifier>{962241e4-6e97-40f0-a313-fa5377d0ba3b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -62,21 +62,6 @@
     </ClCompile>
     <ClCompile Include="NormalShip.cpp">
       <Filter>Ship</Filter>
-    </ClCompile>
-    <ClCompile Include="LogShip.cpp">
-      <Filter>Ship</Filter>
-    </ClCompile>
-    <ClCompile Include="Canon.cpp">
-      <Filter>Canon</Filter>
-    </ClCompile>
-    <ClCompile Include="LightCanon.cpp">
-      <Filter>Canon</Filter>
-    </ClCompile>
-    <ClCompile Include="MediumCanon.cpp">
-      <Filter>Canon</Filter>
-    </ClCompile>
-    <ClCompile Include="HeavyCanon.cpp">
-      <Filter>Canon</Filter>
     </ClCompile>
     <ClCompile Include="LocationState.cpp">
       <Filter>LocationStates</Filter>
@@ -117,6 +102,21 @@
     <ClCompile Include="StormHandler.cpp">
       <Filter>WindHandlers</Filter>
     </ClCompile>
+    <ClCompile Include="Cannon.cpp">
+      <Filter>Cannon</Filter>
+    </ClCompile>
+    <ClCompile Include="HeavyCannon.cpp">
+      <Filter>Cannon</Filter>
+    </ClCompile>
+    <ClCompile Include="LightCannon.cpp">
+      <Filter>Cannon</Filter>
+    </ClCompile>
+    <ClCompile Include="MediumCannon.cpp">
+      <Filter>Cannon</Filter>
+    </ClCompile>
+    <ClCompile Include="LogShip.cpp">
+      <Filter>Ship</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CityBuilder.h">
@@ -142,18 +142,6 @@
     </ClInclude>
     <ClInclude Include="LogShip.h">
       <Filter>Ship</Filter>
-    </ClInclude>
-    <ClInclude Include="Canon.h">
-      <Filter>Canon</Filter>
-    </ClInclude>
-    <ClInclude Include="LightCanon.h">
-      <Filter>Canon</Filter>
-    </ClInclude>
-    <ClInclude Include="MediumCanon.h">
-      <Filter>Canon</Filter>
-    </ClInclude>
-    <ClInclude Include="HeavyCanon.h">
-      <Filter>Canon</Filter>
     </ClInclude>
     <ClInclude Include="LocationState.h">
       <Filter>LocationStates</Filter>
@@ -202,6 +190,18 @@
     </ClInclude>
     <ClInclude Include="StormHandler.h">
       <Filter>WindHandlers</Filter>
+    </ClInclude>
+    <ClInclude Include="Cannon.h">
+      <Filter>Cannon</Filter>
+    </ClInclude>
+    <ClInclude Include="HeavyCannon.h">
+      <Filter>Cannon</Filter>
+    </ClInclude>
+    <ClInclude Include="LightCannon.h">
+      <Filter>Cannon</Filter>
+    </ClInclude>
+    <ClInclude Include="MediumCannon.h">
+      <Filter>Cannon</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -12,7 +12,8 @@ public:
 
 	void processState(Game* game) override;
 
-
 private:
+	char name[20] = "ExampleCity";
+
 
 };

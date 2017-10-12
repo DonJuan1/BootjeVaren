@@ -16,11 +16,8 @@ public:
 	~Game();
 
 	void setState(LocationState *s);
-	
-	void setNextCity(City *c);
-	
 
-	City* nextCity;
+	Ship *getShip() const;
 
 private:
 

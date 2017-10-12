@@ -1,11 +1,17 @@
 #pragma once
 
+#include "Ship.h"
+#include "HeavyCannon.h"
+
 class Pirate
 {
 public:
 	Pirate();
-	virtual ~Pirate();
+	~Pirate() {};
 
 private:
+
+	Ship* ship;
+
 
 };
