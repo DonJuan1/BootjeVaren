@@ -2,6 +2,7 @@
 
 #include "Game.h"
 
+class Game;
 class LocationState
 {
 public:

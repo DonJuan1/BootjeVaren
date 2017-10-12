@@ -7,8 +7,8 @@ using namespace std;
 class GoodsFactory
 {
 public:
-	GoodsFactory();
-	virtual ~GoodsFactory();
+	GoodsFactory() {};
+	~GoodsFactory() {};
 
 private:
 

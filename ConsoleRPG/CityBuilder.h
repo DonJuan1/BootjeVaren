@@ -11,8 +11,8 @@ using namespace std;
 class CityBuilder
 {
 public:
-	CityBuilder();
-	virtual ~CityBuilder();
+	CityBuilder() {};
+	~CityBuilder() {};
 
 private:
 	ShipFactory shipFactory;

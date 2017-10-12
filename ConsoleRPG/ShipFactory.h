@@ -7,8 +7,8 @@ using namespace std;
 class ShipFactory
 {
 public:
-	ShipFactory();
-	virtual ~ShipFactory();
+	ShipFactory() {};
+	~ShipFactory() {};
 
 private:
 

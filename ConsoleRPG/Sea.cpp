@@ -8,7 +8,7 @@ Sea::Sea()
 void Sea::processState(Game* game)
 {
 
-	cout << "Het schip bevind zich op zee." << endl;
+	cout << "Het schip bevind zich op zee. Het is beurt "<< turns << endl;
 	cout << "Volgende beurt?" << endl;
 
 	int choice;

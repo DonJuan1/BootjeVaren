@@ -7,7 +7,8 @@
 #include "LocationState.h"
 #include "City.h"
 
-
+class LocationState;
+class City;
 class Game
 {
 public:
