@@ -2,7 +2,6 @@
 
 Pirate::Pirate()
 {
-<<<<<<< HEAD
 	ship = new Ship();
 
 	//ship->addCannon(new HeavyCannon());
@@ -11,8 +10,4 @@ Pirate::Pirate()
 Pirate::~Pirate()
 {
 	delete ship;
-=======
-	//ship = new Ship();
-	//ship->addCannon(new HeavyCannon());
->>>>>>> origin/master
 }
