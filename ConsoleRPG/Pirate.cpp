@@ -4,5 +4,10 @@ Pirate::Pirate()
 {
 	ship = new Ship();
 
-	ship->addCannon(new HeavyCannon());
+	//ship->addCannon(new HeavyCannon());
+}
+
+Pirate::~Pirate()
+{
+	delete ship;
 }

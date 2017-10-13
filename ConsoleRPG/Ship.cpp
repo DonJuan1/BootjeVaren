@@ -6,7 +6,13 @@ Ship::Ship()
 }
 
 Ship::~Ship()
-{}
+{
+
+	for (int i = cannonCount-1; i >= 0; i--) {
+		delete cannons[i];
+	}
+	delete [] cannons;
+}
 
 void Ship::getHit(int damage)
 {
@@ -31,7 +37,7 @@ int Ship::shootCannons()
 	int damage = 0;
 
 	for (int i = 0; i < cannonCount; i++) {
-		cannons[i]->getDamage();
+		damage += cannons[i]->getDamage();
 	}
 
 	return damage;

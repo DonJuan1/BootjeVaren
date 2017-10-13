@@ -2,6 +2,7 @@
 #include <stdlib.h>
 
 #include "Game.h"
+#include <ctime>
 
 
 
@@ -9,6 +10,14 @@ Game::Game()
 {
 
 	parser.parseCSV();
+
+	std::default_random_engine generator;
+	generator.seed(time(0));
+
+	ship = new Ship();
+	ship->addCannon(new HeavyCannon(generator));
+	ship->addCannon(new HeavyCannon(generator));
+	
 
 
 	// Csv objects to factories
@@ -29,7 +38,7 @@ Game::Game()
 
 Game::~Game()
 {
-
+	delete ship;
 }
 
 void Game::setState(LocationState * s)

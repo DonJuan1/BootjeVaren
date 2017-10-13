@@ -10,7 +10,7 @@ class Sea : public LocationState
 {
 public:
 	Sea(City* nextCity);
-	~Sea() {};
+	~Sea();
 
 	void processState(Game* game) override;
 

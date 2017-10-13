@@ -12,12 +12,18 @@ Sea::Sea(City* city)
 	turns = 5;
 }
 
+Sea::~Sea()
+{
+	delete nextCity;
+}
+
 void Sea::processState(Game* game)
 {
 
 	if (turns <= 0) {
 		game->setState(new City());
 		delete this;
+		return;
 	}
 	else if(!isInBattle){
 
@@ -32,7 +38,7 @@ void Sea::processState(Game* game)
 			isInBattle = true;
 
 
-
+			return;
 		}
 
 
@@ -52,6 +58,7 @@ void Sea::processState(Game* game)
 	if (choice == 1) {
 		game->setState(nullptr);
 		delete this;
+		return;
 	}
 
 	turns--;

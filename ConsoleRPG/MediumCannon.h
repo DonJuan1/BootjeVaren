@@ -5,7 +5,7 @@
 class MediumCannon : public Cannon
 {
 public:
-	MediumCannon() {};
+	MediumCannon(std::default_random_engine& generator) : Cannon(generator) {};
 	~MediumCannon() {};
 
 	int getDamage();

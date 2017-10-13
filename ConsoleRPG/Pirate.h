@@ -7,7 +7,7 @@ class Pirate
 {
 public:
 	Pirate();
-	~Pirate() {};
+	~Pirate();
 
 private:
 

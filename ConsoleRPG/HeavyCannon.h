@@ -5,7 +5,7 @@
 class HeavyCannon : public Cannon
 {
 public:
-	HeavyCannon() {};
+	HeavyCannon(std::default_random_engine& generator) : Cannon(generator) {};
 	~HeavyCannon() {};
 
 	int getDamage();

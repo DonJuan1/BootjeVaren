@@ -1,13 +1,16 @@
 #pragma once
 
+#include <random>
+
 class Cannon
 {
 public:
-	Cannon() {};
+	Cannon(std::default_random_engine& generator);
 	virtual ~Cannon() {};
 
 	virtual int getDamage() = 0;
 
-private:
+protected:
+	std::default_random_engine* randomGenerator;
 
 };

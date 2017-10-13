@@ -13,4 +13,10 @@ public:
 
 private:
 
+
+protected:
+	const char* lastCommandMessage = "";
+	char buf[64] = { 0 };
+
+
 };

@@ -5,7 +5,8 @@
 
 int main()
 {
-	Game game;
+	Game* game = new Game();
+	delete game;
 
 	return _CrtDumpMemoryLeaks();
 }
