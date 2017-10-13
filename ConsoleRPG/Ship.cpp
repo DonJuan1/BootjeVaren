@@ -1,6 +1,7 @@
 #include "Ship.h"
 
-Ship::Ship()
+Ship::Ship(char* pType, int pPrice, int pLoadSpace, int pCannory, int pDamagePoint, bool pIsSmall)
+	: type(pType), price{pPrice}, loadSpace{pLoadSpace}, cannonry{pCannory}, damagePoints{pDamagePoint}, isSmall{pIsSmall}
 {
 	cannons = new Cannon*[cannonry];
 }
