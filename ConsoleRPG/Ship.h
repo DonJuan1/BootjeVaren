@@ -29,6 +29,5 @@ private:
 	int cannonry;
 	int damagePoints;
 	bool isSmall;
-
 };
 
