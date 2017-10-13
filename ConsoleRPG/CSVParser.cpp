@@ -14,38 +14,21 @@ void CSVParser::parseCSV()
 {
 	ifstream fileIn("./schepen.csv");
 	
-	char type[256];
-	char price[256];
-	char loadSpace[256];
-	char cannonry[256];
-	char damagePoint[256];
-	char specialty[256];
+	char buffer[256];
+
+	fileIn.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
 	while (fileIn.good())
 	{
-		fileIn.getline(type, 256, ';');
-		fileIn.getline(price, 256, ';');
-		fileIn.getline(loadSpace, 256, ';');
-		fileIn.getline(cannonry, 256, ';');
-		fileIn.getline(damagePoint, 256, ';');
-		fileIn.getline(specialty, 256);
+		fileIn.getline(buffer, 256);
 		
-		char *output = nullptr;
-		output = std::strstr(type, "Pinnace");
-
-		if (output)
-		{
-			cout << "Found substring" << endl;
-		}
-		else
-		{
-			cout << "Not found substring" << endl;
-		}
-
+		cout << buffer << endl;
 		
 	}
 
 	cout << "Done reading CSV " << endl;
 
 	fileIn.close();
+
+	cin.get();
 }

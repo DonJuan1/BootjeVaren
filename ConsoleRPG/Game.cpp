@@ -13,7 +13,7 @@ Game::Game()
 
 	// Csv objects to factories
 
-	setState(new City());
+	/*setState(new City());
 
 
 	while (state != nullptr) {
@@ -24,7 +24,7 @@ Game::Game()
 		cout << "Aantal goud: " << gold << endl;
 
 		state->processState(this);
-	}
+	}*/
 }
 
 Game::~Game()
