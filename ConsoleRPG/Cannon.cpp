@@ -1,6 +1,5 @@
 #include "Cannon.h"
 
-Cannon::Cannon(std::default_random_engine & generator)
+Cannon::Cannon()
 {
-	randomGenerator = &generator;
 }

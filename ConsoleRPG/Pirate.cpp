@@ -2,7 +2,7 @@
 
 Pirate::Pirate()
 {
-	ship = new Ship();
+	ship = new Ship("ship", 20, 20, 20, 100, false);
 
 	//ship->addCannon(new HeavyCannon());
 }
