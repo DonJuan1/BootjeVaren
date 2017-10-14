@@ -48,7 +48,7 @@ Game::Game()
 		
 		cout << "Amount of gold: " << gold << endl;
 		cout << "Hitpoints of ship: " << ship->getHitPoints() << "/" << ship->getDamagePoints() << endl;
-		cout << "Cannons of ship: " << ship->cannonCount << endl;
+		cout << "Cannons on ship: " << ship->cannonCount << "/" << ship->getCannonry() << endl;
 		cout << "" << endl;
 
 		state->processState(this);
