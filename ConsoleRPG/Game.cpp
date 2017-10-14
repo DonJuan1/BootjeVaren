@@ -64,7 +64,7 @@ Game::Game()
 
 Game::~Game()
 {
-	//delete ship;
+	delete ship;
 }
 
 void Game::setState(LocationState * s)
