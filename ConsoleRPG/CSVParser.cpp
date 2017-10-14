@@ -20,12 +20,13 @@ void CSVParser::parseCSV()
 	char damagePoints[32];
 	char isSmall[32];
 
+	//Ignore first line
 	fileIn.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
 	while (fileIn.good())
 	{
 		char* type = new char[32];
-
+		
 		fileIn.getline(type, 32, ';');
 		fileIn.getline(price, 32, ';');
 		fileIn.getline(loadSpace, 32, ';');
@@ -33,15 +34,23 @@ void CSVParser::parseCSV()
 		fileIn.getline(damagePoints, 32, ';');
 		fileIn.getline(isSmall, 32);
 
+		if (strlen(type) == 0)
+		{
+			delete[] type;
+			break;
+		}
+
 		int intPrice = atoi(price);
 		int intLoadSpace = atoi(loadSpace);
 		int intCannonry = atoi(cannonry);
 		int intDamagePoints = atoi(damagePoints);
 
-		if (strlen(type) == 0)
-		{
-			break;
-		}
+		Ship* ship = new Ship(type, intPrice, intLoadSpace, intCannonry, intDamagePoints, false);
+
+		cout << ship->getPrice() << endl;
+
+		delete[] type;
+		delete ship;
 			
 	}
 

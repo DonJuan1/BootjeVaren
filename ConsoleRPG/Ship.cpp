@@ -8,7 +8,6 @@ Ship::Ship(char* pType, int pPrice, int pLoadSpace, int pCannory, int pDamagePoi
 
 Ship::~Ship()
 {
-
 	for (int i = cannonCount-1; i >= 0; i--) {
 		delete cannons[i];
 	}
