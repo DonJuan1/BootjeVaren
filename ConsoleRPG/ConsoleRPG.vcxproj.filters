@@ -57,12 +57,6 @@
     <ClCompile Include="Ship.cpp">
       <Filter>Ship</Filter>
     </ClCompile>
-    <ClCompile Include="LightShip.cpp">
-      <Filter>Ship</Filter>
-    </ClCompile>
-    <ClCompile Include="NormalShip.cpp">
-      <Filter>Ship</Filter>
-    </ClCompile>
     <ClCompile Include="LocationState.cpp">
       <Filter>LocationStates</Filter>
     </ClCompile>
@@ -114,11 +108,17 @@
     <ClCompile Include="MediumCannon.cpp">
       <Filter>Cannon</Filter>
     </ClCompile>
-    <ClCompile Include="LogShip.cpp">
-      <Filter>Ship</Filter>
-    </ClCompile>
     <ClCompile Include="RandomGenerator.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LightShip.cpp">
+      <Filter>Ship</Filter>
+    </ClCompile>
+    <ClCompile Include="NormalShip.cpp">
+      <Filter>Ship</Filter>
+    </ClCompile>
+    <ClCompile Include="LogShip.cpp">
+      <Filter>Ship</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -135,15 +135,6 @@
       <Filter>Builders / Factories</Filter>
     </ClInclude>
     <ClInclude Include="Ship.h">
-      <Filter>Ship</Filter>
-    </ClInclude>
-    <ClInclude Include="LightShip.h">
-      <Filter>Ship</Filter>
-    </ClInclude>
-    <ClInclude Include="NormalShip.h">
-      <Filter>Ship</Filter>
-    </ClInclude>
-    <ClInclude Include="LogShip.h">
       <Filter>Ship</Filter>
     </ClInclude>
     <ClInclude Include="LocationState.h">
@@ -208,6 +199,15 @@
     </ClInclude>
     <ClInclude Include="RandomGenerator.h">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LightShip.h">
+      <Filter>Ship</Filter>
+    </ClInclude>
+    <ClInclude Include="NormalShip.h">
+      <Filter>Ship</Filter>
+    </ClInclude>
+    <ClInclude Include="LogShip.h">
+      <Filter>Ship</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

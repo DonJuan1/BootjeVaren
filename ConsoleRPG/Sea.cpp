@@ -1,4 +1,5 @@
 #include "Sea.h"
+#include "RandomGenerator.h"
 
 #include <iostream>
 #include <random>
@@ -27,35 +28,33 @@ void Sea::processState(Game* game)
 	}
 	else if(!isInBattle){
 
-		std::default_random_engine generator;
-		generator.seed(time(0));
-		std::uniform_int_distribution<int> distribution1(1, 20);
-		
-		int randomBattleChance = distribution1(generator);
+		int randomBattleChance = RandomGenerator::getInstance().generate(1,20);
 		if (randomBattleChance <= 20 / (100 / 20)) {
 
 			game->setState(new Battle(this));
 			isInBattle = true;
-
-
 			return;
 		}
-
-
-
 	}
 
 	cout << "Your ship is on sea. Days left: "<< turns << endl;
 	cout << "" << endl;
-	cout << "0: Next day" << endl;
-	cout << "1: Quit" << endl;
+	
+	if (isInBattle) {
+		cout << lastCommandMessage << endl;
+		cout << "" << endl;
+		isInBattle = false;
+	}
+
+	cout << "1: Next day" << endl;
+	cout << "2: Quit" << endl;
 
 	int choice;
 	cin >> choice;
 	cin.clear();
 	cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignore char input
 
-	if (choice == 1) {
+	if (choice == 2) {
 		game->setState(nullptr);
 		delete this;
 		return;

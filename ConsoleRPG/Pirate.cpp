@@ -1,13 +1,16 @@
 #include "Pirate.h"
 
-Pirate::Pirate()
+Pirate::Pirate(Ship* pShip)
 {
-	ship = new Ship("ship", 20, 20, 20, 100, false);
-
-	//ship->addCannon(new HeavyCannon());
+	ship = pShip;
 }
 
 Pirate::~Pirate()
 {
 	delete ship;
+}
+
+Ship* Pirate::getShip() const
+{
+	return ship;
 }

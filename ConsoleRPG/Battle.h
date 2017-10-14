@@ -10,13 +10,13 @@ class Battle : public LocationState
 {
 public:
 	Battle(Sea* sea);
-	~Battle() {};
+	~Battle();
 
 	void processState(Game* game) override;
 
 private:
 	Sea* seaState;
-	Pirate pirate;
+	Pirate* pirate;
 
 
 };

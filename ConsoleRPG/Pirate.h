@@ -6,12 +6,15 @@
 class Pirate
 {
 public:
-	Pirate();
+	Pirate(Ship* ship);
 	~Pirate();
 
-private:
+	Ship * getShip() const;
+	void getHit(int damage) { ship->getHit(damage); };
 
+private:
 	Ship* ship;
+
 
 
 };

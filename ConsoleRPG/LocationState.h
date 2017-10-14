@@ -10,13 +10,14 @@ public:
 	virtual ~LocationState() {};
 
 	virtual void processState(Game* game) = 0;
+	
+	const char* lastCommandMessage = "";
 
 private:
 
 
 protected:
-	const char* lastCommandMessage = "";
-	char buf[64] = { 0 };
+	char buf[128] = { 0 };
 
 
 };
