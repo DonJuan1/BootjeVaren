@@ -5,8 +5,8 @@
 class StrongHandler : public WindHandler
 {
 public:
-	StrongHandler();
-	virtual ~StrongHandler();
+	int getSailTurns(Ship &ship) override { return 2; };
+	char* getWindName() override { return "strong"; };
 
 private:
 

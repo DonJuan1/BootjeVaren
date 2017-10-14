@@ -5,8 +5,8 @@
 class NormalHandler : public WindHandler
 {
 public:
-	NormalHandler();
-	virtual ~NormalHandler();
+	int getSailTurns(Ship &ship) override { return 1; };
+	char* getWindName() override { return "normal"; };
 
 private:
 

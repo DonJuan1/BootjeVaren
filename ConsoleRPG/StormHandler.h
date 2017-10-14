@@ -5,8 +5,8 @@
 class StormHandler : public WindHandler
 {
 public:
-	StormHandler();
-	virtual ~StormHandler();
+	int getSailTurns(Ship &ship) override;
+	char* getWindName() override { return "storm"; };
 
 private:
 

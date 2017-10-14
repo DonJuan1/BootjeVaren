@@ -21,6 +21,9 @@ Sea::~Sea()
 void Sea::processState(Game* game)
 {
 
+	WindHandler* currentWind = wind[RandomGenerator::getInstance().generate(0, 19)];
+
+
 	if (turns <= 0) {
 		game->setState(new City());
 		delete this;
@@ -28,16 +31,17 @@ void Sea::processState(Game* game)
 	}
 	else if(!isInBattle){
 
-		int randomBattleChance = RandomGenerator::getInstance().generate(1,20);
-		if (randomBattleChance <= 20 / (100 / 20)) {
-
+		int randomBattleChance = RandomGenerator::getInstance().generate(0,100);
+		if (randomBattleChance <= 20) {
 			game->setState(new Battle(this));
 			isInBattle = true;
 			return;
 		}
 	}
 
-	cout << "Your ship is on sea. Days left: "<< turns << endl;
+	cout << "Your ship is on sea." << endl;
+	cout << "Wind upcoming: " << currentWind->getWindName() << endl;
+	cout << "Days left: "<< turns << endl;
 	cout << "" << endl;
 	
 	if (isInBattle) {
@@ -48,6 +52,7 @@ void Sea::processState(Game* game)
 
 	cout << "1: Next day" << endl;
 	cout << "2: Quit" << endl;
+	cout << "" << endl;
 
 	int choice;
 	cin >> choice;
@@ -60,6 +65,6 @@ void Sea::processState(Game* game)
 		return;
 	}
 
-	turns--;
+	turns = turns - currentWind->getSailTurns(*game->getShip());
 
 }

@@ -73,8 +73,9 @@ void Battle::processState(Game * game)
 			delete this;
 			return;
 		}
-			
-		lastCommandMessage = "You fail escaping the pirates, they laugh at your weak flight attempt.";
+
+		sprintf(buf, "You fail escaping the pirates, they laugh at your weak flight attempt.", "", 0);
+		//lastCommandMessage = "You fail escaping the pirates, they laugh at your weak flight attempt.";
 		break;
 	}
 	case 3:

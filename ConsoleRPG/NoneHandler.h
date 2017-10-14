@@ -5,8 +5,8 @@
 class NoneHandler : public WindHandler
 {
 public:
-	NoneHandler();
-	virtual ~NoneHandler();
+	int getSailTurns(Ship &ship) override { return 0; };
+	char* getWindName() override { return "none"; };
 
 private:
 

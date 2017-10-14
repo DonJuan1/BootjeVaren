@@ -4,6 +4,14 @@
 #include "LocationState.h"
 #include "Battle.h"
 #include "City.h"
+#include "WindHandler.h"
+#include "NoneHandler.h"
+#include "BreezeHandler.h"
+#include "WeakHandler.h"
+#include "NormalHandler.h"
+#include "StrongHandler.h"
+#include "StormHandler.h"
+
 
 class City;
 class Sea : public LocationState
@@ -18,5 +26,22 @@ private:
 	int turns;
 	City* nextCity;
 	bool isInBattle = false;
+
+
+	NoneHandler none;
+	BreezeHandler breeze;
+	WeakHandler weak;
+	NormalHandler normal;
+	StrongHandler strong;
+	StormHandler storm;
+
+	WindHandler* wind[20] {
+		&none,&none,
+		&breeze,&breeze,
+		&weak,&weak,&weak,
+		&normal,&normal,&normal,&normal,&normal,&normal,&normal,&normal,&normal,&normal,
+		&strong,&strong,
+		&storm
+	};
 
 };
