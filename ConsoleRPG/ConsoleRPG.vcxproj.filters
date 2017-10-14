@@ -31,6 +31,9 @@
     <Filter Include="Cannon">
       <UniqueIdentifier>{962241e4-6e97-40f0-a313-fa5377d0ba3b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Utils">
+      <UniqueIdentifier>{9a846d9e-4caa-4cf4-b4f1-39e6a8ec1ca4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -119,6 +122,8 @@
     </ClCompile>
     <ClCompile Include="LogShip.cpp">
       <Filter>Ship</Filter>
+    <ClCompile Include="CustomVector.cpp">
+      <Filter>Utils</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -208,6 +213,8 @@
     </ClInclude>
     <ClInclude Include="LogShip.h">
       <Filter>Ship</Filter>
+    <ClInclude Include="CustomVector.h">
+      <Filter>Utils</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

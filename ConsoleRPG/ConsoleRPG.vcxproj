@@ -118,6 +118,7 @@
     <ClCompile Include="CityBuilder.cpp" />
     <ClCompile Include="CityFactory.cpp" />
     <ClCompile Include="CSVParser.cpp" />
+    <ClCompile Include="CustomVector.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Goods.cpp" />
     <ClCompile Include="GoodsFactory.cpp" />
@@ -149,6 +150,7 @@
     <ClInclude Include="CityBuilder.h" />
     <ClInclude Include="CityFactory.h" />
     <ClInclude Include="CSVParser.h" />
+    <ClInclude Include="CustomVector.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Goods.h" />
     <ClInclude Include="GoodsFactory.h" />

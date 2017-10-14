@@ -2,19 +2,41 @@
 #include <stdlib.h>
 
 #include "Game.h"
-
-
+#include "CustomVector.h"
 
 Game::Game()
 {
+	/*CustomVector vec;
 
-	//parser.parseCSV();
+	int temp;
 
-	
+	while (1)
+	{
+		cin >> temp;
+		if (temp == 0)
+		{
+			break;
+		}
+
+		vec.push_back(temp);
+	}
+
+	cout << "You have entered " << vec.size() << " elements. These are:" << endl;
+
+	for (size_t i = 0; i < vec.size(); i++)
+	{
+		cout << vec[i] << " ";
+	}
+
+	cout << endl;
+
+	cin.clear();
+	cin >> temp;*/
 
 
 	ship = shipFactory.getRandomShip(true);
 	
+	//parser.parseCSV();
 	
 
 	setState(new City());
@@ -42,7 +64,7 @@ Game::Game()
 
 Game::~Game()
 {
-	delete ship;
+	//delete ship;
 }
 
 void Game::setState(LocationState * s)
