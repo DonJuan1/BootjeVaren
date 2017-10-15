@@ -6,14 +6,14 @@
 
 Game::Game()
 {
-	/*CustomVector vec;
+	/*CustomVector<char> vec;
 
-	int temp;
+	char temp;
 
 	while (1)
 	{
 		cin >> temp;
-		if (temp == 0)
+		if (temp == 'a')
 		{
 			break;
 		}
@@ -39,7 +39,7 @@ Game::Game()
 	//parser.parseCSV();
 	
 
-	setState(new City());
+	/*setState(new City());
 
 
 	while (state != nullptr) {
@@ -59,7 +59,7 @@ Game::Game()
 			cout << "" << endl;
 			cin.get();
 		}
-	}
+	}*/
 }
 
 Game::~Game()
