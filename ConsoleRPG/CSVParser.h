@@ -3,6 +3,8 @@
 #include <iostream>
 #include <fstream> 
 #include "Ship.h"
+#include "Pirate.h"
+#include "CustomVector.h"
 
 using namespace std;
 

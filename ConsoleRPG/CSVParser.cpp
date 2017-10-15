@@ -13,7 +13,7 @@ CSVParser::~CSVParser()
 void CSVParser::parseCSV()
 {
 	ifstream fileIn("./schepen.csv");
-	
+
 	char price[32];
 	char loadSpace[32];
 	char cannonry[32];

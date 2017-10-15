@@ -5,8 +5,9 @@
 class Ship
 {
 public:
+	Ship();
 	Ship(char* pType, int pPrice, int pLoadSpace, int pCannory, int pDamagePoint, bool pIsSmall);
-	~Ship();
+	virtual ~Ship();
 
 	void getHit(int damage);
 	void addCannon(Cannon* cannon);

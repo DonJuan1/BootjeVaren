@@ -3,41 +3,15 @@
 
 #include "Game.h"
 #include "CustomVector.h"
+#include "Pirate.h"
 
 Game::Game()
 {
-	/*CustomVector<char> vec;
-
-	char temp;
-
-	while (1)
-	{
-		cin >> temp;
-		if (temp == 'a')
-		{
-			break;
-		}
-
-		vec.push_back(temp);
-	}
-
-	cout << "You have entered " << vec.size() << " elements. These are:" << endl;
-
-	for (size_t i = 0; i < vec.size(); i++)
-	{
-		cout << vec[i] << " ";
-	}
-
-	cout << endl;
-
-	cin.clear();
-	cin >> temp;*/
-
+	CustomVector<Ship> vec;
 
 	ship = shipFactory.getRandomShip(true);
 	
 	//parser.parseCSV();
-	
 
 	/*setState(new City());
 

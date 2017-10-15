@@ -6,6 +6,7 @@
 class Pirate
 {
 public:
+	Pirate();
 	Pirate(Ship* ship);
 	~Pirate();
 
