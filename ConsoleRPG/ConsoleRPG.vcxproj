@@ -118,7 +118,6 @@
     <ClCompile Include="CityBuilder.cpp" />
     <ClCompile Include="CityFactory.cpp" />
     <ClCompile Include="CSVParser.cpp" />
-    <ClCompile Include="CustomVector.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Goods.cpp" />
     <ClCompile Include="GoodsFactory.cpp" />

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Cannon.h"
+#include <cstring>
 
 class Ship
 {

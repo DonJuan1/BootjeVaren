@@ -7,13 +7,12 @@
 class City : public LocationState
 {
 public:
-	City() {};
+	City() : name("Example") { } ;
 	~City() {};
 
 	void processState(Game* game) override;
 
 private:
-	char name[20] = "ExampleCity";
-
+	char name[20];
 
 };

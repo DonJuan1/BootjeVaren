@@ -123,9 +123,6 @@
     <ClCompile Include="LogShip.cpp">
       <Filter>Ship</Filter>
     </ClCompile>
-    <ClCompile Include="CustomVector.cpp">
-      <Filter>Utils</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CityBuilder.h">

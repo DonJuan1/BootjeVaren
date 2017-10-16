@@ -1,20 +1,28 @@
-
-#include <stdlib.h>
-
 #include "Game.h"
-#include "CustomVector.h"
-#include "Pirate.h"
 
 Game::Game()
 {
-	CustomVector<Ship> vec;
+	ship = nullptr;
 
-	ship = shipFactory.getRandomShip(true);
-	
-	//parser.parseCSV();
+	CustomVector<Ship*>* shipVector = new CustomVector<Ship*>();
+
+	parser.parseCSVShips(*shipVector);
+
+	for (size_t i = 0; i < shipVector->size(); i++)
+	{
+		cout << shipVector->at(i)->getType() << endl;
+	}
+
+	for (size_t i = 0; i < shipVector->size(); i++)
+	{
+		delete shipVector->at(i);
+	}
+
+	delete shipVector;
+
+	cin.get();
 
 	/*setState(new City());
-
 
 	while (state != nullptr) {
 		

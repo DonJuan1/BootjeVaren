@@ -7,7 +7,7 @@ Ship::Ship()
 }
 
 Ship::Ship(char* pType, int pPrice, int pLoadSpace, int pCannory, int pDamagePoint, bool pIsSmall)
-	: type(pType), 
+	: type(pType),
 	price{ pPrice }, 
 	loadSpace{ pLoadSpace }, 
 	cannonry{ pCannory }, 
@@ -15,6 +15,7 @@ Ship::Ship(char* pType, int pPrice, int pLoadSpace, int pCannory, int pDamagePoi
 	damagePoints {pDamagePoint}, 
 	isSmall{ pIsSmall }
 {
+
 	cannons = new Cannon*[cannonry];
 }
 
@@ -25,6 +26,7 @@ Ship::~Ship()
 		delete cannons[i];
 	}
 	
+	delete[] type;
 	delete[] cannons;
 }
 

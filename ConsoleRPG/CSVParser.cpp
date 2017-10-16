@@ -10,7 +10,7 @@ CSVParser::~CSVParser()
 
 }
 
-void CSVParser::parseCSV()
+void CSVParser::parseCSVShips(CustomVector<Ship*>& shipVector)
 {
 	ifstream fileIn("./schepen.csv");
 
@@ -26,7 +26,7 @@ void CSVParser::parseCSV()
 	while (fileIn.good())
 	{
 		char* type = new char[32];
-		
+
 		fileIn.getline(type, 32, ';');
 		fileIn.getline(price, 32, ';');
 		fileIn.getline(loadSpace, 32, ';');
@@ -44,19 +44,16 @@ void CSVParser::parseCSV()
 		int intLoadSpace = atoi(loadSpace);
 		int intCannonry = atoi(cannonry);
 		int intDamagePoints = atoi(damagePoints);
-
+		
 		Ship* ship = new Ship(type, intPrice, intLoadSpace, intCannonry, intDamagePoints, false);
-
-		cout << ship->getPrice() << endl;
-
-		delete[] type;
-		delete ship;
-			
+		
+		shipVector.push_back(ship);	
 	}
 
-	cout << "Done reading CSV " << endl;
-
 	fileIn.close();
+}
 
-	cin.get();
+void CSVParser::parseCSVCities(CustomVector<Goods*>& cityVector)
+{
+
 }

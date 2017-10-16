@@ -2,8 +2,9 @@
 
 #include <iostream>
 #include <fstream> 
+
 #include "Ship.h"
-#include "Pirate.h"
+#include "Goods.h"
 #include "CustomVector.h"
 
 using namespace std;
@@ -14,7 +15,8 @@ public:
 	CSVParser();
 	virtual ~CSVParser();
 
-	void parseCSV();
+	void parseCSVShips(CustomVector<Ship*>&);
+	void parseCSVCities(CustomVector<Goods*>&);
 
 private:
 

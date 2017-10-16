@@ -3,9 +3,13 @@
 class Goods
 {
 public:
-	Goods();
-	virtual ~Goods();
+	Goods() {};
+	~Goods() {};
 
 private:
+	int minAmount;
+	int maxAmount;
+	int minPrice;
+	int maxPrice;
 
 };
