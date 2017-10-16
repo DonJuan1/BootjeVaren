@@ -4,10 +4,14 @@
 #include <fstream> 
 
 #include "Ship.h"
+#include "City.h"
 #include "Goods.h"
 #include "CustomVector.h"
 
 using namespace std;
+
+class City;
+class Ship;
 
 class CSVParser
 {
@@ -16,7 +20,7 @@ public:
 	virtual ~CSVParser();
 
 	void parseCSVShips(CustomVector<Ship*>&);
-	void parseCSVCities(CustomVector<Goods*>&);
+	void parseCSVCities(CustomVector<City*>&);
 
 private:
 

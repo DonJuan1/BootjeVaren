@@ -2,24 +2,28 @@
 
 Game::Game()
 {
+	parser = new CSVParser();
+
 	ship = nullptr;
 
 	CustomVector<Ship*>* shipVector = new CustomVector<Ship*>();
+	CustomVector<City*>* cityVector = new CustomVector<City*>();
 
-	parser.parseCSVShips(*shipVector);
+	parser->parseCSVCities(*cityVector);
 
-	for (size_t i = 0; i < shipVector->size(); i++)
+	for (size_t i = 0; i < cityVector->size(); i++)
 	{
-		cout << shipVector->at(i)->getType() << endl;
+		cout << cityVector->at(i)->getName() << endl;
 	}
 
-	for (size_t i = 0; i < shipVector->size(); i++)
+	for (size_t i = 0; i < cityVector->size(); i++)
 	{
-		delete shipVector->at(i);
+		delete cityVector->at(i);
 	}
 
 	delete shipVector;
-
+	delete cityVector;
+	
 	cin.get();
 
 	/*setState(new City());
@@ -47,6 +51,7 @@ Game::Game()
 Game::~Game()
 {
 	delete ship;
+	delete parser;
 }
 
 void Game::setState(LocationState * s)

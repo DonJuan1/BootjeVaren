@@ -1,5 +1,7 @@
 #pragma once
 
+#define _CRT_SECURE_NO_WARNINGS
+
 #include <iostream>
 #include "CSVParser.h"
 #include "CityBuilder.h"
@@ -8,8 +10,10 @@
 #include "LocationState.h"
 #include "City.h"
 
-class LocationState;
+
+class CSVParser;
 class City;
+
 class Game
 {
 public:
@@ -28,11 +32,11 @@ private:
 
 	int gold = 5000;
 
-	CSVParser parser;
+	
 	CityBuilder cityBuilder;
 
 	LocationState* state;
-
+	CSVParser* parser;
 	Ship* ship;
 
 };
