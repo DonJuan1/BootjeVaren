@@ -4,8 +4,11 @@ class Goods
 {
 public:
 	Goods() {};
-	Goods(int pMinAmount, int pMaxAmount, int pMinPrice, int pMaxPrice) 
-		: minAmount(pMinAmount), maxAmount(pMaxAmount), minPrice(pMinPrice), maxPrice(pMaxPrice) {};
+	Goods(char* pName, int pMinAmount, int pMaxAmount, int pMinPrice, int pMaxPrice) 
+		: minAmount(pMinAmount), maxAmount(pMaxAmount), minPrice(pMinPrice), maxPrice(pMaxPrice)
+	{
+		strcpy(name, pName);
+	};
 	~Goods() {};
 
 private:

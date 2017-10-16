@@ -5,7 +5,8 @@
 #include "Game.h"
 #include "LocationState.h"
 #include "Sea.h"
-#include "goods.h"
+#include "Goods.h"
+#include "CustomVector.h"
 
 class Game;
 
@@ -22,5 +23,5 @@ public:
 private:
 	char name[32];
 
-	
+	CustomVector<Goods*> goodsVector;
 };
