@@ -2,12 +2,14 @@
 
 #include <iostream>
 #include <fstream> 
+#include <String.h>
 
 #include "Ship.h"
 #include "City.h"
 #include "CityDestination.h"
 #include "Goods.h"
 #include "CustomVector.h"
+
 
 class City;
 class Ship;
@@ -24,5 +26,5 @@ public:
 private:
 
 	void parseCSVCitiesDestinations(CustomVector<City*>&, ifstream&);
-	void parseCSVCitiesGoodsQuantity(CustomVector<City*>&, ifstream&);
+	void parseCSVCitiesGoods(CustomVector<City*>&, ifstream&, ifstream&);
 };

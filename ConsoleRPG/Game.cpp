@@ -11,9 +11,8 @@ Game::Game()
 
 	parser->parseCSVCities(*cityVector);
 
-	cout << cityVector->at(5)->getGoodsVector().at(0).getName() << endl;
+	cout << cityVector->at(4)->getGoodsVector().at(1).getMaxAmount() << endl;
 
-	
 	for (size_t i = 0; i < cityVector->size(); i++)
 	{
 		delete cityVector->at(i);

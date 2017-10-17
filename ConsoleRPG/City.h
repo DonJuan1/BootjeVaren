@@ -33,4 +33,6 @@ private:
 
 	CustomVector<Goods> goodsVector;
 	CustomVector<CityDestination*> cityDestinationVector;
+
+
 };

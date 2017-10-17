@@ -59,16 +59,19 @@ void CSVParser::parseCSVCities(CustomVector<City*>& cityVector)
 {
 	ifstream fileIn1;
 	ifstream fileIn2;
+	ifstream fileIn3;
 
 	try
 	{
 		fileIn1.open("./afstanden tussen steden.csv");
 		fileIn2.open("./goederen hoeveelheid.csv");
+		fileIn3.open("./goederen prijzen.csv");
 
-		if (!fileIn1.good() || !fileIn1.good())
+		if (!fileIn1.good() || !fileIn2.good() || !fileIn3.good())
 		{
 			fileIn1.close();
 			fileIn2.close();
+			fileIn3.close();
 			throw std::runtime_error("Could not open file");
 		}
 	}
@@ -76,14 +79,16 @@ void CSVParser::parseCSVCities(CustomVector<City*>& cityVector)
 	{
 		fileIn1.close();
 		fileIn2.close();
+		fileIn3.close();
 		throw std::runtime_error("Could not open file");
 	}
 
 	parseCSVCitiesDestinations(cityVector, fileIn1);
-	parseCSVCitiesGoodsQuantity(cityVector, fileIn2);
+	parseCSVCitiesGoods(cityVector, fileIn2, fileIn3);
 
 	fileIn1.close();
 	fileIn2.close();
+	fileIn3.close();
 }
 
 void CSVParser::parseCSVCitiesDestinations(CustomVector<City*>& cityVector, ifstream& file)
@@ -151,32 +156,94 @@ void CSVParser::parseCSVCitiesDestinations(CustomVector<City*>& cityVector, ifst
 	}
 }
 
-void CSVParser::parseCSVCitiesGoodsQuantity(CustomVector<City*>& cityVector, ifstream& file)
+void CSVParser::parseCSVCitiesGoods(CustomVector<City*>& cityVector, ifstream& quantityFile, ifstream& priceFile)
 {
 	CustomVector<Goods> allGoodsVector;
+	char *save_ptr1, *save_ptr2;
+	char quantityInput[256];
+	char priceInput[256];
+	char *quantityPointer;
+	char *pricePointer;
 
 	//Ignore first 6 lines
 	for (size_t i = 0; i < 6; i++)
 	{
-		file.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		priceFile.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		quantityFile.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	}
 
-	char input[256];
-	file.getline(input, 256);
-	char *p = strtok(input, ";");
+	priceFile.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+	quantityFile.getline(quantityInput, 256);
+	quantityPointer = strtok_s(quantityInput, ";", &save_ptr2);
 
 	//Get all the Goods from the first row
-	while (p != NULL)
+	while (quantityPointer != NULL)
 	{
-		Goods good(p);
+		Goods good(quantityPointer);
 		allGoodsVector.push_back(good);
-		p = strtok(NULL, ";");
+		quantityPointer = strtok_s(NULL, ";", &save_ptr2);
 	}
 
+	//Copy the goods list for all the cities
 	for (size_t i = 0; i < cityVector.size(); i++)
 	{
 		cityVector.at(i)->setGoodsVector(allGoodsVector);
 	}
 
-	
+	while (true)
+	{
+		//Get line per City
+		quantityFile.getline(quantityInput, 256);
+		priceFile.getline(priceInput, 256);
+
+		//Check if line is empty
+		if (quantityInput[0] == 0 || priceInput[0] == 0)
+		{
+			return;
+		}
+
+		//Split the line
+		quantityPointer = strtok_s(quantityInput, ";", &save_ptr2);
+		pricePointer = strtok_s(priceInput, ";", &save_ptr1);
+
+		//Find the city of the row
+		City* cityRow;
+		for (size_t i = 0; i < cityVector.size(); i++)
+		{
+			if (strstr(cityVector.at(i)->getName(), quantityPointer))
+			{
+				cityRow = cityVector.at(i);
+			}
+		}
+
+		int minAmount = 0;
+		int maxAmount = 0;
+		int minPrice = 0;
+		int maxPrice = 0;
+		int counter = 0;
+
+		quantityPointer = strtok_s(NULL, "-", &save_ptr2);
+		pricePointer = strtok_s(NULL, "-", &save_ptr1);
+		while (quantityPointer != NULL)
+		{
+			minAmount = atoi(quantityPointer);
+			minPrice = atoi(pricePointer);
+
+			quantityPointer = strtok_s(NULL, ";", &save_ptr2);
+			pricePointer = strtok_s(NULL, ";", &save_ptr1);
+
+			maxAmount = atoi(quantityPointer);
+			maxPrice = atoi(pricePointer);
+
+			cityRow->getGoodsVector().at(counter).setMinAmount(minAmount);
+			cityRow->getGoodsVector().at(counter).setMaxAmount(maxAmount);
+			cityRow->getGoodsVector().at(counter).setMinPrice(minPrice);
+			cityRow->getGoodsVector().at(counter).setMaxPrice(maxPrice);
+
+			counter++;
+			quantityPointer = strtok_s(NULL, "-", &save_ptr2);
+			pricePointer = strtok_s(NULL, "-", &save_ptr1);
+		}
+	}
 }
