@@ -9,9 +9,15 @@ Game::Game()
 	CustomVector<Ship*>* shipVector = new CustomVector<Ship*>();
 	CustomVector<City*>* cityVector = new CustomVector<City*>();
 
+	parser->parseCSVShips(*shipVector);
 	parser->parseCSVCities(*cityVector);
 
 	cout << cityVector->at(4)->getGoodsVector().at(1).getMaxAmount() << endl;
+
+	for (size_t i = 0; i < shipVector->size(); i++)
+	{
+		delete shipVector->at(i);
+	}
 
 	for (size_t i = 0; i < cityVector->size(); i++)
 	{
