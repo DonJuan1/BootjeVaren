@@ -215,6 +215,9 @@
     <ClInclude Include="CustomVector.h">
       <Filter>Utils</Filter>
     </ClInclude>
+    <ClInclude Include="CityDestination.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="afstanden tussen steden.csv">

@@ -1,5 +1,24 @@
 #include "City.h"
 
+
+City::City()
+{
+
+}
+
+City::City(char* pName)
+{
+	strcpy(name, pName);
+}
+
+City::~City()
+{
+	for (size_t i = 0; i < cityDestinationVector.size(); i++)
+	{
+		delete cityDestinationVector.at(i);
+	}
+}
+
 void City::processState(Game* game)
 {
 

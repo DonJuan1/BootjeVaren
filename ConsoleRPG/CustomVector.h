@@ -10,12 +10,14 @@ class CustomVector
 public:
 	CustomVector();
 	CustomVector(int);
+	CustomVector(const CustomVector<T>&);
 	~CustomVector();
 
 	void push_back(T&);
 
 	int size();
 	T& operator[](int);
+	CustomVector<T>& operator=(const CustomVector<T>&);
 	T& at(int);
 
 private:
@@ -44,6 +46,25 @@ CustomVector<T>::CustomVector(int i)
 }
 
 template<class T>
+CustomVector<T>::CustomVector(const CustomVector<T>& v)
+{
+	if (this != &v)
+	{
+		delete[] array;
+
+		maxsize = v.maxsize;
+		vsize = v.vsize;
+		array = new T[maxsize];
+
+		std::memcpy(array, v.array, maxsize);
+
+		return *this;
+	}
+
+	return *this;
+}
+
+template<class T>
 CustomVector<T>::~CustomVector()
 {
 	delete[] array;
@@ -65,6 +86,26 @@ template<class T>
 T& CustomVector<T>::operator[](int i)
 {
 	return array[i];
+}
+
+template<class T>
+CustomVector<T>& CustomVector<T>::operator=(const CustomVector<T>& v)
+{
+	if (this != &v)
+	{
+		delete[] array;
+
+		maxsize = v.maxsize;
+		vsize = v.vsize;
+		array = new T[maxsize];
+
+		for (size_t i = 0; i < v.vsize; i++)
+		{
+			array[i] = v.array[i];
+		}
+
+		return *this;
+	}
 }
 
 template<class T>

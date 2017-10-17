@@ -4,12 +4,19 @@ class Goods
 {
 public:
 	Goods() {};
-	Goods(char* pName, int pMinAmount, int pMaxAmount, int pMinPrice, int pMaxPrice) 
-		: minAmount(pMinAmount), maxAmount(pMaxAmount), minPrice(pMinPrice), maxPrice(pMaxPrice)
-	{
-		strcpy(name, pName);
-	};
+	Goods(const char* pName) { strcpy(name, pName); };
 	~Goods() {};
+
+	inline const void setMinAmount(int const amount) { minAmount = amount; };
+	inline const void setMaxAmount(int const amount) { maxAmount = amount; };
+	inline const void setMinPrice(int const amount) { minPrice = amount; };
+	inline const void setMaxPrice(int const amount) { maxPrice = amount; };
+
+	inline const char* getName() { return name; };
+	inline const int getMinAmount() { return minAmount; };
+	inline const int getMaxAmount() { return maxAmount; };
+	inline const int getMinPrice() { return minPrice; };
+	inline const int getMaxPrice() { return maxPrice; };
 
 private:
 	char name[32];
@@ -20,3 +27,4 @@ private:
 	int maxPrice;
 
 };
+ 

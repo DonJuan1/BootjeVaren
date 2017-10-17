@@ -14,6 +14,8 @@
 
 
 class City;
+class Game;
+
 class Sea : public LocationState
 {
 public:
