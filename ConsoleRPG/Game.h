@@ -3,16 +3,13 @@
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <iostream>
+#include "Ship.h"
+#include "City.h"
 #include "CSVParser.h"
 #include "CityBuilder.h"
 #include "ShipFactory.h"
-#include "Ship.h"
+
 #include "LocationState.h"
-#include "City.h"
-
-
-class CSVParser;
-class City;
 
 class Game
 {
@@ -35,8 +32,11 @@ private:
 	
 	CityBuilder cityBuilder;
 
+
+
+
 	LocationState* state;
-	CSVParser* parser;
+	//CSVParser* parser;
 	Ship* ship;
 
 };

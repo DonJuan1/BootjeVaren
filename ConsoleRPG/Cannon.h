@@ -4,7 +4,7 @@
 class Cannon
 {
 public:
-	Cannon();
+	Cannon() {};
 	virtual ~Cannon() {};
 
 	virtual int getDamage() = 0;

@@ -1,33 +1,40 @@
 #include "Game.h"
+#include "Vector.h"
 
 Game::Game()
 {
-	parser = new CSVParser();
+	CSVParser parser;
 
 	ship = nullptr;
 
-	CustomVector<Ship*>* shipVector = new CustomVector<Ship*>();
-	CustomVector<City*>* cityVector = new CustomVector<City*>();
+	CustomVector<Ship>* shipVector = new CustomVector<Ship>();
 
-	parser->parseCSVShips(*shipVector);
-	parser->parseCSVCities(*cityVector);
+	//CustomVector<City*>* cityVector = new CustomVector<City*>();
 
-	cout << cityVector->at(4)->getGoodsVector().at(1).getMaxAmount() << endl;
+	parser.parseCSVShips(*shipVector);
+
+	////parser.parseCSVCities(*cityVector);
+
+	////cout << cityVector->at(4)->getGoodsVector().at(1).getMaxAmount() << endl;
 
 	for (size_t i = 0; i < shipVector->size(); i++)
 	{
-		delete shipVector->at(i);
+		 cout << shipVector->at(i).getType() << " - " << shipVector->at(i).getPrice() << endl;;
 	}
 
-	for (size_t i = 0; i < cityVector->size(); i++)
-	{
-		delete cityVector->at(i);
-	}
+	cin.get();
+
+	///*for (size_t i = 0; i < cityVector->size(); i++)
+	//{
+	//	delete cityVector->at(i);
+	//}*/
+
+	////cin.get();
 
 	delete shipVector;
-	delete cityVector;
-	
-	cin.get();
+
+	//delete shipVector;
+	//delete cityVector;
 
 	/*setState(new City());
 
@@ -54,7 +61,6 @@ Game::Game()
 Game::~Game()
 {
 	delete ship;
-	delete parser;
 }
 
 void Game::setState(LocationState * s)

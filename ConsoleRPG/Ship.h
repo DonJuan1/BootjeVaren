@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Cannon.h"
+#include "CustomVector.h"
 #include <cstring>
 
 class Ship
@@ -27,12 +28,10 @@ public:
 
 	bool canHoldHeavyCannons() { return !isSmall; }
 	bool isDead() { return (hitPoints <= 0); }
-
-	int cannonCount = 0;
 private:
-	Cannon** cannons;
+	CustomVector<Cannon*> cannons;
 
-	char* type;
+	char type[32];
 	int price;
 	int loadSpace; 
 	int cannonry;

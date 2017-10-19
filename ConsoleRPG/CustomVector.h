@@ -122,6 +122,10 @@ T& CustomVector<T>::at(int i)
 template<class T>
 void CustomVector<T>::alloc_new()
 {
+	if (vsize == 0) {
+		vsize = 1;
+	}
+
 	maxsize = vsize * 2;
 	T* temp = new T[maxsize];
 	for (int i = 0; i < vsize; i++)

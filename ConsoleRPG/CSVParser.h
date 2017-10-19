@@ -11,8 +11,6 @@
 #include "CustomVector.h"
 
 
-class City;
-class Ship;
 
 class CSVParser
 {
@@ -20,7 +18,7 @@ public:
 	CSVParser();
 	~CSVParser();
 
-	void parseCSVShips(CustomVector<Ship*>&);
+	void parseCSVShips(CustomVector<Ship>&);
 	void parseCSVCities(CustomVector<City*>&);
 
 private:

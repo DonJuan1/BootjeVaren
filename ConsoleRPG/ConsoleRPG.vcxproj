@@ -172,6 +172,7 @@
     <ClInclude Include="ShipFactory.h" />
     <ClInclude Include="StormHandler.h" />
     <ClInclude Include="StrongHandler.h" />
+    <ClInclude Include="Vector.h" />
     <ClInclude Include="WeakHandler.h" />
     <ClInclude Include="WindHandler.h" />
   </ItemGroup>
