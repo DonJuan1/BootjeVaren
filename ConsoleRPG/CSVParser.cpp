@@ -140,11 +140,11 @@ void CSVParser::parseCSVCitiesDestinations(CustomVector<City>& cityVector, ifstr
 		p = strtok(NULL, ";");
 		while (p != NULL)
 		{
-			CityDestination* cityDestination = new CityDestination();
+			CityDestination cityDestination;
 
 			distance = atoi(p);
-			cityDestination->turns = distance;
-			cityDestination->destination = &cityVector.at(counter);
+			cityDestination.turns = distance;
+			cityDestination.destination = &cityVector.at(counter);
 
 			cityRow->getCityDestinationVector().push_back(cityDestination);
 

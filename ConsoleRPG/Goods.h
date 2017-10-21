@@ -1,11 +1,13 @@
 #pragma once
 
+#include <cstring>
+
 class Goods
 {
 public:
-	Goods() {};
-	Goods(const char* pName) { strcpy(name, pName); };
-	~Goods() {};
+	Goods() ;
+	Goods(const char* pName);
+	~Goods();
 
 	inline const void setMinAmount(int const amount) { minAmount = amount; };
 	inline const void setMaxAmount(int const amount) { maxAmount = amount; };

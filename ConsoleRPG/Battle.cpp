@@ -1,5 +1,7 @@
 #include "Battle.h"
-#include "RandomGenerator.h"
+#include "Game.h"
+#include "Sea.h"
+#include "Pirate.h"
 
 
 Battle::Battle(Sea * sea)

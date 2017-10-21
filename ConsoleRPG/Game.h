@@ -6,7 +6,6 @@
 #include "ShipFactory.h"
 #include "CityFactory.h"
 #include "Ship.h"
-#include "City.h"
 
 class Game
 {

@@ -1,5 +1,6 @@
 #include "City.h"
-
+#include "Game.h"
+#include "Sea.h"
 
 City::City()
 {
@@ -11,12 +12,20 @@ City::City(char* pName)
 	strcpy(name, pName);
 }
 
+City::City(City& otherCity)
+{
+	if (this != &otherCity)
+	{
+		strcpy(name, otherCity.getName());
+
+		goodsVector = otherCity.getGoodsVector();
+		cityDestinationVector = otherCity.getCityDestinationVector();
+	}
+}
+
 City::~City()
 {
-	for (int i = 0; i < cityDestinationVector.size(); i++)
-	{
-		delete cityDestinationVector.at(i);
-	}
+	
 }
 
 void City::processState(Game* game)

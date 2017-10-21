@@ -11,7 +11,6 @@ public:
 	~ShipFactory() {};
 
 	Ship* getRandomShip(bool withCannons);
-	void setShipVector(CustomVector<Ship>& shipVector);
 	CustomVector<Ship>& getShipVector();
 
 

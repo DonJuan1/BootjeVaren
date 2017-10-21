@@ -1,14 +1,11 @@
 #pragma once
 
-#include "Game.h"
 #include "LocationState.h"
-#include "Sea.h"
-#include "Pirate.h"
+#include "RandomGenerator.h"
 
 class Sea;
 class Game;
 class Pirate;
-
 
 class Battle : public LocationState
 {

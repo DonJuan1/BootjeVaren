@@ -1,9 +1,7 @@
 #pragma once
 
-#include "Game.h"
 #include "LocationState.h"
 #include "Battle.h"
-#include "City.h"
 #include "WindHandler.h"
 #include "NoneHandler.h"
 #include "BreezeHandler.h"

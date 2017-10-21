@@ -36,10 +36,6 @@ Ship* ShipFactory::getRandomShip(bool withCannons)
 	return ship;
 }
 
-void ShipFactory::setShipVector(CustomVector<Ship>& pShipVector) {
-	shipVector = pShipVector;
-}
-
 CustomVector<Ship>& ShipFactory::getShipVector() {
 	return shipVector;
 }

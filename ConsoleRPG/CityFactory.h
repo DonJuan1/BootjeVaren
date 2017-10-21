@@ -11,9 +11,9 @@ public:
 	CityFactory();
 	~CityFactory();
 
-	//CustomVector<City>& getCityVector();
-	//void setCityVector(CustomVector<City>*);
+	City& getCityWithName(char* cityName);
+	CustomVector<City>& getCityVector();
 
 private:
-	char cityVector[20];
+	CustomVector<City> cityVector;
 };
