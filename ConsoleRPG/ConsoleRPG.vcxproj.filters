@@ -45,9 +45,6 @@
     <ClCompile Include="CSVParser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CityBuilder.cpp">
-      <Filter>Builders / Factories</Filter>
-    </ClCompile>
     <ClCompile Include="CityFactory.cpp">
       <Filter>Builders / Factories</Filter>
     </ClCompile>
@@ -125,9 +122,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CityBuilder.h">
-      <Filter>Builders / Factories</Filter>
-    </ClInclude>
     <ClInclude Include="CityFactory.h">
       <Filter>Builders / Factories</Filter>
     </ClInclude>
@@ -219,6 +213,9 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="Vector.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="String.h">
       <Filter>Utils</Filter>
     </ClInclude>
   </ItemGroup>

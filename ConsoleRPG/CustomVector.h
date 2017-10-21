@@ -103,9 +103,9 @@ CustomVector<T>& CustomVector<T>::operator=(const CustomVector<T>& v)
 		{
 			array[i] = v.array[i];
 		}
-
-		return *this;
 	}
+
+	return *this;
 }
 
 template<class T>

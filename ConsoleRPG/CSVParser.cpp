@@ -1,5 +1,3 @@
-#define _CRT_SECURE_NO_WARNINGS
-
 #include "CSVParser.h"
 
 CSVParser::CSVParser()
@@ -36,8 +34,10 @@ void CSVParser::parseCSVShips(CustomVector<Ship>& shipVector)
 		fileIn.getline(isSmall, 32);
 
 		if (strlen(type) == 0)
+
 		{
 			break;
+
 		}
 
 		int intPrice = atoi(price);
@@ -53,7 +53,7 @@ void CSVParser::parseCSVShips(CustomVector<Ship>& shipVector)
 	fileIn.close();
 }
 
-void CSVParser::parseCSVCities(CustomVector<City*>& cityVector)
+void CSVParser::parseCSVCities(CustomVector<City>& cityVector)
 {
 	ifstream fileIn1;
 	ifstream fileIn2;
@@ -89,7 +89,7 @@ void CSVParser::parseCSVCities(CustomVector<City*>& cityVector)
 	fileIn3.close();
 }
 
-void CSVParser::parseCSVCitiesDestinations(CustomVector<City*>& cityVector, ifstream& file)
+void CSVParser::parseCSVCitiesDestinations(CustomVector<City>& cityVector, ifstream& file)
 {
 	
 	//Ignore first 3 lines
@@ -105,7 +105,7 @@ void CSVParser::parseCSVCitiesDestinations(CustomVector<City*>& cityVector, ifst
 	//Get all the cities from the first row
 	while (p != NULL)
 	{
-		City* city = new City(p);
+		City city(p);
 		cityVector.push_back(city);
 		p = strtok(NULL, ";");
 	}
@@ -126,11 +126,11 @@ void CSVParser::parseCSVCitiesDestinations(CustomVector<City*>& cityVector, ifst
 		
 		//Find the city of the row
 		City* cityRow;
-		for (size_t i = 0; i < cityVector.size(); i++)
+		for (int i = 0; i < cityVector.size(); i++)
 		{
-			if (strstr(cityVector.at(i)->getName(), p))
+			if (strstr(cityVector.at(i).getName(), p))
 			{
-				cityRow = cityVector.at(i);
+				cityRow = &cityVector.at(i);
 			}
 		}
 
@@ -144,7 +144,7 @@ void CSVParser::parseCSVCitiesDestinations(CustomVector<City*>& cityVector, ifst
 
 			distance = atoi(p);
 			cityDestination->turns = distance;
-			cityDestination->destination = cityVector.at(counter);
+			cityDestination->destination = &cityVector.at(counter);
 
 			cityRow->getCityDestinationVector().push_back(cityDestination);
 
@@ -154,7 +154,7 @@ void CSVParser::parseCSVCitiesDestinations(CustomVector<City*>& cityVector, ifst
 	}
 }
 
-void CSVParser::parseCSVCitiesGoods(CustomVector<City*>& cityVector, ifstream& quantityFile, ifstream& priceFile)
+void CSVParser::parseCSVCitiesGoods(CustomVector<City>& cityVector, ifstream& quantityFile, ifstream& priceFile)
 {
 	CustomVector<Goods> allGoodsVector;
 	char *save_ptr1, *save_ptr2;
@@ -184,9 +184,9 @@ void CSVParser::parseCSVCitiesGoods(CustomVector<City*>& cityVector, ifstream& q
 	}
 
 	//Copy the goods list for all the cities
-	for (size_t i = 0; i < cityVector.size(); i++)
+	for (int i = 0; i < cityVector.size(); i++)
 	{
-		cityVector.at(i)->setGoodsVector(allGoodsVector);
+		cityVector.at(i).setGoodsVector(allGoodsVector);
 	}
 
 	while (true)
@@ -207,11 +207,11 @@ void CSVParser::parseCSVCitiesGoods(CustomVector<City*>& cityVector, ifstream& q
 
 		//Find the city of the row
 		City* cityRow;
-		for (size_t i = 0; i < cityVector.size(); i++)
+		for (int i = 0; i < cityVector.size(); i++)
 		{
-			if (strstr(cityVector.at(i)->getName(), quantityPointer))
+			if (strstr(cityVector.at(i).getName(), quantityPointer))
 			{
-				cityRow = cityVector.at(i);
+				cityRow = &cityVector.at(i);
 			}
 		}
 

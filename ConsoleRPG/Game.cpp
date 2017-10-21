@@ -1,42 +1,14 @@
 #include "Game.h"
-#include "Vector.h"
 
 Game::Game()
 {
-	CSVParser parser;
+	ReadCSVFiles();
 
-	ship = nullptr;
+	setState(new City());
 
-	CustomVector<Ship>* shipVector = new CustomVector<Ship>();
-
-	//CustomVector<City*>* cityVector = new CustomVector<City*>();
-
-	parser.parseCSVShips(*shipVector);
-
-	////parser.parseCSVCities(*cityVector);
-
-	////cout << cityVector->at(4)->getGoodsVector().at(1).getMaxAmount() << endl;
-
-	for (size_t i = 0; i < shipVector->size(); i++)
-	{
-		 cout << shipVector->at(i).getType() << " - " << shipVector->at(i).getPrice() << endl;;
-	}
+	ship = shipFactory.getRandomShip(true);
 
 	cin.get();
-
-	///*for (size_t i = 0; i < cityVector->size(); i++)
-	//{
-	//	delete cityVector->at(i);
-	//}*/
-
-	////cin.get();
-
-	delete shipVector;
-
-	//delete shipVector;
-	//delete cityVector;
-
-	/*setState(new City());
 
 	while (state != nullptr) {
 		
@@ -44,7 +16,7 @@ Game::Game()
 		
 		cout << "Amount of gold: " << gold << endl;
 		cout << "Hitpoints of ship: " << ship->getHitPoints() << "/" << ship->getDamagePoints() << endl;
-		cout << "Cannons on ship: " << ship->cannonCount << "/" << ship->getCannonry() << endl;
+		//cout << "Cannons on ship: " << ship->cannonCount << "/" << ship->getCannonry() << endl;
 		cout << "" << endl;
 
 		state->processState(this);
@@ -55,7 +27,7 @@ Game::Game()
 			cout << "" << endl;
 			cin.get();
 		}
-	}*/
+	}
 }
 
 Game::~Game()
@@ -71,4 +43,13 @@ void Game::setState(LocationState * s)
 Ship* Game::getShip() const
 {
 	return ship;
+}
+
+void Game::ReadCSVFiles() {
+	CSVParser parser;
+
+	CustomVector<City> cityVector;
+
+	parser.parseCSVShips(shipFactory.getShipVector());
+	parser.parseCSVCities(cityVector);
 }

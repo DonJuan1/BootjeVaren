@@ -1,8 +1,7 @@
 #pragma once
 
-#include "Game.h"
-
 class Game;
+
 class LocationState
 {
 public:
@@ -18,6 +17,5 @@ private:
 
 protected:
 	char buf[128] = { 0 };
-
 
 };

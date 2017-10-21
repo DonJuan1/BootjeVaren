@@ -1,17 +1,10 @@
 #pragma once
 
-#define _CRT_SECURE_NO_WARNINGS
-
-#include "Game.h"
 #include "LocationState.h"
 #include "Sea.h"
 #include "Goods.h"
 #include "CustomVector.h"
 #include "CityDestination.h"
-
-class Game;
-class Goods;
-class CityDestination;
 
 class City : public LocationState
 {

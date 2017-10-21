@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Cannon.h"
-#include "CustomVector.h"
+#include "Vector.h"
 #include <cstring>
 
 class Ship
@@ -26,10 +26,12 @@ public:
 
 	inline const int& getHitPoints() const { return this->hitPoints; }
 
+	void setPrice(int pPrice) { price = pPrice; }
+
 	bool canHoldHeavyCannons() { return !isSmall; }
 	bool isDead() { return (hitPoints <= 0); }
 private:
-	CustomVector<Cannon*> cannons;
+	Vector<Cannon*> cannons;
 
 	char type[32];
 	int price;

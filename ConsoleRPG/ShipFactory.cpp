@@ -8,13 +8,15 @@
 Ship* ShipFactory::getRandomShip(bool withCannons)
 {
 	RandomGenerator &random = RandomGenerator::getInstance();
+	int randomIndex = random.generate(0, shipVector.size());
+
 
 	// Replace with getting 1 out of the list.
-	Ship *ship = new NormalShip("pirateship",10,10,40,100,false);
+	Ship *ship = new Ship(shipVector.at(randomIndex));
 
-	if (withCannons) {
+	/*if (withCannons) {
 		int amountCannons = random.generate(0, ship->getCannonry());
-
+		
 		for (int i = 0; i < amountCannons; i++) {
 
 			switch (random.generate(1, (ship->canHoldHeavyCannons()? 3 : 2))) {
@@ -28,9 +30,16 @@ Ship* ShipFactory::getRandomShip(bool withCannons)
 					ship->addCannon(new HeavyCannon());
 					break;
 			}
-
 		}
-	}
+	}*/
 
 	return ship;
+}
+
+void ShipFactory::setShipVector(CustomVector<Ship>& pShipVector) {
+	shipVector = pShipVector;
+}
+
+CustomVector<Ship>& ShipFactory::getShipVector() {
+	return shipVector;
 }

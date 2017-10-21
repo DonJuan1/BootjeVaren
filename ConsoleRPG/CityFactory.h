@@ -1,17 +1,19 @@
 #pragma once
 
 #include <iostream>
-
-using namespace std;
+#include "CustomVector.h"
+#include "RandomGenerator.h"
+#include "City.h"
 
 class CityFactory
 {
 public:
-	CityFactory() {};
-	~CityFactory() {};
+	CityFactory();
+	~CityFactory();
+
+	//CustomVector<City>& getCityVector();
+	//void setCityVector(CustomVector<City>*);
 
 private:
-
-
-
+	char cityVector[20];
 };

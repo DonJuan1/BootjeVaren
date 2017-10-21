@@ -19,6 +19,7 @@ class Game;
 class Sea : public LocationState
 {
 public:
+	Sea() {};
 	Sea(City* nextCity);
 	~Sea();
 

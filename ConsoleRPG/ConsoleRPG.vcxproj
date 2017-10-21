@@ -116,7 +116,6 @@
     <ClCompile Include="BreezeHandler.cpp" />
     <ClCompile Include="Cannon.cpp" />
     <ClCompile Include="City.cpp" />
-    <ClCompile Include="CityBuilder.cpp" />
     <ClCompile Include="CityFactory.cpp" />
     <ClCompile Include="CSVParser.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -147,7 +146,6 @@
     <ClInclude Include="BreezeHandler.h" />
     <ClInclude Include="Cannon.h" />
     <ClInclude Include="City.h" />
-    <ClInclude Include="CityBuilder.h" />
     <ClInclude Include="CityDestination.h" />
     <ClInclude Include="CityFactory.h" />
     <ClInclude Include="CSVParser.h" />
@@ -171,6 +169,7 @@
     <ClInclude Include="Ship.h" />
     <ClInclude Include="ShipFactory.h" />
     <ClInclude Include="StormHandler.h" />
+    <ClInclude Include="String.h" />
     <ClInclude Include="StrongHandler.h" />
     <ClInclude Include="Vector.h" />
     <ClInclude Include="WeakHandler.h" />

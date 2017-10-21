@@ -19,7 +19,7 @@ public:
 
 	static RandomGenerator& getInstance()
 	{
-		static RandomGenerator instance(time(0));
+		static RandomGenerator instance(0);
 		return instance;
 	}
 	RandomGenerator(RandomGenerator const&) = delete;

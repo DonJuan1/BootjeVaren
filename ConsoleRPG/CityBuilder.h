@@ -11,14 +11,11 @@ using namespace std;
 class CityBuilder
 {
 public:
-	CityBuilder() {};
-	~CityBuilder() {};
+	CityBuilder();
+	~CityBuilder();
 
 private:
 	ShipFactory shipFactory;
 	CityFactory cityFactory;
 	GoodsFactory goodsfactory;
-
-
-
 };

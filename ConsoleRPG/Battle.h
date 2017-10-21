@@ -9,6 +9,7 @@ class Sea;
 class Game;
 class Pirate;
 
+
 class Battle : public LocationState
 {
 public:

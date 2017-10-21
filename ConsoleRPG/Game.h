@@ -1,15 +1,12 @@
 #pragma once
 
-#define _CRT_SECURE_NO_WARNINGS
-
 #include <iostream>
+
+#include "CSVParser.h"
+#include "ShipFactory.h"
+#include "CityFactory.h"
 #include "Ship.h"
 #include "City.h"
-#include "CSVParser.h"
-#include "CityBuilder.h"
-#include "ShipFactory.h"
-
-#include "LocationState.h"
 
 class Game
 {
@@ -24,19 +21,15 @@ public:
 	void getHit(int damage) { ship->getHit(damage); };
 
 	ShipFactory shipFactory;
+	CityFactory cityFactory;
 
 private:
 
 	int gold = 5000;
 
-	
-	CityBuilder cityBuilder;
-
-
-
-
 	LocationState* state;
-	//CSVParser* parser;
 	Ship* ship;
+
+	void ReadCSVFiles();
 
 };

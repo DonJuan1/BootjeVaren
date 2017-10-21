@@ -1,5 +1,3 @@
-#define _CRT_SECURE_NO_WARNINGS
-
 #include "Battle.h"
 #include "RandomGenerator.h"
 
@@ -74,7 +72,7 @@ void Battle::processState(Game * game)
 			return;
 		}
 
-		sprintf(buf, "You fail escaping the pirates, they laugh at your weak flight attempt.", "", 0);
+		sprintf(buf, "You fail escaping the pirates, they laugh at your weak flight attempt.");
 		//lastCommandMessage = "You fail escaping the pirates, they laugh at your weak flight attempt.";
 		break;
 	}
