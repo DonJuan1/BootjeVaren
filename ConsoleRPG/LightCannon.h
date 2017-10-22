@@ -5,7 +5,8 @@
 class LightCannon : public Cannon
 {
 public:
-	LightCannon(): Cannon() {};
+	LightCannon() {};
+	LightCannon(int pMaxAmount, int pPrice) : Cannon(pMaxAmount, pPrice) {};
 	~LightCannon() {};
 
 	int getDamage();

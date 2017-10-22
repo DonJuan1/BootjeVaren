@@ -5,7 +5,8 @@
 class MediumCannon : public Cannon
 {
 public:
-	MediumCannon() : Cannon() {};
+	MediumCannon() {};
+	MediumCannon(int pMaxAmount, int pPrice) : Cannon(pMaxAmount, pPrice) {};
 	~MediumCannon() {};
 
 	int getDamage();

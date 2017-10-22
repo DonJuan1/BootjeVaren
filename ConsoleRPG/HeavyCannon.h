@@ -1,15 +1,14 @@
 #pragma once
 
 #include "Cannon.h"
+#include "RandomGenerator.h"
 
 class HeavyCannon : public Cannon
 {
 public:
-	HeavyCannon() : Cannon() {};
+	HeavyCannon() {};
+	HeavyCannon(int pMaxAmount, int pPrice) : Cannon(pMaxAmount, pPrice) {};
 	~HeavyCannon() {};
 
-	int getDamage();
-
-private:
-
+	int getDamage() override { return RandomGenerator::getInstance().generate(0, maxDamage); };
 };

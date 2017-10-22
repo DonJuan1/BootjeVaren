@@ -14,8 +14,7 @@ public:
 	virtual ~Ship();
 
 	void getHit(int damage);
-	void addCannon(Cannon& cannon);
-	int shootCannons();
+	
 	virtual int getBaseFlightChance() { return 0; };
 	virtual int getModifierFlightChance() { return 0; };
 
@@ -29,14 +28,20 @@ public:
 	inline const int& getHitPoints() const { return this->hitPoints; }
 	inline const int getUnusedLoadSpace() const {return loadSpace - loadSpaceUsed; }
 	inline const void changeGold(const int pGold) { gold += pGold; }
-	inline const CustomVector<Goods>& getGoodsOnShip() { return goodsOnShip; }
+	inline const CustomVector<Goods>& getGoodsOnShip() const { return goodsOnShip; }
+	inline const CustomVector<Cannon*>& getCannonsOnShip() const { return cannonsOnShip; }
 
-	void printStats();
+	void printStats() const;
+	int shootCannons() const;
+
 	void addGoods(Goods& goods, int amount);
 	void deleteGoods(Goods& goods, int amount);
+	void addCannon(Cannon* cannon);
+	void deleteCannon(Cannon* cannon);
+	void repairShip(int pGoldToRepair);
 
-	bool canHoldHeavyCannons() { return !isSmall; }
-	bool isDead() { return (hitPoints <= 0); }
+	inline const bool canHoldHeavyCannons() const { return !isSmall; }
+	inline const bool isDead() const { return (hitPoints <= 0); }
 
 
 private:
@@ -48,11 +53,14 @@ private:
 	int damagePoints;
 	int hitPoints;
 	int gold;
+	
+	int cannonsUsed;
 	int loadSpaceUsed;
 
 	bool isSmall;
 
 	CustomVector<Goods> goodsOnShip;
+	CustomVector<Cannon*> cannonsOnShip;
 	
 };
 
