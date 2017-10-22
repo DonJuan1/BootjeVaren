@@ -39,6 +39,8 @@ private:
 	void sellGoods(Game* game);
 	void buyCannons(Game* game);
 	void sellCannons(Game* game);
+
+	void sailAway(Game* game);
 	void repairShip(Game* game);
 
 };

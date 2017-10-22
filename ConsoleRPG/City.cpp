@@ -80,7 +80,7 @@ void City::processState(Game* game)
 				sellCannons(game);
 				break;
 			case 5:
-				game->setState(new Sea(new City()));
+				sailAway(game);
 				delete this;
 				return;
 			case 6:
@@ -340,6 +340,57 @@ void City::sellCannons(Game* game)
 		std::cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
 		std::cin >> choice;
 	}
+}
+
+void City::sailAway(Game* game)
+{
+	while (true)
+	{
+		system("cls");
+
+		game->getShip()->printStats();
+
+		cout << "You are planning your next trip" << endl;
+		cout << endl;
+		cout << "Here is a list of places to go" << endl;
+		cout << endl;
+
+		printf("%-2s %-20s %-16s\n", "#", "City", "Distance (turns)");
+
+		for (int i = 1; i < cityDestinationVector.size() + 1; i++)
+		{
+			printf("%-2i %-20s %-2i \n", i, cityDestinationVector.at(i - 1).destination->getName(), cityDestinationVector.at(i - 1).turns);
+		}
+
+		cout << endl;
+		cout << "Select a place where you want to go to: ";
+
+		int choice;
+		cin >> choice;
+		while (cin.fail())
+		{
+			cout << "No number selected! Select a place where you want to go to: ";
+			std::cin.clear();
+			std::cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
+			std::cin >> choice;
+		}
+
+		if (choice == 0)
+		{
+			return;
+		}
+		else if (choice > 0 && choice < cityDestinationVector.size() + 1)
+		{
+			if (strcmp(cityDestinationVector.at(choice - 1).destination->getName(), name) != 0)
+			{
+				City* city = new City(*cityDestinationVector.at(choice - 1).destination);
+				game->setState(new Sea(city));
+				return;
+			}
+		}
+	}
+
+	game->setState(new Sea(new City()));
 }
 
 void City::repairShip(Game* game)
