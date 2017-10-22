@@ -17,7 +17,7 @@ Battle::~Battle()
 void Battle::processState(Game * game)
 {
 	if (pirate == nullptr) {
-		pirate = new Pirate(game->shipFactory.getRandomShip(true));
+		pirate = new Pirate(new Ship(game->shipFactory.getRandomShip(true)));
 	}
 
 	cout << "You are in battle with some pirates." << endl;

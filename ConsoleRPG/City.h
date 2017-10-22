@@ -1,5 +1,7 @@
 #pragma once
 
+#include <iostream>
+#include <iomanip>
 #include "LocationState.h"
 #include "CityDestination.h"
 #include "Goods.h"
@@ -30,5 +32,6 @@ private:
 	CustomVector<Goods> goodsVector;
 	CustomVector<CityDestination> cityDestinationVector;
 
+	void buyGoods(Game* game);
 
 };

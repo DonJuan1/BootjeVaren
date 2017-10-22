@@ -7,7 +7,7 @@ public:
 	Cannon() {};
 	virtual ~Cannon() {};
 
-	virtual int getDamage() = 0;
+	virtual int getDamage() { return 0; };
 
 protected:
 

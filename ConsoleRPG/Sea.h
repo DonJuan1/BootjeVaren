@@ -1,5 +1,10 @@
 #pragma once
 
+#include <iostream>
+#include <random>
+#include <ctime>
+
+#include "RandomGenerator.h"
 #include "LocationState.h"
 #include "Battle.h"
 #include "WindHandler.h"
@@ -13,6 +18,8 @@
 
 class City;
 class Game;
+
+using namespace std;
 
 class Sea : public LocationState
 {

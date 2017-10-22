@@ -3,5 +3,5 @@
 
 int LightCannon::getDamage()
 {
-	return RandomGenerator::getInstance().generate(0, 6);
+	return RandomGenerator::getInstance().generate(0, 2);
 }

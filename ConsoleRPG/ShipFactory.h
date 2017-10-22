@@ -7,14 +7,15 @@
 class ShipFactory
 {
 public:
-	ShipFactory() {};
-	~ShipFactory() {};
+	ShipFactory();
+	~ShipFactory();
 
-	Ship* getRandomShip(bool withCannons);
-	CustomVector<Ship>& getShipVector();
+	Ship& getRandomShip(bool withCannons);
+	Ship& getShipWithType(char* shipType);
+	CustomVector<Ship*>& getShipVector();
 
 
 private:
-	CustomVector<Ship> shipVector;
+	CustomVector<Ship*> shipVector;
 	
 };

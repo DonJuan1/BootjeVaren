@@ -212,12 +212,6 @@
     <ClInclude Include="CityDestination.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="Vector.h">
-      <Filter>Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="String.h">
-      <Filter>Utils</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="afstanden tussen steden.csv">

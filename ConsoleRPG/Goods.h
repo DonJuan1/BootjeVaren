@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cstring>
+#include "RandomGenerator.h"
 
 class Goods
 {
@@ -11,14 +12,16 @@ public:
 
 	inline const void setMinAmount(int const amount) { minAmount = amount; };
 	inline const void setMaxAmount(int const amount) { maxAmount = amount; };
-	inline const void setMinPrice(int const amount) { minPrice = amount; };
-	inline const void setMaxPrice(int const amount) { maxPrice = amount; };
+	inline const void setMinPrice(int const price) { minPrice = price; };
+	inline const void setMaxPrice(int const price) { maxPrice = price; };
+	inline const void setAmount(int const amount) { currentAmount = amount; };
+	inline const void setPrice(int const price) { currentPrice = price; };
 
-	inline const char* getName() { return name; };
-	inline const int getMinAmount() { return minAmount; };
-	inline const int getMaxAmount() { return maxAmount; };
-	inline const int getMinPrice() { return minPrice; };
-	inline const int getMaxPrice() { return maxPrice; };
+	inline const char* getName() const { return name; };
+	inline const int getAmount() const { return currentAmount; };
+	inline const int getPrice() const { return currentPrice; };
+	
+	const void randomGoods();
 
 private:
 	char name[32];
@@ -28,5 +31,7 @@ private:
 	int minPrice;
 	int maxPrice;
 
+	int currentAmount;
+	int currentPrice;
 };
  

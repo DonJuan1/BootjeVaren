@@ -1,12 +1,5 @@
 #include "Sea.h"
-#include "RandomGenerator.h"
-
 #include "Game.h"
-#include <iostream>
-#include <random>
-#include <ctime>
-
-using namespace std;
 
 Sea::Sea(City* city)
 {

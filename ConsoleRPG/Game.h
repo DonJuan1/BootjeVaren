@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include <stdlib.h>
 
 #include "CSVParser.h"
 #include "ShipFactory.h"
@@ -23,9 +24,6 @@ public:
 	CityFactory cityFactory;
 
 private:
-
-	int gold = 5000;
-
 	LocationState* state;
 	Ship* ship;
 

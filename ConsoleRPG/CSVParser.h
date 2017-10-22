@@ -10,7 +10,6 @@
 #include "CityDestination.h"
 #include "Goods.h"
 #include "CustomVector.h"
-#include "Vector.h"
 
 class CSVParser
 {
@@ -18,7 +17,7 @@ public:
 	CSVParser();
 	~CSVParser();
 
-	void parseCSVShips(CustomVector<Ship>&);
+	void parseCSVShips(CustomVector<Ship*>&);
 	void parseCSVCities(CustomVector<City>&);
 
 private:

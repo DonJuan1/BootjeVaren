@@ -10,7 +10,7 @@ CSVParser::~CSVParser()
 
 }
 
-void CSVParser::parseCSVShips(CustomVector<Ship>& shipVector)
+void CSVParser::parseCSVShips(CustomVector<Ship*>& shipVector)
 {
 	ifstream fileIn("./schepen.csv");
 
@@ -45,7 +45,7 @@ void CSVParser::parseCSVShips(CustomVector<Ship>& shipVector)
 		int intCannonry = atoi(cannonry);
 		int intDamagePoints = atoi(damagePoints);
 		
-		Ship ship(type, intPrice, intLoadSpace, intCannonry, intDamagePoints, false);
+		Ship* ship = new Ship(type, intPrice, intLoadSpace, intCannonry, intDamagePoints, false);
 		
 		shipVector.push_back(ship);	
 	}

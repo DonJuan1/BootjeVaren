@@ -5,14 +5,23 @@
 #include "HeavyCannon.h"
 #include "NormalShip.h"
 
-Ship* ShipFactory::getRandomShip(bool withCannons)
+ShipFactory::ShipFactory()
+{
+
+}
+
+ShipFactory::~ShipFactory()
+{
+	for (int i = 0; i < shipVector.size(); i++)
+	{
+		delete shipVector.at(i);
+	}
+}
+
+Ship& ShipFactory::getRandomShip(bool withCannons)
 {
 	RandomGenerator &random = RandomGenerator::getInstance();
 	int randomIndex = random.generate(0, shipVector.size());
-
-
-	// Replace with getting 1 out of the list.
-	Ship *ship = new Ship(shipVector.at(randomIndex));
 
 	/*if (withCannons) {
 		int amountCannons = random.generate(0, ship->getCannonry());
@@ -33,9 +42,22 @@ Ship* ShipFactory::getRandomShip(bool withCannons)
 		}
 	}*/
 
-	return ship;
+	return *shipVector.at(randomIndex);
 }
 
-CustomVector<Ship>& ShipFactory::getShipVector() {
+Ship& ShipFactory::getShipWithType(char* shipType)
+{
+	for (int i = 0; i < shipVector.size(); i++)
+	{
+		if (strcmp(shipVector.at(i)->getType(), shipType) == 0)
+		{
+			return *shipVector.at(i);
+		}
+	}
+
+	throw std::runtime_error("Exception caught: Ship not found");
+}
+
+CustomVector<Ship*>& ShipFactory::getShipVector() {
 	return shipVector;
 }
