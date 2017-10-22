@@ -74,9 +74,10 @@ void Ship::addGoods(Goods& goods, int amount)
 
 	for (int i = 0; i < goodsOnShip.size(); i++)
 	{
-		if (strcmp(goods.getName(), goodsOnShip.at(i).getName()))
+		if (strcmp(goods.getName(), goodsOnShip.at(i).getName()) == 0)
 		{
 			goodsOnShip.at(i).setAmount(goodsOnShip.at(i).getAmount() + amount);
+			return;
 		}
 	}
 

@@ -145,24 +145,33 @@ void City::buyGoods(Game* game)
 					std::cin >> choice;
 				}
 
-				if (game->getShip()->getUnusedLoadSpace() > choice)
+				if (goods.getAmount() >= choice)
 				{
-					int totalPrice = choice * goods.getPrice();
-					if (game->getShip()->getGold() > totalPrice)
+					if (game->getShip()->getUnusedLoadSpace() > choice)
 					{
-						game->getShip()->changeGold(-totalPrice);
-						game->getShip()->addGoods(goods, choice);
-						break;
+						int totalPrice = choice * goods.getPrice();
+						if (game->getShip()->getGold() > totalPrice)
+						{
+							goods.setAmount(goods.getAmount() - choice);
+							game->getShip()->changeGold(-totalPrice);
+							game->getShip()->addGoods(goods, choice);
+							break;
+						}
+						else
+						{
+							cout << "You dont have that much cash, you poor bastard!" << endl;
+						}
 					}
 					else
 					{
-						cout << "The total price is too much" << endl;
+						cout << "Your ship cannot carry that many goods!" << endl;
 					}
 				}
 				else
 				{
-					cout << "The amount is too much to carry" << endl;
+					cout << "Whooo, we dont have that many!" << goods.getName() <<  endl;
 				}
+				
 			}
 		}
 	}
