@@ -11,8 +11,8 @@ Ship::Ship(char* pType, int pPrice, int pLoadSpace, int pCannory, int pDamagePoi
 	: price{ pPrice }, 
 	loadSpace{ pLoadSpace }, 
 	cannonry{ pCannory }, 
-	damagePoints{ pDamagePoint },
-	hitPoints{ pDamagePoint }, 
+	damagePoints{ pDamagePoint  },
+	hitPoints{ pDamagePoint },
 	gold { 5000 },
 	loadSpaceUsed{ 0 },
 	cannonsUsed{ 0 },
@@ -131,26 +131,25 @@ void Ship::deleteGoods(Goods& goods, int amount)
 
 void Ship::repairShip(int pGoldToRepair)
 {
-	int deltaPoints = hitPoints - damagePoints;
+	int deltaPoints = damagePoints - hitPoints;
 	if (deltaPoints < pGoldToRepair * 10)
 	{
-		int result = ((deltaPoints + 10 / 2) / 10) * 10;
-		damagePoints = hitPoints;
+		int result = (10 - deltaPoints % 10) + deltaPoints;
+		hitPoints = damagePoints;
 		gold -= result / 10;
 	}
 	else
 	{
-		damagePoints += pGoldToRepair * 10;
+		hitPoints += pGoldToRepair * 10;
 		gold -= pGoldToRepair;
 	}
 }
 
 void Ship::printStats() const
 {
-	cout << "----------------------------------------------------" << endl;
 	cout << "Amount of Gold: " << gold << endl;
 	cout << "Current ship: " << type << endl;
 	cout << "Hitpoints of ship: " << hitPoints << "/" << damagePoints << endl;
 	cout << "LoadSpace of ship: " << loadSpaceUsed << "/" << loadSpace << endl;
-	cout << "----------------------------------------------------" << endl;
+	cout << "----------------------------" << endl;
 }

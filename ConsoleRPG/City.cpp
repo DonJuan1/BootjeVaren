@@ -357,7 +357,7 @@ void City::repairShip(Game* game)
 
 		if (game->getShip()->getDamagePoints() == game->getShip()->getHitPoints())
 		{
-			cout << "Your ship doens't have any damage!" << endl;
+			cout << "Your ship doens't have any damage!";
 			cin.clear();
 			cin.ignore(numeric_limits<streamsize>::max(), '\n');
 			cin.get();
@@ -365,7 +365,7 @@ void City::repairShip(Game* game)
 		}
 		else
 		{
-			cout << "How much gold do you want to spent to repair your ship: " << endl;
+			cout << "How much gold do you want to spent to repair your ship: ";
 
 			int choice;
 			cin >> choice;
