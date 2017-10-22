@@ -26,14 +26,14 @@ public:
 	inline const int& getDamagePoints() const { return this->damagePoints; }
 	inline const bool& getIsSmall() const { return this->isSmall; }
 	inline const int& getGold() const { return this->gold; }
-
 	inline const int& getHitPoints() const { return this->hitPoints; }
 	inline const int getUnusedLoadSpace() const {return loadSpace - loadSpaceUsed; }
-
 	inline const void changeGold(const int pGold) { gold += pGold; }
+	inline const CustomVector<Goods>& getGoodsOnShip() { return goodsOnShip; }
 
 	void printStats();
 	void addGoods(Goods& goods, int amount);
+	void deleteGoods(Goods& goods, int amount);
 
 	bool canHoldHeavyCannons() { return !isSmall; }
 	bool isDead() { return (hitPoints <= 0); }

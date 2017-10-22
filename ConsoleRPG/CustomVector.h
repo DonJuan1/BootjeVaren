@@ -14,11 +14,12 @@ public:
 	~CustomVector();
 
 	void push_back(T&);
+	void pop_index(int index);
 
-	int size();
+	int size() const;
 	T& operator[](int);
 	CustomVector<T>& operator=(const CustomVector<T>&);
-	T& at(int);
+	T& at(int) const;
 
 private:
 	int vsize;
@@ -83,6 +84,36 @@ void CustomVector<T>::push_back(T& i)
 }
 
 template<class T>
+void CustomVector<T>::pop_index(int index)
+{
+	if (vsize == 0)
+		return;
+
+	int newSize = vsize - 1;
+	T* temp = new T[newSize];
+	vsize--;
+	maxsize = vsize;
+
+	int y = 0;
+
+	for (int i = 0; i < newSize; i++)
+	{
+		if (i == index)
+		{
+			y++;
+		}
+		temp[i] = array[y];
+
+		y++;
+	}
+	
+	delete[] array;
+	array = temp;
+
+	return;
+}
+
+template<class T>
 T& CustomVector<T>::operator[](int i)
 {
 	return array[i];
@@ -109,7 +140,7 @@ CustomVector<T>& CustomVector<T>::operator=(const CustomVector<T>& v)
 }
 
 template<class T>
-T& CustomVector<T>::at(int i)
+T& CustomVector<T>::at(int i) const
 {
 	if (i < vsize)
 	{
@@ -122,11 +153,13 @@ T& CustomVector<T>::at(int i)
 template<class T>
 void CustomVector<T>::alloc_new()
 {
+	int tempInt = vsize;
+
 	if (vsize == 0) {
-		vsize = 1;
+		tempInt = 1;
 	}
 
-	maxsize = vsize * 2;
+	maxsize = tempInt * 2;
 	T* temp = new T[maxsize];
 	for (int i = 0; i < vsize; i++)
 	{
@@ -138,7 +171,7 @@ void CustomVector<T>::alloc_new()
 }
 
 template<class T>
-int CustomVector<T>::size()
+int CustomVector<T>::size() const
 {
 	return vsize;
 }

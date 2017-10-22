@@ -86,6 +86,28 @@ void Ship::addGoods(Goods& goods, int amount)
 	goodsOnShip.push_back(newGoods);
 }
 
+void Ship::deleteGoods(Goods& goods, int amount)
+{
+	loadSpaceUsed -= amount;
+
+	for (int i = 0; i < goodsOnShip.size(); i++)
+	{
+		if (strcmp(goods.getName(), goodsOnShip.at(i).getName()) == 0)
+		{
+			if (goodsOnShip.at(i).getAmount() - amount <= 0)
+			{
+				goodsOnShip.pop_index(i);
+			}
+			else
+			{
+				goodsOnShip.at(i).setAmount(goodsOnShip.at(i).getAmount() - amount);
+			}
+			
+			return;
+		}
+	}
+}
+
 void Ship::printStats()
 {
 	cout << "----------------------------------------------------" << endl;

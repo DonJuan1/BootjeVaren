@@ -33,5 +33,6 @@ private:
 	CustomVector<CityDestination> cityDestinationVector;
 
 	void buyGoods(Game* game);
+	void sellGoods(Game* game);
 
 };
