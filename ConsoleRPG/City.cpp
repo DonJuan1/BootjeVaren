@@ -416,6 +416,12 @@ void City::sellCannons(Game* game)
 
 	printf("%-2s %-12s %-12s %-12s\n", "#", "Name", "Price (G)", "Amount (Unit)");
 
+	for (int i = 1; i < game->getShip()->getCannonsOnShip().size() + 1; i++)
+	{
+		Cannon* cannon = game->getShip()->getCannonsOnShip().at(i - 1);
+		printf("%-2i %-12s %-12i %-12i\n", i, cannon->getName(), cannon->getPrice(), cannon->getAmount());
+	}
+
 	int choice;
 	cin >> choice;
 	while (cin.fail())
