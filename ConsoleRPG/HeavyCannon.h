@@ -6,9 +6,8 @@
 class HeavyCannon : public Cannon
 {
 public:
-	HeavyCannon() {};
-	HeavyCannon(int pMaxAmount, int pPrice) : Cannon(pMaxAmount, pPrice) {};
+	HeavyCannon() : Cannon("Heavy", 1000, 2) {};
 	~HeavyCannon() {};
 
-	int getDamage() override { return RandomGenerator::getInstance().generate(0, maxDamage); };
+	int testOutput() override { return 1; }
 };

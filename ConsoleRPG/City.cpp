@@ -13,13 +13,16 @@ City::City(char* pName)
 }
 
 City::City(City& otherCity)
-{
+{	
 	if (this != &otherCity)
 	{
 		strcpy(name, otherCity.getName());
 
 		goodsVector = otherCity.getGoodsVector();
 		cityDestinationVector = otherCity.getCityDestinationVector();
+		cannonPointerVector.push_back(new LightCannon());
+		cannonPointerVector.push_back(new MediumCannon());
+		cannonPointerVector.push_back(new HeavyCannon());
 	}
 }
 

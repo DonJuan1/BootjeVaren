@@ -5,12 +5,8 @@
 class LightCannon : public Cannon
 {
 public:
-	LightCannon() {};
-	LightCannon(int pMaxAmount, int pPrice) : Cannon(pMaxAmount, pPrice) {};
+	LightCannon() : Cannon("Light", 50, 5) {};
 	~LightCannon() {};
 
-	int getDamage();
-
-private:
-
+	int testOutput() override { return 69; }
 };

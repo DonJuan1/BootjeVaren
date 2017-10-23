@@ -6,7 +6,11 @@
 #include "CityDestination.h"
 #include "Goods.h"
 #include "CustomVector.h"
+#include "CustomPointerVector.h"
 #include "Cannon.h"
+#include "LightCannon.h"
+#include "MediumCannon.h"
+#include "HeavyCannon.h"
 
 class Game;
 class Sea;
@@ -24,7 +28,7 @@ public:
 	char* getName() { return name; };
 	CustomVector<Goods>& getGoodsVector() { return goodsVector; };
 	CustomVector<CityDestination>& getCityDestinationVector() { return cityDestinationVector; };
-	CustomVector<Cannon*>& getCannonVector() { return cannonVector; };
+	CustomPointerVector<Cannon*>& getCannonVector() { return cannonPointerVector; };
 
 	void setGoodsVector(CustomVector<Goods>& pGoodsVector) { goodsVector = pGoodsVector; };
 
@@ -33,7 +37,7 @@ private:
 
 	CustomVector<Goods> goodsVector;
 	CustomVector<CityDestination> cityDestinationVector;
-	CustomVector<Cannon*> cannonVector;
+	CustomPointerVector<Cannon*> cannonPointerVector;
 
 	void buyGoods(Game* game);
 	void sellGoods(Game* game);

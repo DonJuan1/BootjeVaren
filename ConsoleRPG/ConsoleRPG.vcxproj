@@ -149,6 +149,7 @@
     <ClInclude Include="CityDestination.h" />
     <ClInclude Include="CityFactory.h" />
     <ClInclude Include="CSVParser.h" />
+    <ClInclude Include="CustomPointerVector.h" />
     <ClInclude Include="CustomVector.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Goods.h" />

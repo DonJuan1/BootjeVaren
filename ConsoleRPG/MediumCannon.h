@@ -5,12 +5,6 @@
 class MediumCannon : public Cannon
 {
 public:
-	MediumCannon() {};
-	MediumCannon(int pMaxAmount, int pPrice) : Cannon(pMaxAmount, pPrice) {};
+	MediumCannon() : Cannon("Meduim", 200, 3) {};
 	~MediumCannon() {};
-
-	int getDamage();
-
-private:
-
 };

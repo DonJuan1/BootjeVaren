@@ -105,8 +105,7 @@ void CSVParser::parseCSVCitiesDestinations(CustomVector<City>& cityVector, ifstr
 	//Get all the cities from the first row
 	while (p != NULL)
 	{
-		City city(p);
-		cityVector.push_back(city);
+		cityVector.push_back(City(p));
 		p = strtok(NULL, ";");
 	}
 
