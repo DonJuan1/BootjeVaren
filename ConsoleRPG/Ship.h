@@ -27,6 +27,7 @@ public:
 	inline const int& getGold() const { return this->gold; }
 	inline const int& getHitPoints() const { return this->hitPoints; }
 	inline const int getUnusedLoadSpace() const {return loadSpace - loadSpaceUsed; }
+	inline const int getUnusedCannonSpace() const { return cannonry - cannonsUsed; }
 	inline const void changeGold(const int pGold) { gold += pGold; }
 	inline const CustomVector<Goods>& getGoodsOnShip() const { return goodsOnShip; }
 	inline const CustomVector<Cannon*>& getCannonsOnShip() const { return cannonsOnShip; }
@@ -36,8 +37,8 @@ public:
 
 	void addGoods(Goods& goods, int amount);
 	void deleteGoods(Goods& goods, int amount);
-	void addCannon(Cannon* cannon);
-	void deleteCannon(Cannon* cannon);
+	void addCannon(Cannon* cannon, int amount) ;
+	void deleteCannon(Cannon* cannon, int amount);
 	void repairShip(int pGoldToRepair);
 
 	inline const bool canHoldHeavyCannons() const { return !isSmall; }

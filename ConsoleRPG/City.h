@@ -28,7 +28,7 @@ public:
 	char* getName() { return name; };
 	CustomVector<Goods>& getGoodsVector() { return goodsVector; };
 	CustomVector<CityDestination>& getCityDestinationVector() { return cityDestinationVector; };
-	CustomPointerVector<Cannon*>& getCannonVector() { return cannonPointerVector; };
+	CustomVector<Cannon*>& getCannonVector() { return cannonPointerVector; };
 
 	void setGoodsVector(CustomVector<Goods>& pGoodsVector) { goodsVector = pGoodsVector; };
 
@@ -37,7 +37,7 @@ private:
 
 	CustomVector<Goods> goodsVector;
 	CustomVector<CityDestination> cityDestinationVector;
-	CustomPointerVector<Cannon*> cannonPointerVector;
+	CustomVector<Cannon*> cannonPointerVector;
 
 	void buyGoods(Game* game);
 	void sellGoods(Game* game);

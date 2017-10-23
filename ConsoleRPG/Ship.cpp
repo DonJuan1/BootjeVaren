@@ -58,21 +58,42 @@ void Ship::getHit(int damage)
 	}
 }
 
-void Ship::addCannon(Cannon* cannon) 
+void Ship::addCannon(Cannon* cannon, int amount) 
 {
 	cannonsUsed++;
-	cannonsOnShip.push_back(cannon);
+
+	cout << cannon->testOutput() << endl;
+
+	for (int i = 0; i < cannonsOnShip.size(); i++)
+	{
+		Cannon* cannonPointer = cannonsOnShip.at(i);
+		if (strcmp(cannonPointer->getName(), cannon->getName()) == 0)
+		{
+			cannonPointer->setAmount(cannonPointer->getAmount() + amount);
+			return;
+		}
+	}
+
+	Cannon* cann = new Cannon(*cannon);
+	cann->setAmount(amount);
+	cannonsOnShip.push_back(cann);
 }
 
-void Ship::deleteCannon(Cannon* cannon)
+void Ship::deleteCannon(Cannon* cannon, int amount)
 {
 	cannonsUsed--;
 	for (int i = 0; i < cannonsOnShip.size(); i++)
 	{
-		if (cannon == cannonsOnShip.at(i))
+		Cannon* cannonPointer = cannonsOnShip.at(i);
+		if (strcmp(cannonPointer->getName(), cannon->getName()) == 0)
 		{
-			delete  cannonsOnShip.at(i);
-			cannonsOnShip.pop_index(i);
+			cannonPointer->setAmount(cannonPointer->getAmount() - amount);
+
+			if (cannonPointer->getAmount() == 0)
+			{
+				delete cannonsOnShip.at(i);
+				cannonsOnShip.pop_index(i);
+			}
 		}
 	}
 }
