@@ -405,32 +405,89 @@ void City::buyCannons(Game* game)
 
 void City::sellCannons(Game* game)
 {
-	system("cls");
-
-	game->getShip()->printStats();
-
-	cout << "You are in the cannon shop of " << name << endl;
-	cout << endl;
-	cout << "Here are the cannons you can sell:" << endl;
-	cout << endl;
-
-	printf("%-2s %-12s %-12s %-12s\n", "#", "Name", "Price (G)", "Amount (Unit)");
-
-	for (int i = 1; i < game->getShip()->getCannonsOnShip().size() + 1; i++)
+	while (true) 
 	{
-		Cannon* cannon = game->getShip()->getCannonsOnShip().at(i - 1);
-		printf("%-2i %-12s %-12i %-12i\n", i, cannon->getName(), cannon->getPrice(), cannon->getAmount());
-	}
+		system("cls");
 
-	int choice;
-	cin >> choice;
-	while (cin.fail())
-	{
-		cout << "No number selected! Select a number to select a cannon or 0 to quit the shop: ";
-		std::cin.clear();
-		std::cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
-		std::cin >> choice;
+		game->getShip()->printStats();
+
+		cout << "You are in the cannon shop of " << name << endl;
+		cout << endl;
+		cout << "Here are the cannons you can sell:" << endl;
+		cout << endl;
+
+		printf("%-2s %-12s %-12s %-12s\n", "#", "Name", "Price (G)", "Amount (Unit)");
+
+		for (int i = 1; i < game->getShip()->getCannonsOnShip().size() + 1; i++)
+		{
+			Cannon* cannon = game->getShip()->getCannonsOnShip().at(i - 1);
+			printf("%-2i %-12s %-12i %-12i\n", i, cannon->getName(), cannon->getPrice(), cannon->getAmount());
+		}
+
+		cout << "" << endl;
+		cout << "Select a number to select a cannon or 0 to quit the shop: ";
+
+		int choice;
+		cin >> choice;
+		while (cin.fail())
+		{
+			cout << "No number selected! Select a number to select a cannon or 0 to quit the shop: ";
+			std::cin.clear();
+			std::cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
+			std::cin >> choice;
+		}
+
+		if (choice == 0) 
+		{
+			return;
+		}
+		else if (choice > 0 && choice < game->getShip()->getCannonsOnShip().size() + 1) 
+		{
+			Cannon* cannon = game->getShip()->getCannonsOnShip().at(choice - 1);
+
+			while (true)
+			{
+				cout << "You selected: " << cannon->getName() << ", selected the amount you want to buy: ";
+				cin >> choice;
+
+				while (cin.fail())
+				{
+					cout << "No number selected! Selected the amount you want to buy: ";
+					std::cin.clear();
+					std::cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
+					std::cin >> choice;
+				}
+
+				if (choice == 0)
+				{
+					break;
+				}
+
+				if (cannon->getAmount() >= choice)
+				{					
+					int totalPrice = choice * cannon->getPrice();
+
+					for (int i = 0; i < cannonPointerVector.size(); i++)
+					{
+						if (strcmp(cannon->getName(), cannonPointerVector.at(i)->getName()) == 0)
+						{
+							cannonPointerVector.at(i)->setAmount(cannonPointerVector.at(i)->getAmount() + choice);
+						}
+					}
+
+					game->getShip()->deleteCannon(cannon, choice);
+					game->getShip()->changeGold(totalPrice);
+					break;
+			
+				}
+				else
+				{
+					cout << "Whooo, you dont have that many " << cannon->getName() << " !" << endl;
+				}
+			}
+		}
 	}
+	
 }
 
 void City::sailAway(Game* game)
