@@ -96,9 +96,15 @@ void City::processState(Game* game)
 				sellCannons(game);
 				break;
 			case 5:
-				sailAway(game);
-				delete this;
-				return;
+			{
+				CityDestination* cityDestination = sailAway(game);
+				if (cityDestination != nullptr) {
+					game->setState(new Sea(cityDestination));
+					delete this;
+					return;
+				}
+				break;
+			}
 			case 6:
 				repairShip(game);
 				break;
@@ -173,10 +179,10 @@ void City::buyGoods(Game* game)
 
 				if (goods.getAmount() >= choice)
 				{
-					if (game->getShip()->getUnusedLoadSpace() > choice)
+					if (game->getShip()->getUnusedLoadSpace() >= choice)
 					{
 						int totalPrice = choice * goods.getPrice();
-						if (game->getShip()->getGold() > totalPrice)
+						if (game->getShip()->getGold() >= totalPrice)
 						{
 							goods.setAmount(goods.getAmount() - choice);
 							game->getShip()->changeGold(-totalPrice);
@@ -490,7 +496,7 @@ void City::sellCannons(Game* game)
 	
 }
 
-void City::sailAway(Game* game)
+CityDestination* City::sailAway(Game* game)
 {
 	while (true)
 	{
@@ -525,20 +531,19 @@ void City::sailAway(Game* game)
 
 		if (choice == 0)
 		{
-			return;
+			return nullptr;
 		}
 		else if (choice > 0 && choice < cityDestinationVector.size() + 1)
 		{
 			if (strcmp(cityDestinationVector.at(choice - 1).destination->getName(), name) != 0)
 			{
-				City* city = new City(*cityDestinationVector.at(choice - 1).destination);
-				game->setState(new Sea(city));
-				return;
+				CityDestination* cityDestination = &cityDestinationVector.at(choice - 1);
+				return cityDestination;
 			}
 		}
 	}
 
-	game->setState(new Sea(new City()));
+	
 }
 
 void City::repairShip(Game* game)

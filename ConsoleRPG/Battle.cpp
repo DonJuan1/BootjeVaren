@@ -4,7 +4,7 @@
 #include "Pirate.h"
 
 
-Battle::Battle(Sea * sea)
+Battle::Battle(Sea* sea)
 {
 	seaState = sea;
 }
@@ -14,29 +14,26 @@ Battle::~Battle()
 	delete pirate;
 }
 
-void Battle::processState(Game * game)
+void Battle::processState(Game* game)
 {
 	if (pirate == nullptr) {
 		pirate = new Pirate(new Ship(game->shipFactory.getRandomShip(true)));
 	}
 
-	cout << "You are in battle with some pirates." << endl;
-	cout << "" << endl;
+	system("cls");
 
-	if (lastCommandMessage && !lastCommandMessage[0]) {
-		cout << "The pirates say arrr to you." << endl;
-		cout << "" << endl;
-	}
-	else {
-		cout << lastCommandMessage << endl;
-		cout << "" << endl;
-	}
+	game->getShip()->printStats();
+
+	cout << "You are in battle with some pirates" << endl;
+	cout << "" << endl;
 
 	cout << "1: Shoot" << endl;
 	cout << "2: Flight" << endl;
 	cout << "3: Surrender" << endl;
 	cout << "4: Quit" << endl;
 	cout << "" << endl;
+
+	cout << "Option: ";
 
 	int choice = 0;
 	cin >> choice;
@@ -80,9 +77,9 @@ void Battle::processState(Game * game)
 	}
 	case 3:
 		
-		// TODO: Throw away all goods...
+		game->getShip()->removeAllGoods();
 
-		seaState->lastCommandMessage = "You surrender and the pirates leave you unharmed with your empty ship.";
+		//seaState->lastCommandMessage = "You surrender and the pirates leave you unharmed with your empty ship.";
 		game->setState(seaState);
 		delete this;
 		return;

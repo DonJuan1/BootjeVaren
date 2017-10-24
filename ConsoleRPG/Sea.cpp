@@ -1,52 +1,49 @@
 #include "Sea.h"
 #include "Game.h"
 
-Sea::Sea(City* city)
+Sea::Sea(CityDestination* pCityDestination)
 {
-	nextCity = city;
-	turns = 5;
+	city = pCityDestination->destination;
+	turns = pCityDestination->turns;
 }
 
 Sea::~Sea()
 {
-	delete nextCity;
+	
 }
 
 void Sea::processState(Game* game)
 {
-
-	WindHandler* currentWind = wind[RandomGenerator::getInstance().generate(0, 19)];
-
-
 	if (turns <= 0) {
-		game->setState(new City());
+		game->setState(new City(*city));
 		delete this;
 		return;
 	}
-	else if(!isInBattle){
 
-		int randomBattleChance = RandomGenerator::getInstance().generate(0,100);
-		if (randomBattleChance <= 20) {
-			game->setState(new Battle(this));
-			isInBattle = true;
-			return;
-		}
+	int randomBattleChance = RandomGenerator::getInstance().generate(0,100);
+	if (randomBattleChance <= 20) {
+		game->setState(new Battle(this));
+		return;
 	}
 
-	cout << "Your ship is on sea." << endl;
-	cout << "Wind upcoming: " << currentWind->getWindName() << endl;
-	cout << "Days left: "<< turns << endl;
+	WindHandler* currentWind = wind[RandomGenerator::getInstance().generate(0, 19)];
+
+	system("cls");
+
+	game->getShip()->printStats();
+
+	cout << endl;
+	cout << "Your ship is on sea" << endl;
+	cout << "You are going to: " << city->getName() << endl;
+	cout << "Days left: " << turns << endl;
+	cout << "Wind upcoming: " << currentWind->getWindName() << endl;	
 	cout << "" << endl;
-	
-	if (isInBattle) {
-		cout << lastCommandMessage << endl;
-		cout << "" << endl;
-		isInBattle = false;
-	}
 
 	cout << "1: Next day" << endl;
 	cout << "2: Quit" << endl;
 	cout << "" << endl;
+
+	cout << "Option: " ;
 
 	int choice;
 	cin >> choice;
@@ -60,5 +57,5 @@ void Sea::processState(Game* game)
 	}
 
 	turns = turns - currentWind->getSailTurns(*game->getShip());
-
+	
 }

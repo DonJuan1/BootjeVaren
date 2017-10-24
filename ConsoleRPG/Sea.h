@@ -6,6 +6,7 @@
 
 #include "RandomGenerator.h"
 #include "LocationState.h"
+#include "CityDestination.h"
 #include "Battle.h"
 #include "WindHandler.h"
 #include "NoneHandler.h"
@@ -25,16 +26,16 @@ class Sea : public LocationState
 {
 public:
 	Sea() {};
-	Sea(City* nextCity);
+	Sea(CityDestination* cityDestination);
 	~Sea();
 
 	void processState(Game* game) override;
 
 private:
 	int turns;
-	City* nextCity;
+	City* city;
+	Battle* battle;
 	bool isInBattle = false;
-
 
 	NoneHandler none;
 	BreezeHandler breeze;

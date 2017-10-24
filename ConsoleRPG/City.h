@@ -44,7 +44,7 @@ private:
 	void buyCannons(Game* game);
 	void sellCannons(Game* game);
 
-	void sailAway(Game* game);
+	CityDestination* sailAway(Game* game);
 	void repairShip(Game* game);
 
 };

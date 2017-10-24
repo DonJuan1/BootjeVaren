@@ -150,6 +150,14 @@ void Ship::deleteGoods(Goods& goods, int amount)
 	}
 }
 
+void Ship::removeAllGoods() 
+{
+	for (int i = 0; i < goodsOnShip.size(); i++)
+	{
+		goodsOnShip.pop_index(i);
+	}
+}
+
 void Ship::repairShip(int pGoldToRepair)
 {
 	int deltaPoints = damagePoints - hitPoints;

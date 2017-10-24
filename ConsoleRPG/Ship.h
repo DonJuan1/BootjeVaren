@@ -39,6 +39,7 @@ public:
 	void deleteGoods(Goods& goods, int amount);
 	void addCannon(Cannon* cannon, int amount) ;
 	void deleteCannon(Cannon* cannon, int amount);
+	void removeAllGoods();
 	void repairShip(int pGoldToRepair);
 
 	inline const bool canHoldHeavyCannons() const { return !isSmall; }
