@@ -13,7 +13,7 @@ Ship::Ship(char* pType, int pPrice, int pLoadSpace, int pCannory, int pDamagePoi
 	cannonry{ pCannory }, 
 	damagePoints{ pDamagePoint  },
 	hitPoints{ pDamagePoint },
-	gold { 5000 },
+	gold { 0 },
 	loadSpaceUsed{ 0 },
 	cannonsUsed{ 0 },
 	isSmall{ pIsSmall }

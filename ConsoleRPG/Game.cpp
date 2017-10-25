@@ -5,6 +5,8 @@ Game::Game()
 	ReadCSVFiles();
 
 	ship = new Ship(shipFactory.getShipWithType("Pinnace"));
+	ship->changeGold(100000);
+
 	state = new City(cityFactory.getCityWithName("Roatan"));
 	
 	while (state != nullptr) {
@@ -12,9 +14,15 @@ Game::Game()
 		state->processState(this);
 
 		if (ship->isDead()) {
+
+			system("cls");
+
+			ship->printStats();
+
+			cout << endl;
 			cout << "GAME OVER" << endl;
 			cout << "Your ship breaks in two and everything sinks to the bottom of the sea..." << endl;
-			cout << "" << endl;
+			cout << endl;
 			cin.get();
 			return;
 		}

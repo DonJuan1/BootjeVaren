@@ -16,8 +16,6 @@
 #include "StrongHandler.h"
 #include "StormHandler.h"
 
-
-class City;
 class Game;
 
 using namespace std;

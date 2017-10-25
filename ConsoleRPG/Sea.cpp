@@ -21,10 +21,10 @@ void Sea::processState(Game* game)
 	}
 
 	int randomBattleChance = RandomGenerator::getInstance().generate(0,100);
-	if (randomBattleChance <= 20) {
+	/*if (randomBattleChance <= 20) {
 		game->setState(new Battle(this));
 		return;
-	}
+	}*/
 
 	WindHandler* currentWind = wind[RandomGenerator::getInstance().generate(0, 19)];
 

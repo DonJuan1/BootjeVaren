@@ -1,6 +1,5 @@
 #include "City.h"
 #include "Game.h"
-#include "Sea.h"
 
 City::City()
 {
@@ -51,68 +50,70 @@ City::~City()
 
 void City::processState(Game* game)
 {
-	while (true)
-	{
-		system("cls");
+	system("cls");
 
-		game->getShip()->printStats();
+	game->getShip()->printStats();
 
-		cout << endl;
-		cout << "You are in the city " << name << endl;
-		cout << "" << endl;
-		cout << "1: Buy goods" << endl;
-		cout << "2: Sell goods" << endl;
-		cout << "3: Buy cannons" << endl;
-		cout << "4: Sell cannons" << endl;
-		cout << "5: Sail to next city" << endl;
-		cout << "6: Repare ship" << endl;
-		cout << "7: Quit" << endl;
-		cout << "" << endl;
-		cout << "Option: ";
+	cout << endl;
+	cout << "You are in the city " << name << endl;
+	cout << "" << endl;
+	cout << "1: Buy goods" << endl;
+	cout << "2: Sell goods" << endl;
+	cout << "3: Buy cannons" << endl;
+	cout << "4: Sell cannons" << endl;
+	cout << "5: Sail to next city" << endl;
+	cout << "6: Repare ship" << endl;
+	cout << "7: Replace ship" << endl;
+	cout << "8: Quit" << endl;
+	cout << "" << endl;
+	cout << "Option: ";
 		
-		int choice = 0;
-		cin >> choice;
+	int choice = 0;
+	cin >> choice;
 
-		while (!cin && cin.fail())
-		{
-			cout << "No valid input! Option: ";
-			std::cin.clear();
-			std::cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
-			std::cin >> choice;
-		}
+	while (!cin && cin.fail())
+	{
+		cout << "No valid input! Option: ";
+		std::cin.clear();
+		std::cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
+		std::cin >> choice;
+	}
 
-		switch (choice)
+	switch (choice)
+	{
+		case 1:
+			buyGoods(game);
+			break;
+		case 2:
+			sellGoods(game);
+			break;
+		case 3:
+			buyCannons(game);
+			break;
+		case 4:
+			sellCannons(game);
+			break;
+		case 5:
 		{
-			case 1:
-				buyGoods(game);
-				break;
-			case 2:
-				sellGoods(game);
-				break;
-			case 3:
-				buyCannons(game);
-				break;
-			case 4:
-				sellCannons(game);
-				break;
-			case 5:
-			{
-				CityDestination* cityDestination = sailAway(game);
-				if (cityDestination != nullptr) {
-					game->setState(new Sea(cityDestination));
-					delete this;
-					return;
-				}
-				break;
-			}
-			case 6:
-				repairShip(game);
-				break;
-			case 7:
-				game->setState(nullptr);
+			CityDestination* cityDestination = sailAway(game);
+			if (cityDestination != nullptr) {
+				game->setState(new Sea(cityDestination));
 				delete this;
 				return;
+			}
+			break;
 		}
+		case 6:
+			repairShip(game);
+			break;
+		case 7:
+			replaceShip(game);
+			break;
+		case 8:
+			game->setState(nullptr);
+			delete this;
+			return;
+		
 	}
 }
 
@@ -544,6 +545,52 @@ CityDestination* City::sailAway(Game* game)
 	}
 
 	
+}
+
+void City::replaceShip(Game* game)
+{
+	while (true)
+	{
+		system("cls");
+
+		game->getShip()->printStats();
+
+		cout << "You are in the ship shop of " << name << endl;
+		cout << endl;
+		cout << "Here is a list of ships to buy: " << endl;
+		cout << endl;
+
+		printf("%-2s %-20s %-16s\n", "#", "Name", "Price (G)");
+
+		for (int i = 1; i < game->shipFactory.getShipVector().size() + 1; i++)
+		{
+			printf("%-2i %-20s %-16i\n", i, game->shipFactory.getShipVector().at(i - 1)->getType(), game->shipFactory.getShipVector().at(i - 1)->getPrice());
+		}
+
+		cout << endl;
+		cout << "Select a ship you want to buy: ";
+
+		int choice;
+		cin >> choice;
+		while (cin.fail())
+		{
+			cout << "No number selected! Select a ship you want to buy: ";
+			std::cin.clear();
+			std::cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
+			std::cin >> choice;
+		}
+
+		if (choice == 0)
+		{
+			break;
+		}
+		else if (choice > 0 && choice < game->shipFactory.getShipVector().size() + 1)
+		{
+			Ship* shipToBuy = game->shipFactory.getShipVector().at(choice - 1);
+
+			
+		}
+	}
 }
 
 void City::repairShip(Game* game)

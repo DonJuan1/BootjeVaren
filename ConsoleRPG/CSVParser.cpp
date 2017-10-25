@@ -19,7 +19,8 @@ void CSVParser::parseCSVShips(CustomVector<Ship*>& shipVector)
 	char loadSpace[32];
 	char cannonry[32];
 	char damagePoints[32];
-	char isSmall[32];
+	char specialties[32];
+
 
 	//Ignore first line
 	fileIn.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -31,13 +32,11 @@ void CSVParser::parseCSVShips(CustomVector<Ship*>& shipVector)
 		fileIn.getline(loadSpace, 32, ';');
 		fileIn.getline(cannonry, 32, ';');
 		fileIn.getline(damagePoints, 32, ';');
-		fileIn.getline(isSmall, 32);
+		fileIn.getline(specialties, 32);
 
 		if (strlen(type) == 0)
-
 		{
 			break;
-
 		}
 
 		int intPrice = atoi(price);
@@ -45,8 +44,28 @@ void CSVParser::parseCSVShips(CustomVector<Ship*>& shipVector)
 		int intCannonry = atoi(cannonry);
 		int intDamagePoints = atoi(damagePoints);
 		
-		Ship* ship = new Ship(type, intPrice, intLoadSpace, intCannonry, intDamagePoints, false);
-		
+		bool isSmall = false;
+
+		if (strstr(specialties, "klein"))
+		{
+			isSmall = true;
+		}
+
+		Ship* ship;
+
+		if (strstr(specialties, "licht"))
+		{
+			ship = new LightShip(type, intPrice, intLoadSpace, intCannonry, intDamagePoints, isSmall);
+		}
+		else if (strstr(specialties, "Log"))
+		{
+			ship = new LogShip(type, intPrice, intLoadSpace, intCannonry, intDamagePoints, isSmall);
+		}
+		else
+		{
+			ship = new NormalShip(type, intPrice, intLoadSpace, intCannonry, intDamagePoints, isSmall);
+		}
+
 		shipVector.push_back(ship);	
 	}
 

@@ -5,7 +5,9 @@
 #include <String.h>
 
 #include "Ship.h"
+#include "LightShip.h"
 #include "NormalShip.h"
+#include "LogShip.h"
 #include "City.h"
 #include "CityDestination.h"
 #include "Goods.h"

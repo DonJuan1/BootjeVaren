@@ -1,7 +1,7 @@
 #pragma once
 
 #include <iostream>
-#include <iomanip>
+
 #include "LocationState.h"
 #include "CityDestination.h"
 #include "Goods.h"
@@ -11,9 +11,9 @@
 #include "LightCannon.h"
 #include "MediumCannon.h"
 #include "HeavyCannon.h"
+#include "Sea.h"
 
 class Game;
-class Sea;
 
 class City : public LocationState
 {
@@ -46,5 +46,6 @@ private:
 
 	CityDestination* sailAway(Game* game);
 	void repairShip(Game* game);
+	void replaceShip(Game* game);
 
 };
