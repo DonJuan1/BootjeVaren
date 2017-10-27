@@ -29,7 +29,7 @@ Ship::~Ship()
 	}
 }
 
-Ship::Ship(Ship& otherShip)
+Ship::Ship(const Ship& otherShip)
 {
 	strcpy(type, otherShip.getType());
 
@@ -62,8 +62,6 @@ void Ship::addCannon(Cannon* cannon, int amount)
 {
 	cannonsUsed++;
 
-	cout << cannon->testOutput() << endl;
-
 	for (int i = 0; i < cannonsOnShip.size(); i++)
 	{
 		Cannon* cannonPointer = cannonsOnShip.at(i);
@@ -74,7 +72,7 @@ void Ship::addCannon(Cannon* cannon, int amount)
 		}
 	}
 
-	Cannon* cann = new Cannon(*cannon);
+	Cannon* cann = cannon->Clone();
 	cann->setAmount(amount);
 	cannonsOnShip.push_back(cann);
 }
@@ -96,6 +94,18 @@ void Ship::deleteCannon(Cannon* cannon, int amount)
 			}
 		}
 	}
+}
+
+bool Ship::isHoldingHeavyCannons() const
+{
+	for (int i = 0; i < cannonsOnShip.size(); i++)
+	{
+		if (cannonsOnShip.at(i)->isHeavy())
+		{
+			return true;
+		}
+	}
+	return false;
 }
 
 int Ship::shootCannons() const
@@ -171,6 +181,20 @@ void Ship::repairShip(int pGoldToRepair)
 	{
 		hitPoints += pGoldToRepair * 10;
 		gold -= pGoldToRepair;
+	}
+}
+
+void Ship::replaceShip(Ship* newShip)
+{
+	newShip->gold = gold;
+	newShip->loadSpaceUsed = loadSpaceUsed;
+	newShip->cannonsUsed = cannonsUsed;
+	newShip->goodsOnShip = goodsOnShip;
+
+	for (int i = 0; i < cannonsOnShip.size(); i++)
+	{
+		Cannon* cannon = cannonsOnShip.at(i)->Clone();
+		newShip->cannonsOnShip.push_back(cannon);
 	}
 }
 

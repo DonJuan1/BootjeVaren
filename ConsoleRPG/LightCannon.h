@@ -9,4 +9,5 @@ public:
 	~LightCannon() {};
 
 	int testOutput() override { return 69; }
+	Cannon* Clone() const override { return new LightCannon(*this); };
 };

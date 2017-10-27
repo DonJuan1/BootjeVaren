@@ -4,7 +4,7 @@ Game::Game()
 {
 	ReadCSVFiles();
 
-	ship = new Ship(shipFactory.getShipWithType("Pinnace"));
+	ship = shipFactory.getShipWithType("Oorlogsgaljoen").clone();
 	ship->changeGold(100000);
 
 	state = new City(cityFactory.getCityWithName("Roatan"));

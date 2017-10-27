@@ -57,7 +57,7 @@ void CSVParser::parseCSVShips(CustomVector<Ship*>& shipVector)
 		{
 			ship = new LightShip(type, intPrice, intLoadSpace, intCannonry, intDamagePoints, isSmall);
 		}
-		else if (strstr(specialties, "Log"))
+		else if (strstr(specialties, "log"))
 		{
 			ship = new LogShip(type, intPrice, intLoadSpace, intCannonry, intDamagePoints, isSmall);
 		}

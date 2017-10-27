@@ -10,6 +10,8 @@ public:
 	virtual ~Cannon() {};
 
 	virtual int testOutput() { return 5; }
+	virtual bool isHeavy() const { return false; };
+	virtual Cannon* Clone() const { return new Cannon(*this); };
 
 	void setAmount(int pAmount){ amount = pAmount; }
 
@@ -19,6 +21,7 @@ public:
 	int getDamage() const { return RandomGenerator::getInstance().generate(0, maxDamage); };
 	
 	void randomAmount() { amount = RandomGenerator::getInstance().generate(0, maxAmount); };
+	
 
 private:
 	char name[32];

@@ -10,11 +10,12 @@ class Ship
 public:
 	Ship();
 	Ship(char* pType, int pPrice, int pLoadSpace, int pCannory, int pDamagePoint, bool pIsSmall);	
-	Ship(Ship& otherShip);
+	Ship(const Ship& otherShip);
 	virtual ~Ship();
 
 	void getHit(int damage);
 	
+	virtual Ship* clone() const { return new Ship(*this); };
 	virtual int getBaseFlightChance() { return 0; };
 	virtual int getModifierFlightChance() { return 0; };
 
@@ -41,6 +42,9 @@ public:
 	void deleteCannon(Cannon* cannon, int amount);
 	void removeAllGoods();
 	void repairShip(int pGoldToRepair);
+	void replaceShip(Ship* newShip);
+
+	bool isHoldingHeavyCannons() const;
 
 	inline const bool canHoldHeavyCannons() const { return !isSmall; }
 	inline const bool isDead() const { return (hitPoints <= 0); }

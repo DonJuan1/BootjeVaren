@@ -14,6 +14,7 @@ public:
 	~CustomVector();
 
 	void push_back(T&);
+	void push_back(T&&);
 	void pop_index(int index);
 
 	int size() const;
@@ -73,6 +74,18 @@ CustomVector<T>::~CustomVector()
 
 template<class T>
 void CustomVector<T>::push_back(T& i)
+{
+	if (vsize + 1 > maxsize)
+	{
+		alloc_new();
+	}
+
+	array[vsize] = i;
+	vsize++;
+}
+
+template<class T>
+void CustomVector<T>::push_back(T&& i)
 {
 	if (vsize + 1 > maxsize)
 	{

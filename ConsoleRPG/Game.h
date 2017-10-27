@@ -17,6 +17,7 @@ public:
 	void setState(LocationState *s);
 
 	Ship *getShip() const;
+	void setShip(Ship* newShip) { ship = newShip; }
 
 	void getHit(int damage) { ship->getHit(damage); };
 

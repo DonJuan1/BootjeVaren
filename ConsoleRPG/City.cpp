@@ -588,7 +588,45 @@ void City::replaceShip(Game* game)
 		{
 			Ship* shipToBuy = game->shipFactory.getShipVector().at(choice - 1);
 
-			
+			while (true)
+			{
+				if (!(game->getShip()->isHoldingHeavyCannons() && !shipToBuy->canHoldHeavyCannons()))
+				{
+					if (shipToBuy->getPrice() < game->getShip()->getGold())
+					{
+						if (shipToBuy->getLoadSpace() > game->getShip()->getLoadSpace() - game->getShip()->getUnusedLoadSpace())
+						{
+							Ship* newShip = shipToBuy->clone();
+							game->getShip()->replaceShip(newShip);
+							delete game->getShip();
+							game->setShip(newShip);
+							break;
+						}	
+						else
+						{
+							cout << "The new ship does not have enough loadspace!" << endl;
+						}
+					}
+					else
+					{
+						cout << "You dont have enough money to buy that ship!" << endl;
+					}
+				}
+				else
+				{
+					cout << "You are carrying heavy cannons and that new ship cant carry that!" << endl;
+				}
+
+				cin >> choice;
+				while (cin.fail())
+				{
+					std::cin.clear();
+					std::cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
+					std::cin >> choice;
+				}
+
+				break;
+			}
 		}
 	}
 }
