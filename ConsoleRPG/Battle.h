@@ -3,6 +3,7 @@
 #include "LocationState.h"
 #include "RandomGenerator.h"
 
+class City;
 class Sea;
 class Game;
 class Pirate;
@@ -10,13 +11,14 @@ class Pirate;
 class Battle : public LocationState
 {
 public:
-	Battle(Sea* sea);
+	Battle(City* cityDestination, int turns);
 	~Battle();
 
 	void processState(Game* game) override;
 
 private:
-	Sea* seaState;
+	City* cityDestination;
+	int turnsLeft;
 	Pirate* pirate;
 
 

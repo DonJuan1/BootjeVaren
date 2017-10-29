@@ -18,29 +18,10 @@ ShipFactory::~ShipFactory()
 	}
 }
 
-Ship& ShipFactory::getRandomShip(bool withCannons)
+Ship& ShipFactory::getRandomShip()
 {
 	RandomGenerator &random = RandomGenerator::getInstance();
-	int randomIndex = random.generate(0, shipVector.size());
-
-	/*if (withCannons) {
-		int amountCannons = random.generate(0, ship->getCannonry());
-		
-		for (int i = 0; i < amountCannons; i++) {
-
-			switch (random.generate(1, (ship->canHoldHeavyCannons()? 3 : 2))) {
-				case 1:			
-					ship->addCannon(new LightCannon());
-					break;
-				case 2:
-					ship->addCannon(new MediumCannon());
-					break;
-				case 3:
-					ship->addCannon(new HeavyCannon());
-					break;
-			}
-		}
-	}*/
+	int randomIndex = random.generate(0, shipVector.size() - 1);
 
 	return *shipVector.at(randomIndex);
 }

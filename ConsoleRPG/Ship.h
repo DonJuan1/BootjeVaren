@@ -34,6 +34,7 @@ public:
 	inline const CustomVector<Cannon*>& getCannonsOnShip() const { return cannonsOnShip; }
 
 	void printStats() const;
+	void printPirateStats() const;
 	int shootCannons() const;
 
 	void addGoods(Goods& goods, int amount);

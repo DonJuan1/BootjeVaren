@@ -4,9 +4,10 @@
 #include "Pirate.h"
 
 
-Battle::Battle(Sea* sea)
+Battle::Battle(City* destination, int turns)
 {
-	seaState = sea;
+	cityDestination = destination;
+	turnsLeft = turns;
 }
 
 Battle::~Battle()
@@ -16,8 +17,9 @@ Battle::~Battle()
 
 void Battle::processState(Game* game)
 {
-	if (pirate == nullptr) {
-		pirate = new Pirate(new Ship(game->shipFactory.getRandomShip(true)));
+	if (pirate == nullptr)
+	{
+		pirate = new Pirate(game->shipFactory.getRandomShip().clone());
 	}
 
 	system("cls");
@@ -27,10 +29,12 @@ void Battle::processState(Game* game)
 	cout << "You are in battle with some pirates" << endl;
 	cout << "" << endl;
 
+	pirate->getShip()->printPirateStats();
+	cout << "" << endl;
+
 	cout << "1: Shoot" << endl;
 	cout << "2: Flight" << endl;
 	cout << "3: Surrender" << endl;
-	cout << "4: Quit" << endl;
 	cout << "" << endl;
 
 	cout << "Option: ";
@@ -40,74 +44,46 @@ void Battle::processState(Game* game)
 	cin.clear();
 	cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
-	switch (choice) {
-	case 1:
+	switch (choice)
 	{
-		int dmgToPirate = game->getShip()->shootCannons();
-		pirate->getHit(dmgToPirate);
-		int pirateHitpoints = pirate->getShip()->getHitPoints();
+		case 1:
+		{
+			int dmgToPirate = game->getShip()->shootCannons();
+			pirate->getHit(dmgToPirate);
+			int pirateHitpoints = pirate->getShip()->getHitPoints();
 
-		if (pirate->getShip()->isDead()) {
+			if (pirate->getShip()->isDead())
+			{
+				game->setState(new Sea(cityDestination, turnsLeft));
+				delete this;
+				return;
+			}
+			break;
+		}
+		case 2:
+		{
+			int flightRandom = RandomGenerator::getInstance().generate(0, 100);
+			int flightChance = game->getShip()->getBaseFlightChance() + pirate->getShip()->getModifierFlightChance();
 
-			seaState->lastCommandMessage = "You shoot your cannons and fully destroy the pirateship.";
-			game->setState(seaState);
+			if (flightRandom <= flightChance)
+			{
+				game->setState(new Sea(cityDestination, turnsLeft));
+				delete this;
+				return;
+			}
+			break;
+		}
+		case 3:
+		{
+			game->getShip()->removeAllGoods();
+			game->setState(new Sea(cityDestination, turnsLeft));
 			delete this;
 			return;
+
 		}
-		
-		sprintf(buf, "You shoot the cannons and do %s%d damage to the pirates,", "", dmgToPirate);
-		sprintf(buf, "%s %d hitpoints left.", buf, pirateHitpoints);
-		break;
 	}
-	case 2:
-	{
-		int flightRandom = RandomGenerator::getInstance().generate(0, 100);
-		int flightChance = game->getShip()->getBaseFlightChance() + pirate->getShip()->getModifierFlightChance();
-
-		if (flightRandom <= flightChance) {
-			seaState->lastCommandMessage = "You successfully escaped from the pirates, hurray!";
-			game->setState(seaState);
-			delete this;
-			return;
-		}
-
-		sprintf(buf, "You fail escaping the pirates, they laugh at your weak flight attempt.");
-		//lastCommandMessage = "You fail escaping the pirates, they laugh at your weak flight attempt.";
-		break;
-	}
-	case 3:
-		
-		game->getShip()->removeAllGoods();
-
-		//seaState->lastCommandMessage = "You surrender and the pirates leave you unharmed with your empty ship.";
-		game->setState(seaState);
-		delete this;
-		return;
-	case 4:
-		game->setState(nullptr);
-		delete seaState;
-		delete this;
-		return;
-	}
-
 
 	int dmgToPlayer = pirate->getShip()->shootCannons();
 	game->getShip()->getHit(dmgToPlayer);
-
-	sprintf(buf, "%s The pirates do %d damage to your ship.", buf, dmgToPlayer);
-	lastCommandMessage = buf;
-
-	if (game->getShip()->isDead()) {
-
-		cout << "" << endl;
-		cout << lastCommandMessage << endl;
-		cout << "" << endl;
-
-		game->setState(nullptr);
-		delete seaState;
-		delete this;
-		return;
-	}
-
 }
 

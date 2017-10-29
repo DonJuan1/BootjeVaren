@@ -9,6 +9,10 @@ City::City()
 City::City(char* pName)
 {
 	strcpy(name, pName);
+
+	cannonPointerVector.push_back(new LightCannon());
+	cannonPointerVector.push_back(new MediumCannon());
+	cannonPointerVector.push_back(new HeavyCannon());
 }
 
 City::City(City& otherCity)
@@ -20,22 +24,15 @@ City::City(City& otherCity)
 		goodsVector = otherCity.getGoodsVector();
 		cityDestinationVector = otherCity.getCityDestinationVector();
 		
-		Cannon* lightCannon = new LightCannon();
-		Cannon* mediumCannon = new MediumCannon();
-		Cannon* heavyCannon = new HeavyCannon();
-
-		cannonPointerVector.push_back(lightCannon);
-		cannonPointerVector.push_back(mediumCannon);
-		cannonPointerVector.push_back(heavyCannon);
+		for (int i = 0; i < otherCity.getCannonVector().size(); i++)
+		{
+			cannonPointerVector.push_back(otherCity.getCannonVector().at(i)->Clone());
+			cannonPointerVector.at(i)->randomAmount();
+		}
 
 		for (int i = 0; i < goodsVector.size(); i++)
 		{
 			goodsVector.at(i).randomGoods();
-		}
-
-		for (int i = 0; i < cannonPointerVector.size(); i++)
-		{
-			cannonPointerVector.at(i)->randomAmount();
 		}
 	}
 }
@@ -46,6 +43,30 @@ City::~City()
 	{
 		delete cannonPointerVector.at(i);
 	}
+}
+
+City& City::operator=(City& otherCity)
+{
+	if (this != &otherCity)
+	{
+		strcpy(name, otherCity.getName());
+
+		goodsVector = otherCity.getGoodsVector();
+		cityDestinationVector = otherCity.getCityDestinationVector();
+
+		for (int i = 0; i < otherCity.getCannonVector().size(); i++)
+		{
+			cannonPointerVector.push_back(otherCity.getCannonVector().at(i)->Clone());
+			cannonPointerVector.at(i)->randomAmount();
+		}
+
+		for (int i = 0; i < goodsVector.size(); i++)
+		{
+			goodsVector.at(i).randomGoods();
+		}
+	}
+
+	return *this;
 }
 
 void City::processState(Game* game)
@@ -95,12 +116,7 @@ void City::processState(Game* game)
 			break;
 		case 5:
 		{
-			CityDestination* cityDestination = sailAway(game);
-			if (cityDestination != nullptr) {
-				game->setState(new Sea(cityDestination));
-				delete this;
-				return;
-			}
+			sailAway(game);
 			break;
 		}
 		case 6:
@@ -386,7 +402,7 @@ void City::buyCannons(Game* game)
 
 						if (totalPrice <= game->getShip()->getGold())
 						{
-							game->getShip()->addCannon(cannon, choice);
+							game->getShip()->addCannon(cannon->Clone(), choice);
 							game->getShip()->changeGold(-totalPrice);
 							cannon->setAmount(cannon->getAmount() - choice);
 							break;
@@ -497,7 +513,7 @@ void City::sellCannons(Game* game)
 	
 }
 
-CityDestination* City::sailAway(Game* game)
+void City::sailAway(Game* game)
 {
 	while (true)
 	{
@@ -532,19 +548,19 @@ CityDestination* City::sailAway(Game* game)
 
 		if (choice == 0)
 		{
-			return nullptr;
+			return;
 		}
 		else if (choice > 0 && choice < cityDestinationVector.size() + 1)
 		{
 			if (strcmp(cityDestinationVector.at(choice - 1).destination->getName(), name) != 0)
 			{
 				CityDestination* cityDestination = &cityDestinationVector.at(choice - 1);
-				return cityDestination;
+				game->setState(new Sea(cityDestination));
+				delete this;
+				return;
 			}
 		}
 	}
-
-	
 }
 
 void City::replaceShip(Game* game)
@@ -596,10 +612,15 @@ void City::replaceShip(Game* game)
 					{
 						if (shipToBuy->getLoadSpace() > game->getShip()->getLoadSpace() - game->getShip()->getUnusedLoadSpace())
 						{
+							game->getShip()->changeGold(game->getShip()->getPrice() / 2);
+
 							Ship* newShip = shipToBuy->clone();
 							game->getShip()->replaceShip(newShip);
 							delete game->getShip();
 							game->setShip(newShip);
+
+							game->getShip()->changeGold(-game->getShip()->getPrice());
+
 							break;
 						}	
 						else

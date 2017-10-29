@@ -7,6 +7,12 @@ Sea::Sea(CityDestination* pCityDestination)
 	turns = pCityDestination->turns;
 }
 
+Sea::Sea(City* pCityDestination, int pTurns)
+{
+	city = pCityDestination;
+	turns = pTurns;
+}
+
 Sea::~Sea()
 {
 	
@@ -19,12 +25,6 @@ void Sea::processState(Game* game)
 		delete this;
 		return;
 	}
-
-	int randomBattleChance = RandomGenerator::getInstance().generate(0,100);
-	/*if (randomBattleChance <= 20) {
-		game->setState(new Battle(this));
-		return;
-	}*/
 
 	WindHandler* currentWind = wind[RandomGenerator::getInstance().generate(0, 19)];
 
@@ -57,5 +57,13 @@ void Sea::processState(Game* game)
 	}
 
 	turns = turns - currentWind->getSailTurns(*game->getShip());
+
+	int randomBattleChance = RandomGenerator::getInstance().generate(0, 100);
+	if (randomBattleChance <= 20)
+	{
+		game->setState(new Battle(city, turns));
+		delete this;
+		return;
+	}
 	
 }

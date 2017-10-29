@@ -22,6 +22,7 @@ public:
 	City(char* pName);
 	City(City& otherCity);
 	~City();
+	City& operator=(City&);
 
 	void processState(Game* game) override;
 
@@ -44,7 +45,7 @@ private:
 	void buyCannons(Game* game);
 	void sellCannons(Game* game);
 
-	CityDestination* sailAway(Game* game);
+	void sailAway(Game* game);
 	void repairShip(Game* game);
 	void replaceShip(Game* game);
 

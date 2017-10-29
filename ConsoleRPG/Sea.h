@@ -25,6 +25,7 @@ class Sea : public LocationState
 public:
 	Sea() {};
 	Sea(CityDestination* cityDestination);
+	Sea(City* city, int turns);
 	~Sea();
 
 	void processState(Game* game) override;

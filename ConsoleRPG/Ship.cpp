@@ -60,7 +60,7 @@ void Ship::getHit(int damage)
 
 void Ship::addCannon(Cannon* cannon, int amount) 
 {
-	cannonsUsed++;
+	cannonsUsed += amount;
 
 	for (int i = 0; i < cannonsOnShip.size(); i++)
 	{
@@ -68,18 +68,18 @@ void Ship::addCannon(Cannon* cannon, int amount)
 		if (strcmp(cannonPointer->getName(), cannon->getName()) == 0)
 		{
 			cannonPointer->setAmount(cannonPointer->getAmount() + amount);
+			delete cannon;
 			return;
 		}
 	}
 
-	Cannon* cann = cannon->Clone();
-	cann->setAmount(amount);
-	cannonsOnShip.push_back(cann);
+	cannon->setAmount(amount);
+	cannonsOnShip.push_back(cannon);
 }
 
 void Ship::deleteCannon(Cannon* cannon, int amount)
 {
-	cannonsUsed--;
+	cannonsUsed -= amount;
 	for (int i = 0; i < cannonsOnShip.size(); i++)
 	{
 		Cannon* cannonPointer = cannonsOnShip.at(i);
@@ -162,10 +162,14 @@ void Ship::deleteGoods(Goods& goods, int amount)
 
 void Ship::removeAllGoods() 
 {
+	loadSpaceUsed = 0;
+
 	for (int i = 0; i < goodsOnShip.size(); i++)
 	{
 		goodsOnShip.pop_index(i);
 	}
+
+	
 }
 
 void Ship::repairShip(int pGoldToRepair)
@@ -203,6 +207,15 @@ void Ship::printStats() const
 	cout << "Amount of Gold: " << gold << endl;
 	cout << "Current ship: " << type << endl;
 	cout << "Hitpoints of ship: " << hitPoints << "/" << damagePoints << endl;
-	cout << "LoadSpace of ship: " << loadSpaceUsed << "/" << loadSpace << endl;
+	cout << "Goods on ship: " << loadSpaceUsed << "/" << loadSpace << endl;
+	cout << "Cannons on ship: " << cannonsUsed << "/" << cannonry << endl;
 	cout << "----------------------------" << endl;
 }
+
+void Ship::printPirateStats() const
+{
+	cout << "Pirate ship: " << type << endl;
+	cout << "Hitpoints of ship: " << hitPoints << "/" << damagePoints << endl;
+	cout << "----------------------------" << endl;
+}
+

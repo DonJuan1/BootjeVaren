@@ -10,12 +10,11 @@ public:
 	ShipFactory();
 	~ShipFactory();
 
-	Ship& getRandomShip(bool withCannons);
+	Ship& getRandomShip();
 	Ship& getShipWithType(char* shipType);
 	CustomVector<Ship*>& getShipVector();
 
 
 private:
 	CustomVector<Ship*> shipVector;
-	
 };
