@@ -20,13 +20,15 @@ public:
 	void setShip(Ship* newShip) { delete ship; ship = newShip; }
 
 	void getHit(int damage) { ship->getHit(damage); };
-
-	ShipFactory shipFactory;
-	CityFactory cityFactory;
-
+	const ShipFactory& getShipFactory() const { return shipFactory; }
+	const CityFactory& getCityFactory() const { return cityFactory; }
+	
 private:
 	LocationState* state = nullptr;
 	Ship* ship = nullptr;
+
+	ShipFactory shipFactory;
+	CityFactory cityFactory;
 
 	void ReadCSVFiles();
 };

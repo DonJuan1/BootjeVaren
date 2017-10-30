@@ -1,6 +1,6 @@
 #include "CSVParser.h"
 
-void CSVParser::parseCSVShips(CustomVector<Ship*>& shipVector)
+void CSVParser::parseCSVShips(ShipFactory& shipFactory)
 {
 	ifstreamHandler fileIn("./schepen.csv");
 
@@ -54,20 +54,20 @@ void CSVParser::parseCSVShips(CustomVector<Ship*>& shipVector)
 
 		if (strstr(specialties, "licht"))
 		{
-			shipVector.push_back(new LightShip(type, intPrice, intLoadSpace, intCannonry, intDamagePoints, isSmall));
+			shipFactory.addShip(new LightShip(type, intPrice, intLoadSpace, intCannonry, intDamagePoints, isSmall));
 		}
 		else if (strstr(specialties, "log"))
 		{
-			shipVector.push_back(new LogShip(type, intPrice, intLoadSpace, intCannonry, intDamagePoints, isSmall));
+			shipFactory.addShip(new LogShip(type, intPrice, intLoadSpace, intCannonry, intDamagePoints, isSmall));
 		}
 		else
 		{
-			shipVector.push_back(new NormalShip(type, intPrice, intLoadSpace, intCannonry, intDamagePoints, isSmall));
+			shipFactory.addShip(new NormalShip(type, intPrice, intLoadSpace, intCannonry, intDamagePoints, isSmall));
 		}
 	}
 }
 
-void CSVParser::parseCSVCities(CustomVector<City>& cityVector)
+void CSVParser::parseCSVCities(CityFactory& cityFactory)
 {
 	ifstreamHandler fileIn1("./afstanden tussen steden.csv");
 	ifstreamHandler fileIn2("./goederen hoeveelheid.csv");
@@ -85,11 +85,11 @@ void CSVParser::parseCSVCities(CustomVector<City>& cityVector)
 		throw std::runtime_error("Could not open file");
 	}
 
-	parseCSVCitiesDestinations(cityVector, fileIn1);
-	parseCSVCitiesGoods(cityVector, fileIn2, fileIn3);
+	parseCSVCitiesDestinations(cityFactory, fileIn1);
+	parseCSVCitiesGoods(cityFactory, fileIn2, fileIn3);
 }
 
-void CSVParser::parseCSVCitiesDestinations(CustomVector<City>& cityVector, ifstreamHandler& file)
+void CSVParser::parseCSVCitiesDestinations(CityFactory& cityFactory, ifstreamHandler& file)
 {
 	
 	//Ignore first 3 lines
@@ -105,7 +105,7 @@ void CSVParser::parseCSVCitiesDestinations(CustomVector<City>& cityVector, ifstr
 	//Get all the cities from the first row
 	while (p != NULL)
 	{
-		cityVector.push_back(City(p));
+		cityFactory.addCity(City(p));
 		p = strtok(NULL, ";");
 	}
 
@@ -125,11 +125,11 @@ void CSVParser::parseCSVCitiesDestinations(CustomVector<City>& cityVector, ifstr
 		
 		//Find the city of the row
 		City* cityRow;
-		for (int i = 0; i < cityVector.size(); i++)
+		for (int i = 0; i < cityFactory.getCityVector().size(); i++)
 		{
-			if (strstr(cityVector.at(i).getName(), p))
+			if (strstr(cityFactory.getCityVector().at(i).getName(), p))
 			{
-				cityRow = &cityVector.at(i);
+				cityRow = &cityFactory.getCityVector().at(i);
 			}
 		}
 
@@ -143,7 +143,7 @@ void CSVParser::parseCSVCitiesDestinations(CustomVector<City>& cityVector, ifstr
 
 			distance = atoi(p);
 			cityDestination.turns = distance;
-			cityDestination.destination = &cityVector.at(counter);
+			cityDestination.destination = &cityFactory.getCityVector().at(counter);
 
 			cityRow->addCityDestination(cityDestination);
 
@@ -153,7 +153,7 @@ void CSVParser::parseCSVCitiesDestinations(CustomVector<City>& cityVector, ifstr
 	}
 }
 
-void CSVParser::parseCSVCitiesGoods(CustomVector<City>& cityVector, ifstreamHandler& quantityFile, ifstreamHandler& priceFile)
+void CSVParser::parseCSVCitiesGoods(CityFactory& cityFactory, ifstreamHandler& quantityFile, ifstreamHandler& priceFile)
 {
 	CustomVector<Goods> allGoodsVector;
 	char *save_ptr1, *save_ptr2;
@@ -183,9 +183,9 @@ void CSVParser::parseCSVCitiesGoods(CustomVector<City>& cityVector, ifstreamHand
 	}
 
 	//Copy the goods list for all the cities
-	for (int i = 0; i < cityVector.size(); i++)
+	for (int i = 0; i < cityFactory.getCityVector().size(); i++)
 	{
-		cityVector.at(i).setGoodsVector(allGoodsVector);
+		cityFactory.getCityVector().at(i).setGoodsVector(allGoodsVector);
 	}
 
 	while (true)
@@ -206,11 +206,11 @@ void CSVParser::parseCSVCitiesGoods(CustomVector<City>& cityVector, ifstreamHand
 
 		//Find the city of the row
 		City* cityRow;
-		for (int i = 0; i < cityVector.size(); i++)
+		for (int i = 0; i < cityFactory.getCityVector().size(); i++)
 		{
-			if (strstr(cityVector.at(i).getName(), quantityPointer))
+			if (strstr(cityFactory.getCityVector().at(i).getName(), quantityPointer))
 			{
-				cityRow = &cityVector.at(i);
+				cityRow = &cityFactory.getCityVector().at(i);
 			}
 		}
 

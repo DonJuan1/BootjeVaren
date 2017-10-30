@@ -21,7 +21,7 @@ City& CityFactory::getCityWithName(const char* cityName) const
 	throw std::runtime_error("Exception caught: City not found");
 }
 
-CustomVector<City>& CityFactory::getCityVector() {
+const CustomVector<City>& CityFactory::getCityVector() const {
 	return cityVector;
 }
 

@@ -1,10 +1,10 @@
 #include "Sea.h"
 #include "Game.h"
 
-Sea::Sea(const CityDestination* pCityDestination)
+Sea::Sea(const CityDestination& pCityDestination)
 {
-	city = pCityDestination->destination;
-	turns = pCityDestination->turns;
+	city = pCityDestination.destination;
+	turns = pCityDestination.turns;
 }
 
 Sea::Sea(const City* pCityDestination, int pTurns)
@@ -18,10 +18,10 @@ Sea::~Sea()
 	
 }
 
-void Sea::processState(Game* game)
+void Sea::processState(Game& game)
 {
 	if (turns <= 0) {
-		game->setState(new City(*city));
+		game.setState(new City(*city));
 		delete this;
 		return;
 	}
@@ -30,7 +30,7 @@ void Sea::processState(Game* game)
 
 	system("cls");
 
-	game->getShip()->printStats();
+	game.getShip()->printStats();
 
 	cout << endl;
 	cout << "Your ship is on sea" << endl;
@@ -51,17 +51,17 @@ void Sea::processState(Game* game)
 	cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignore char input
 
 	if (choice == 2) {
-		game->setState(nullptr);
+		game.setState(nullptr);
 		delete this;
 		return;
 	}
 
-	turns = turns - currentWind->getSailTurns(game->getShip());
+	turns = turns - currentWind->getSailTurns(game.getShip());
 
 	int randomBattleChance = RandomGenerator::getInstance().generate(0, 100);
 	if (randomBattleChance <= 20)
 	{
-		game->setState(new Battle(city, turns));
+		game.setState(new Battle(city, turns));
 		delete this;
 		return;
 	}

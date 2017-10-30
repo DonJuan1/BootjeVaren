@@ -8,7 +8,7 @@ public:
 	LocationState() {};
 	virtual ~LocationState() {};
 
-	virtual void processState(Game* game) = 0;
+	virtual void processState(Game& game) = 0;
 
 private:
 

@@ -12,7 +12,8 @@ public:
 	~CityFactory();
 
 	City& getCityWithName(const char* cityName) const;
-	CustomVector<City>& getCityVector() ;
+	const CustomVector<City>& getCityVector() const ;
+	void addCity(City& city) { cityVector.push_back(city); }
 
 private:
 	CustomVector<City> cityVector;

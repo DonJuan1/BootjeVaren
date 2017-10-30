@@ -24,11 +24,11 @@ class Sea : public LocationState
 {
 public:
 	Sea() {};
-	Sea(const CityDestination* cityDestination);
+	Sea(const CityDestination& cityDestination);
 	Sea(const City* city, int turns);
 	~Sea();
 
-	void processState(Game* game) override;
+	void processState(Game& game) override;
 
 private:
 	int turns;

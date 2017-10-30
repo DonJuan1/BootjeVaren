@@ -13,6 +13,8 @@
 #include "Goods.h"
 #include "CustomVector.h"
 #include "ifstreamHandler.h"
+#include "ShipFactory.h"
+#include "CityFactory.h"
 
 class CSVParser
 {
@@ -20,11 +22,11 @@ public:
 	CSVParser() {};
 	~CSVParser() {};
 
-	void parseCSVShips(CustomVector<Ship*>&);
-	void parseCSVCities(CustomVector<City>&);
+	void parseCSVShips(ShipFactory& shipFactory);
+	void parseCSVCities(CityFactory& cityFactory);
 
 private:
 
-	void parseCSVCitiesDestinations(CustomVector<City>&, ifstreamHandler&);
-	void parseCSVCitiesGoods(CustomVector<City>&, ifstreamHandler&, ifstreamHandler&);
+	void parseCSVCitiesDestinations(CityFactory& cityFactory, ifstreamHandler&);
+	void parseCSVCitiesGoods(CityFactory& cityFactory, ifstreamHandler&, ifstreamHandler&);
 };

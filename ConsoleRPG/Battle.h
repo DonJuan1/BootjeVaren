@@ -13,7 +13,7 @@ public:
 	Battle(const City* cityDestination, int turns);
 	~Battle();
 
-	void processState(Game* game) override;
+	void processState(Game& game) override;
 
 private:
 	const City* cityDestination;

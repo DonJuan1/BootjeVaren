@@ -69,11 +69,11 @@ City& City::operator=(const City& otherCity)
 	return *this;
 }
 
-void City::processState(Game* game)
+void City::processState(Game& game)
 {
 	system("cls");
 
-	game->getShip()->printStats();
+	game.getShip()->printStats();
 
 	cout << endl;
 	cout << "You are in the city " << name << endl;
@@ -124,20 +124,20 @@ void City::processState(Game* game)
 			replaceShip(game);
 			break;
 		case 8:
-			game->setState(nullptr);
+			game.setState(nullptr);
 			delete this;
 			return;
 		
 	}
 }
 
-void City::buyGoods(const Game* game)
+void City::buyGoods(const Game& game)
 {
 	while (true)
 	{
 		system("cls");
 
-		game->getShip()->printStats();
+		game.getShip()->printStats();
 
 		cout << "You are in the shop of " << name << endl;
 		cout << endl;
@@ -194,14 +194,14 @@ void City::buyGoods(const Game* game)
 
 				if (goods.getAmount() >= choice)
 				{
-					if (game->getShip()->getUnusedLoadSpace() >= choice)
+					if (game.getShip()->getUnusedLoadSpace() >= choice)
 					{
 						int totalPrice = choice * goods.getPrice();
-						if (game->getShip()->getGold() >= totalPrice)
+						if (game.getShip()->getGold() >= totalPrice)
 						{
 							goods.setAmount(goods.getAmount() - choice);
-							game->getShip()->changeGold(-totalPrice);
-							game->getShip()->addGoods(goods, choice);
+							game.getShip()->changeGold(-totalPrice);
+							game.getShip()->addGoods(goods, choice);
 							break;
 						}
 						else
@@ -224,18 +224,18 @@ void City::buyGoods(const Game* game)
 	}
 }
 
-void City::sellGoods(const Game* game)
+void City::sellGoods(const Game& game)
 {
 	while (true)
 	{
 		system("cls");
 
-		game->getShip()->printStats();
+		game.getShip()->printStats();
 
 		cout << "You are in the shop of " << name << endl;
 		cout << endl;
 		
-		if (game->getShip()->getGoodsOnShip().size() <= 0)
+		if (game.getShip()->getGoodsOnShip().size() <= 0)
 		{
 			cout << "You have nothing to sell!" << endl;
 			cin.clear();
@@ -249,9 +249,9 @@ void City::sellGoods(const Game* game)
 			cout << endl;
 			printf("%-2s %-12s %-12s %-12s\n", "#", "Name", "Price (G)", "Amount (Ton)");
 
-			for (int i = 1; i < game->getShip()->getGoodsOnShip().size() + 1; i++)
+			for (int i = 1; i < game.getShip()->getGoodsOnShip().size() + 1; i++)
 			{
-				Goods& goods = game->getShip()->getGoodsOnShip().at(i - 1);
+				Goods& goods = game.getShip()->getGoodsOnShip().at(i - 1);
 
 				for (int i = 0; i < goodsVector.size(); i++)
 				{
@@ -282,9 +282,9 @@ void City::sellGoods(const Game* game)
 			{
 				return;
 			}
-			else if (choice > 0 && choice < game->getShip()->getGoodsOnShip().size() + 1)
+			else if (choice > 0 && choice < game.getShip()->getGoodsOnShip().size() + 1)
 			{
-				Goods& goods = game->getShip()->getGoodsOnShip().at(choice - 1);
+				Goods& goods = game.getShip()->getGoodsOnShip().at(choice - 1);
 
 				while (true)
 				{
@@ -316,8 +316,8 @@ void City::sellGoods(const Game* game)
 							}
 						}
 
-						game->getShip()->changeGold(totalPrice);
-						game->getShip()->deleteGoods(goods, choice);
+						game.getShip()->changeGold(totalPrice);
+						game.getShip()->deleteGoods(goods, choice);
 
 						break;
 					}
@@ -331,13 +331,13 @@ void City::sellGoods(const Game* game)
 	}
 }
 
-void City::buyCannons(const Game* game)
+void City::buyCannons(const Game& game)
 {
 	while (true)
 	{
 		system("cls");
 
-		game->getShip()->printStats();
+		game.getShip()->printStats();
 
 		cout << "You are in the cannon shop of " << name << endl;
 		cout << endl;
@@ -392,18 +392,18 @@ void City::buyCannons(const Game* game)
 					break;
 				}
 
-				if (!(game->getShip()->getIsSmall() && cannon->isHeavy()))
+				if (!(game.getShip()->getIsSmall() && cannon->isHeavy()))
 				{
 					if (cannon->getAmount() >= choice)
 					{
-						if (game->getShip()->getUnusedCannonSpace() >= choice)
+						if (game.getShip()->getUnusedCannonSpace() >= choice)
 						{
 							int totalPrice = choice * cannon->getPrice();
 
-							if (totalPrice <= game->getShip()->getGold())
+							if (totalPrice <= game.getShip()->getGold())
 							{
-								game->getShip()->addCannon(cannon, choice);
-								game->getShip()->changeGold(-totalPrice);
+								game.getShip()->addCannon(cannon, choice);
+								game.getShip()->changeGold(-totalPrice);
 								cannon->setAmount(cannon->getAmount() - choice);
 								break;
 							}
@@ -431,13 +431,13 @@ void City::buyCannons(const Game* game)
 	}
 }
 
-void City::sellCannons(const Game* game)
+void City::sellCannons(const Game& game)
 {
 	while (true) 
 	{
 		system("cls");
 
-		game->getShip()->printStats();
+		game.getShip()->printStats();
 
 		cout << "You are in the cannon shop of " << name << endl;
 		cout << endl;
@@ -446,9 +446,9 @@ void City::sellCannons(const Game* game)
 
 		printf("%-2s %-12s %-12s %-12s\n", "#", "Name", "Price (G)", "Amount (Unit)");
 
-		for (int i = 1; i < game->getShip()->getCannonsOnShip().size() + 1; i++)
+		for (int i = 1; i < game.getShip()->getCannonsOnShip().size() + 1; i++)
 		{
-			Cannon* cannon = game->getShip()->getCannonsOnShip().at(i - 1);
+			Cannon* cannon = game.getShip()->getCannonsOnShip().at(i - 1);
 			printf("%-2i %-12s %-12i %-12i\n", i, cannon->getName(), cannon->getPrice(), cannon->getAmount());
 		}
 
@@ -469,9 +469,9 @@ void City::sellCannons(const Game* game)
 		{
 			return;
 		}
-		else if (choice > 0 && choice < game->getShip()->getCannonsOnShip().size() + 1) 
+		else if (choice > 0 && choice < game.getShip()->getCannonsOnShip().size() + 1) 
 		{
-			Cannon* cannon = game->getShip()->getCannonsOnShip().at(choice - 1);
+			Cannon* cannon = game.getShip()->getCannonsOnShip().at(choice - 1);
 
 			while (true)
 			{
@@ -503,8 +503,8 @@ void City::sellCannons(const Game* game)
 						}
 					}
 
-					game->getShip()->deleteCannon(cannon, choice);
-					game->getShip()->changeGold(totalPrice);
+					game.getShip()->deleteCannon(cannon, choice);
+					game.getShip()->changeGold(totalPrice);
 					break;
 			
 				}
@@ -518,13 +518,13 @@ void City::sellCannons(const Game* game)
 	
 }
 
-void City::sailAway(Game* game)
+void City::sailAway(Game& game)
 {
 	while (true)
 	{
 		system("cls");
 
-		game->getShip()->printStats();
+		game.getShip()->printStats();
 
 		cout << "You are planning your next trip" << endl;
 		cout << endl;
@@ -559,8 +559,8 @@ void City::sailAway(Game* game)
 		{
 			if (strcmp(cityDestinationVector.at(choice - 1).destination->getName(), name) != 0)
 			{
-				CityDestination* cityDestination = &cityDestinationVector.at(choice - 1);
-				game->setState(new Sea(cityDestination));
+				CityDestination& cityDestination = cityDestinationVector.at(choice - 1);
+				game.setState(new Sea(cityDestination));
 				delete this;
 				return;
 			}
@@ -568,13 +568,13 @@ void City::sailAway(Game* game)
 	}
 }
 
-void City::replaceShip(Game* game)
+void City::replaceShip(Game& game)
 {
 	while (true)
 	{
 		system("cls");
 
-		game->getShip()->printStats();
+		game.getShip()->printStats();
 
 		cout << "You are in the ship shop of " << name << endl;
 		cout << endl;
@@ -583,9 +583,9 @@ void City::replaceShip(Game* game)
 
 		printf("%-2s %-20s %-16s\n", "#", "Name", "Price (G)");
 
-		for (int i = 1; i < game->shipFactory.getShipVector().size() + 1; i++)
+		for (int i = 1; i < game.getShipFactory().getShipVector().size() + 1; i++)
 		{
-			printf("%-2i %-20s %-16i\n", i, game->shipFactory.getShipVector().at(i - 1)->getType(), game->shipFactory.getShipVector().at(i - 1)->getPrice());
+			printf("%-2i %-20s %-16i\n", i, game.getShipFactory().getShipVector().at(i - 1)->getType(), game.getShipFactory().getShipVector().at(i - 1)->getPrice());
 		}
 
 		cout << endl;
@@ -605,24 +605,24 @@ void City::replaceShip(Game* game)
 		{
 			break;
 		}
-		else if (choice > 0 && choice < game->shipFactory.getShipVector().size() + 1)
+		else if (choice > 0 && choice < game.getShipFactory().getShipVector().size() + 1)
 		{
-			Ship* shipToBuy = game->shipFactory.getShipVector().at(choice - 1);
+			Ship* shipToBuy = game.getShipFactory().getShipVector().at(choice - 1);
 
 			while (true)
 			{
-				if (!(game->getShip()->isHoldingHeavyCannons() && !shipToBuy->canHoldHeavyCannons()))
+				if (!(game.getShip()->isHoldingHeavyCannons() && !shipToBuy->canHoldHeavyCannons()))
 				{
-					if (shipToBuy->getPrice() < game->getShip()->getGold())
+					if (shipToBuy->getPrice() < game.getShip()->getGold())
 					{
-						if (shipToBuy->getLoadSpace() > game->getShip()->getLoadSpace() - game->getShip()->getUnusedLoadSpace())
+						if (shipToBuy->getLoadSpace() > game.getShip()->getLoadSpace() - game.getShip()->getUnusedLoadSpace())
 						{
-							game->getShip()->changeGold(game->getShip()->getPrice() / 2);
+							game.getShip()->changeGold(game.getShip()->getPrice() / 2);
 
-							ShipReplacer shipReplacer(shipToBuy->clone(), game->getShip());
-							game->setShip(shipReplacer.getNewShip());
+							ShipReplacer shipReplacer(shipToBuy->clone(), game.getShip());
+							game.setShip(shipReplacer.getNewShip());
 							shipReplacer.clearReplacer();
-							game->getShip()->changeGold(-game->getShip()->getPrice());
+							game.getShip()->changeGold(-game.getShip()->getPrice());
 
 							break;
 						}	
@@ -655,20 +655,20 @@ void City::replaceShip(Game* game)
 	}
 }
 
-void City::repairShip(const Game* game)
+void City::repairShip(const Game& game)
 {
 	while (true)
 	{
 		system("cls");
 
-		game->getShip()->printStats();
+		game.getShip()->printStats();
 
 		cout << "You are in the docks of " << name << endl;
 		cout << endl;
 		cout << "Here you can repair your ship for only 1G" << endl;
 		cout << endl;
 
-		if (game->getShip()->getDamagePoints() == game->getShip()->getHitPoints())
+		if (game.getShip()->getDamagePoints() == game.getShip()->getHitPoints())
 		{
 			cout << "Your ship doens't have any damage!";
 			cin.clear();
@@ -695,13 +695,13 @@ void City::repairShip(const Game* game)
 				return;
 			}
 
-			if (game->getShip()->getGold() < choice)
+			if (game.getShip()->getGold() < choice)
 			{
 				cout << "Oh no, you dont have that much money";
 			}
 			else
 			{
-				game->getShip()->repairShip(choice);
+				game.getShip()->repairShip(choice);
 			}
 		}
 	}

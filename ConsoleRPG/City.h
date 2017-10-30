@@ -24,7 +24,7 @@ public:
 	~City();
 	City& operator=(const City&);
 
-	void processState(Game* game) override;
+	void processState(Game& game) override;
 
 	const char* getName() const { return name; };
 	const CustomVector<Goods>& getGoodsVector() const { return goodsVector; };
@@ -42,13 +42,13 @@ private:
 	CustomVector<CityDestination> cityDestinationVector;
 	CustomVector<Cannon*> cannonVector;
 
-	void buyGoods(const Game* game);
-	void sellGoods(const Game* game);
-	void buyCannons(const Game* game);
-	void sellCannons(const Game* game);
+	void buyGoods(const Game& game);
+	void sellGoods(const Game& game);
+	void buyCannons(const Game& game);
+	void sellCannons(const Game& game);
 
-	void sailAway(Game* game);
-	void repairShip(const Game* game);
-	void replaceShip(Game* game);
+	void sailAway(Game& game);
+	void repairShip(const Game& game);
+	void replaceShip(Game& game);
 
 };

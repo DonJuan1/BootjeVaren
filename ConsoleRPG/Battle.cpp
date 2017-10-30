@@ -12,16 +12,16 @@ Battle::~Battle()
 	delete pirate;
 }
 
-void Battle::processState(Game* game)
+void Battle::processState(Game& game)
 {
 	if (pirate == nullptr)
 	{
-		pirate = new Pirate(game->shipFactory.getRandomShip().clone());
+		pirate = new Pirate(game.getShipFactory().getRandomShip().clone());
 	}
 
 	system("cls");
 
-	game->getShip()->printStats();
+	game.getShip()->printStats();
 
 	cout << "You are in battle with some pirates" << endl;
 	cout << "" << endl;
@@ -45,13 +45,13 @@ void Battle::processState(Game* game)
 	{
 		case 1:
 		{
-			int dmgToPirate = game->getShip()->shootCannons();
+			int dmgToPirate = game.getShip()->shootCannons();
 			pirate->getShip()->getHit(dmgToPirate);
 			int pirateHitpoints = pirate->getShip()->getHitPoints();
 
 			if (pirate->getShip()->isDead())
 			{
-				game->setState(new Sea(cityDestination, turnsLeft));
+				game.setState(new Sea(cityDestination, turnsLeft));
 				delete this;
 				return;
 			}
@@ -60,11 +60,11 @@ void Battle::processState(Game* game)
 		case 2:
 		{
 			int flightRandom = RandomGenerator::getInstance().generate(0, 100);
-			int flightChance = game->getShip()->getBaseFlightChance() + pirate->getShip()->getModifierFlightChance();
+			int flightChance = game.getShip()->getBaseFlightChance() + pirate->getShip()->getModifierFlightChance();
 
 			if (flightRandom <= flightChance)
 			{
-				game->setState(new Sea(cityDestination, turnsLeft));
+				game.setState(new Sea(cityDestination, turnsLeft));
 				delete this;
 				return;
 			}
@@ -72,8 +72,8 @@ void Battle::processState(Game* game)
 		}
 		case 3:
 		{
-			game->getShip()->removeAllGoods();
-			game->setState(new Sea(cityDestination, turnsLeft));
+			game.getShip()->removeAllGoods();
+			game.setState(new Sea(cityDestination, turnsLeft));
 			delete this;
 			return;
 
@@ -81,6 +81,6 @@ void Battle::processState(Game* game)
 	}
 
 	int dmgToPlayer = pirate->getShip()->shootCannons();
-	game->getShip()->getHit(dmgToPlayer);
+	game.getShip()->getHit(dmgToPlayer);
 }
 

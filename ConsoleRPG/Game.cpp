@@ -35,7 +35,7 @@ Game::Game()
 
 	while (state != nullptr) {
 		
-		state->processState(this);
+		state->processState(*this);
 
 		if (ship->isDead()) { 
 
@@ -73,7 +73,7 @@ Game::~Game()
 	delete state;
 }
 
-void Game::setState(LocationState * s)
+void Game::setState(LocationState* s)
 {
 	state = s;
 }
@@ -86,6 +86,6 @@ Ship* Game::getShip() const
 void Game::ReadCSVFiles() {
 	CSVParser parser;
 
-	parser.parseCSVShips(shipFactory.getShipVector());
-	parser.parseCSVCities(cityFactory.getCityVector());
+	parser.parseCSVShips(shipFactory);
+	parser.parseCSVCities(cityFactory);
 }

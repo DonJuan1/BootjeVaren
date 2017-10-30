@@ -39,6 +39,6 @@ Ship& ShipFactory::getShipWithType(const char* shipType) const
 	throw std::runtime_error("Exception caught: Ship not found");
 }
 
-CustomVector<Ship*>& ShipFactory::getShipVector(){
+const CustomVector<Ship*>& ShipFactory::getShipVector() const{
 	return shipVector;
 }
