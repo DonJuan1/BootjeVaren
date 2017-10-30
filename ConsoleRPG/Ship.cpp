@@ -164,12 +164,10 @@ void Ship::removeAllGoods()
 {
 	loadSpaceUsed = 0;
 
-	for (int i = 0; i < goodsOnShip.size(); i++)
+	while (goodsOnShip.size() > 0)
 	{
-		goodsOnShip.pop_index(i);
+		goodsOnShip.pop_index(0);
 	}
-
-	
 }
 
 void Ship::repairShip(int pGoldToRepair)

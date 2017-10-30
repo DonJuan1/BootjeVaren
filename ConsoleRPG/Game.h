@@ -25,9 +25,8 @@ public:
 	CityFactory cityFactory;
 
 private:
-	LocationState* state;
-	Ship* ship;
+	LocationState* state = nullptr;
+	Ship* ship = nullptr;
 
 	void ReadCSVFiles();
-
 };

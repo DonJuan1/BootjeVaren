@@ -2,18 +2,42 @@
 
 Game::Game()
 {
-	ReadCSVFiles();
+	try
+	{
+		ReadCSVFiles();
+	}
+	catch (const runtime_error& error)
+	{
+		cout << error.what() << endl;
+		cin.get();
+		return;
+	}
+	catch (...)
+	{
+		cout << "Error during loading csv files!" << endl;
+		cin.get();
+		return;
+	}
 
-	ship = shipFactory.getShipWithType("Oorlogsgaljoen").clone();
+	try
+	{
+		ship = shipFactory.getShipWithType("Oorlogsgaljoen").clone();
+		state = new City(cityFactory.getCityWithName("Roatan"));
+	}
+	catch (const runtime_error& error)
+	{
+		cout << error.what() << endl;
+		cin.get();
+		return;
+	}
+
 	ship->changeGold(100000);
 
-	state = new City(cityFactory.getCityWithName("Roatan"));
-	
 	while (state != nullptr) {
 		
 		state->processState(this);
 
-		if (ship->isDead()) {
+		if (ship->isDead()) { 
 
 			system("cls");
 

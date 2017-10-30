@@ -115,10 +115,8 @@ void City::processState(Game* game)
 			sellCannons(game);
 			break;
 		case 5:
-		{
 			sailAway(game);
 			break;
-		}
 		case 6:
 			repairShip(game);
 			break;
