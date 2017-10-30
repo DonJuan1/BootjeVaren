@@ -5,7 +5,18 @@
 
 int main()
 {
-	Game* game = new Game();
+	const Game* game = nullptr;
+
+	try
+	{
+		game = new Game();
+	}
+	catch (...)
+	{
+		cout << "An unknown error has occurred!";
+		cin.get();
+	}
+	
 	delete game;
 
 	return _CrtDumpMemoryLeaks();
