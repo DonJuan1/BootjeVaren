@@ -21,7 +21,7 @@ Game::Game()
 
 	try
 	{
-		ship = shipFactory.getShipWithType("Oorlogsgaljoen").clone();
+		ship = shipFactory.getShipWithType("Pinnace").clone();
 		state = new City(cityFactory.getCityWithName("Roatan"));
 	}
 	catch (const runtime_error& error)

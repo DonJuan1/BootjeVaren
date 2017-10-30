@@ -24,15 +24,18 @@ void Battle::processState(Game& game)
 	game.getShip()->printStats();
 
 	cout << "You are in battle with some pirates" << endl;
-	cout << "" << endl;
+	cout << endl;
 
+	int flightChance = game.getShip()->getBaseFlightChance() + pirate->getShip()->getModifierFlightChance();
 	pirate->getShip()->printPirateStats();
-	cout << "" << endl;
+	cout << endl;
+	cout << "Flight Chance is " << flightChance << "%" << endl;
+	cout << endl;
 
 	cout << "1: Shoot" << endl;
 	cout << "2: Flight" << endl;
 	cout << "3: Surrender" << endl;
-	cout << "" << endl;
+	cout << endl;
 
 	cout << "Option: ";
 

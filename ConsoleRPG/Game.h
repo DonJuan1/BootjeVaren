@@ -14,12 +14,11 @@ public:
 	Game();
 	~Game();
 
-	void setState(LocationState *s);
+	void setState(LocationState* s);
 
 	Ship *getShip() const;
 	void setShip(Ship* newShip) { delete ship; ship = newShip; }
 
-	void getHit(int damage) { ship->getHit(damage); };
 	const ShipFactory& getShipFactory() const { return shipFactory; }
 	const CityFactory& getCityFactory() const { return cityFactory; }
 	
