@@ -22,7 +22,7 @@ public:
 	City(const char* pName);
 	City(const City& otherCity);
 	~City();
-	City& operator=(City&);
+	City& operator=(const City&);
 
 	void processState(Game* game) override;
 
@@ -31,7 +31,7 @@ public:
 	const CustomVector<CityDestination>& getCityDestinationVector() const { return cityDestinationVector; };
 	const CustomVector<Cannon*>& getCannonVector() const { return cannonPointerVector; };
 
-	void setGoodsVector(CustomVector<Goods>& pGoodsVector) { goodsVector = pGoodsVector; };
+	void setGoodsVector(const CustomVector<Goods>& pGoodsVector) { goodsVector = pGoodsVector; };
 	void addCityDestination(const CityDestination& cityDestination) { cityDestinationVector.push_back(cityDestination); };
 
 

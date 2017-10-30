@@ -7,7 +7,7 @@ Sea::Sea(const CityDestination* pCityDestination)
 	turns = pCityDestination->turns;
 }
 
-Sea::Sea(City* pCityDestination, int pTurns)
+Sea::Sea(const City* pCityDestination, int pTurns)
 {
 	city = pCityDestination;
 	turns = pTurns;

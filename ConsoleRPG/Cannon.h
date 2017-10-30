@@ -6,10 +6,9 @@ class Cannon
 {
 public:
 	Cannon() {};
-	Cannon(char* pName, int pPrice, int pAmount, int pDamage) : price(pPrice), maxAmount(pAmount), maxDamage(pDamage) { strcpy(name, pName); };
+	Cannon(const char* pName, int pPrice, int pAmount, int pDamage) : price(pPrice), maxAmount(pAmount), maxDamage(pDamage) { strcpy(name, pName); };
 	virtual ~Cannon() {};
 
-	virtual int testOutput() { return 5; }
 	virtual bool isHeavy() const { return false; };
 	virtual Cannon* Clone() const { return new Cannon(*this); };
 

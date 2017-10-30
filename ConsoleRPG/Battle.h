@@ -11,13 +11,13 @@ class Pirate;
 class Battle : public LocationState
 {
 public:
-	Battle(City* cityDestination, int turns);
+	Battle(const City* cityDestination, int turns);
 	~Battle();
 
 	void processState(Game* game) override;
 
 private:
-	City* cityDestination;
+	const City* cityDestination;
 	int turnsLeft;
 	Pirate* pirate;
 

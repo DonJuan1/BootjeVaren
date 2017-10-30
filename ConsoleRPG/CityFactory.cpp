@@ -8,7 +8,7 @@ CityFactory::~CityFactory() {
 	
 }
 
-City& CityFactory::getCityWithName(char* cityName)
+City& CityFactory::getCityWithName(const char* cityName) const
 {
 	for (int i = 0; i < cityVector.size(); i++)
 	{	

@@ -4,7 +4,7 @@
 #include "Pirate.h"
 
 
-Battle::Battle(City* destination, int turns)
+Battle::Battle(const City* destination, int turns)
 {
 	cityDestination = destination;
 	turnsLeft = turns;

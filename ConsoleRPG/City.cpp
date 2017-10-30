@@ -45,7 +45,7 @@ City::~City()
 	}
 }
 
-City& City::operator=(City& otherCity)
+City& City::operator=(const City& otherCity)
 {
 	if (this != &otherCity)
 	{

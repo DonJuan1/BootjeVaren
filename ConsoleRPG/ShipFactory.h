@@ -10,8 +10,8 @@ public:
 	ShipFactory();
 	~ShipFactory();
 
-	Ship& getRandomShip();
-	Ship& getShipWithType(char* shipType);
+	Ship& getRandomShip() const;
+	Ship& getShipWithType (const char* shipType) const;
 	CustomVector<Ship*>& getShipVector();
 
 

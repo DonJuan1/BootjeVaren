@@ -18,7 +18,7 @@ ShipFactory::~ShipFactory()
 	}
 }
 
-Ship& ShipFactory::getRandomShip()
+Ship& ShipFactory::getRandomShip() const
 {
 	RandomGenerator &random = RandomGenerator::getInstance();
 	int randomIndex = random.generate(0, shipVector.size() - 1);
@@ -26,7 +26,7 @@ Ship& ShipFactory::getRandomShip()
 	return *shipVector.at(randomIndex);
 }
 
-Ship& ShipFactory::getShipWithType(char* shipType)
+Ship& ShipFactory::getShipWithType(const char* shipType) const
 {
 	for (int i = 0; i < shipVector.size(); i++)
 	{
@@ -39,6 +39,6 @@ Ship& ShipFactory::getShipWithType(char* shipType)
 	throw std::runtime_error("Exception caught: Ship not found");
 }
 
-CustomVector<Ship*>& ShipFactory::getShipVector() {
+CustomVector<Ship*>& ShipFactory::getShipVector(){
 	return shipVector;
 }
