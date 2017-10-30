@@ -131,7 +131,7 @@ void City::processState(Game* game)
 	}
 }
 
-void City::buyGoods(Game* game)
+void City::buyGoods(const Game* game)
 {
 	while (true)
 	{
@@ -224,7 +224,7 @@ void City::buyGoods(Game* game)
 	}
 }
 
-void City::sellGoods(Game* game)
+void City::sellGoods(const Game* game)
 {
 	while (true)
 	{
@@ -331,7 +331,7 @@ void City::sellGoods(Game* game)
 	}
 }
 
-void City::buyCannons(Game* game)
+void City::buyCannons(const Game* game)
 {
 	while (true)
 	{
@@ -392,39 +392,46 @@ void City::buyCannons(Game* game)
 					break;
 				}
 
-				if (cannon->getAmount() >= choice)
+				if (!(game->getShip()->getIsSmall() && cannon->isHeavy()))
 				{
-					if (game->getShip()->getUnusedCannonSpace() >= choice)
+					if (cannon->getAmount() >= choice)
 					{
-						int totalPrice = choice * cannon->getPrice();
-
-						if (totalPrice <= game->getShip()->getGold())
+						if (game->getShip()->getUnusedCannonSpace() >= choice)
 						{
-							game->getShip()->addCannon(cannon->Clone(), choice);
-							game->getShip()->changeGold(-totalPrice);
-							cannon->setAmount(cannon->getAmount() - choice);
-							break;
+							int totalPrice = choice * cannon->getPrice();
+
+							if (totalPrice <= game->getShip()->getGold())
+							{
+								game->getShip()->addCannon(cannon->Clone(), choice);
+								game->getShip()->changeGold(-totalPrice);
+								cannon->setAmount(cannon->getAmount() - choice);
+								break;
+							}
+							else
+							{
+								cout << "You dont have that much cash, you poor bastard!" << endl;
+							}
 						}
 						else
 						{
-							cout << "You dont have that much cash, you poor bastard!" << endl;
+							cout << "You dont have enough cannon space!" << endl;
 						}
 					}
 					else
 					{
-						cout << "You dont have enough cannon space!" << endl;
-					}	
+						cout << "Whooo, we dont have that many " << cannon->getName() << " !" << endl;
+					}
 				}
 				else
 				{
-					cout << "Whooo, we dont have that many " << cannon->getName()  << " !" << endl;
+					cout << "Your ship is to small for that heavy cannon!" << endl;
 				}
 			}
 		}
 	}
 }
 
-void City::sellCannons(Game* game)
+void City::sellCannons(const Game* game)
 {
 	while (true) 
 	{
@@ -650,7 +657,7 @@ void City::replaceShip(Game* game)
 	}
 }
 
-void City::repairShip(Game* game)
+void City::repairShip(const Game* game)
 {
 	while (true)
 	{

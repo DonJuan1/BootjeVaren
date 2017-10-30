@@ -120,7 +120,6 @@
     <ClCompile Include="CSVParser.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Goods.cpp" />
-    <ClCompile Include="GoodsFactory.cpp" />
     <ClCompile Include="HeavyCannon.cpp" />
     <ClCompile Include="LightCannon.cpp" />
     <ClCompile Include="LightShip.cpp" />
@@ -149,11 +148,9 @@
     <ClInclude Include="CityDestination.h" />
     <ClInclude Include="CityFactory.h" />
     <ClInclude Include="CSVParser.h" />
-    <ClInclude Include="CustomPointerVector.h" />
     <ClInclude Include="CustomVector.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Goods.h" />
-    <ClInclude Include="GoodsFactory.h" />
     <ClInclude Include="HeavyCannon.h" />
     <ClInclude Include="LightCannon.h" />
     <ClInclude Include="LightShip.h" />

@@ -51,9 +51,6 @@
     <ClCompile Include="ShipFactory.cpp">
       <Filter>Builders / Factories</Filter>
     </ClCompile>
-    <ClCompile Include="GoodsFactory.cpp">
-      <Filter>Builders / Factories</Filter>
-    </ClCompile>
     <ClCompile Include="Ship.cpp">
       <Filter>Ship</Filter>
     </ClCompile>
@@ -126,9 +123,6 @@
       <Filter>Builders / Factories</Filter>
     </ClInclude>
     <ClInclude Include="ShipFactory.h">
-      <Filter>Builders / Factories</Filter>
-    </ClInclude>
-    <ClInclude Include="GoodsFactory.h">
       <Filter>Builders / Factories</Filter>
     </ClInclude>
     <ClInclude Include="Ship.h">
@@ -211,9 +205,6 @@
     </ClInclude>
     <ClInclude Include="CityDestination.h">
       <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CustomPointerVector.h">
-      <Filter>Utils</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

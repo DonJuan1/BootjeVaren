@@ -2,11 +2,10 @@
 
 #include "LocationState.h"
 #include "RandomGenerator.h"
+#include "Pirate.h"
 
 class City;
-class Sea;
 class Game;
-class Pirate;
 
 class Battle : public LocationState
 {

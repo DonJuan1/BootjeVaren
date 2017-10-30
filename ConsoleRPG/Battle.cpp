@@ -1,8 +1,5 @@
 #include "Battle.h"
 #include "Game.h"
-#include "Sea.h"
-#include "Pirate.h"
-
 
 Battle::Battle(const City* destination, int turns)
 {

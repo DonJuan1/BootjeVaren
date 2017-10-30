@@ -6,7 +6,6 @@
 #include "CityDestination.h"
 #include "Goods.h"
 #include "CustomVector.h"
-#include "CustomPointerVector.h"
 #include "Cannon.h"
 #include "LightCannon.h"
 #include "MediumCannon.h"
@@ -42,13 +41,13 @@ private:
 	CustomVector<CityDestination> cityDestinationVector;
 	CustomVector<Cannon*> cannonPointerVector;
 
-	void buyGoods(Game* game);
-	void sellGoods(Game* game);
-	void buyCannons(Game* game);
-	void sellCannons(Game* game);
+	void buyGoods(const Game* game);
+	void sellGoods(const Game* game);
+	void buyCannons(const Game* game);
+	void sellCannons(const Game* game);
 
 	void sailAway(Game* game);
-	void repairShip(Game* game);
+	void repairShip(const Game* game);
 	void replaceShip(Game* game);
 
 };

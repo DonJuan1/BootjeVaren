@@ -31,7 +31,7 @@ Game::Game()
 		return;
 	}
 
-	ship->changeGold(100000);
+	ship->changeGold(1000000);
 
 	while (state != nullptr) {
 		
@@ -46,6 +46,20 @@ Game::Game()
 			cout << endl;
 			cout << "GAME OVER" << endl;
 			cout << "Your ship breaks in two and everything sinks to the bottom of the sea..." << endl;
+			cout << endl;
+			cin.get();
+			return;
+		}
+
+		if (ship->getGold() >= 1000000)
+		{
+			system("cls");
+
+			ship->printStats();
+
+			cout << endl;
+			cout << "You win!" << endl;
+			cout << "You have reach 1 million gold!" << endl;
 			cout << endl;
 			cin.get();
 			return;
