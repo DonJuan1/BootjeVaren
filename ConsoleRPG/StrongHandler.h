@@ -5,8 +5,8 @@
 class StrongHandler : public WindHandler
 {
 public:
-	int getSailTurns(Ship &ship) override { return 2; };
-	char* getWindName() override { return "strong"; };
+	int getSailTurns(Ship* ship) override { return 2; };
+	const char* getWindName() const override { return "strong"; };
 
 private:
 

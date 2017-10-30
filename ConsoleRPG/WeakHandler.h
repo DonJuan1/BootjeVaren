@@ -6,9 +6,20 @@
 class WeakHandler : public WindHandler
 {
 public:
-	int getSailTurns(Ship &ship) override { NormalHandler wind; return wind.getSailTurns(ship); };
-	int getSailTurns(LogShip &ship) { NoneHandler wind; return wind.getSailTurns(ship); };
-	char* getWindName() override { return "weak"; };
+	int getSailTurns(Ship* ship) override 
+	{ 
+		if (dynamic_cast<LogShip*>(ship))
+		{
+			NoneHandler wind;
+			return wind.getSailTurns(ship);
+		}
+		else
+		{
+			NormalHandler wind;
+			return wind.getSailTurns(ship);
+		}
+	};
+	const char* getWindName() const override { return "weak"; };
 
 private:
 

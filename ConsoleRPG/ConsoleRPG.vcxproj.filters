@@ -5,19 +5,9 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
     <Filter Include="Resource Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="CSV Files">
-      <UniqueIdentifier>{597e9d63-bebd-458d-8ca9-190e4f486faa}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Builders / Factories">
-      <UniqueIdentifier>{81a70a27-2095-40a5-8cfc-f45f8d6639be}</UniqueIdentifier>
     </Filter>
     <Filter Include="Ship">
       <UniqueIdentifier>{5bfc82c3-523e-4435-be1e-df00f5ca14bf}</UniqueIdentifier>
@@ -34,6 +24,9 @@
     <Filter Include="Utils">
       <UniqueIdentifier>{9a846d9e-4caa-4cf4-b4f1-39e6a8ec1ca4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Factories">
+      <UniqueIdentifier>{81a70a27-2095-40a5-8cfc-f45f8d6639be}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -46,10 +39,10 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CityFactory.cpp">
-      <Filter>Builders / Factories</Filter>
+      <Filter>Factories</Filter>
     </ClCompile>
     <ClCompile Include="ShipFactory.cpp">
-      <Filter>Builders / Factories</Filter>
+      <Filter>Factories</Filter>
     </ClCompile>
     <ClCompile Include="Ship.cpp">
       <Filter>Ship</Filter>
@@ -71,24 +64,6 @@
     </ClCompile>
     <ClCompile Include="Goods.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="WindHandler.cpp">
-      <Filter>WindHandlers</Filter>
-    </ClCompile>
-    <ClCompile Include="NoneHandler.cpp">
-      <Filter>WindHandlers</Filter>
-    </ClCompile>
-    <ClCompile Include="BreezeHandler.cpp">
-      <Filter>WindHandlers</Filter>
-    </ClCompile>
-    <ClCompile Include="WeakHandler.cpp">
-      <Filter>WindHandlers</Filter>
-    </ClCompile>
-    <ClCompile Include="NormalHandler.cpp">
-      <Filter>WindHandlers</Filter>
-    </ClCompile>
-    <ClCompile Include="StrongHandler.cpp">
-      <Filter>WindHandlers</Filter>
     </ClCompile>
     <ClCompile Include="StormHandler.cpp">
       <Filter>WindHandlers</Filter>
@@ -123,10 +98,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CityFactory.h">
-      <Filter>Builders / Factories</Filter>
+      <Filter>Factories</Filter>
     </ClInclude>
     <ClInclude Include="ShipFactory.h">
-      <Filter>Builders / Factories</Filter>
+      <Filter>Factories</Filter>
     </ClInclude>
     <ClInclude Include="Ship.h">
       <Filter>Ship</Filter>
@@ -210,6 +185,9 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="ShipReplacer.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="ifstreamHandler.h">
       <Filter>Utils</Filter>
     </ClInclude>
   </ItemGroup>

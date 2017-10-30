@@ -5,8 +5,8 @@
 class NormalHandler : public WindHandler
 {
 public:
-	int getSailTurns(Ship &ship) override { return 1; };
-	char* getWindName() override { return "normal"; };
+	int getSailTurns(Ship* ship) override { return 1; };
+	const char* getWindName() const override { return "normal"; };
 
 private:
 

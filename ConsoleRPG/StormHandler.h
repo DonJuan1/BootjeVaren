@@ -5,8 +5,8 @@
 class StormHandler : public WindHandler
 {
 public:
-	int getSailTurns(Ship &ship) override;
-	char* getWindName() override { return "storm"; };
+	int getSailTurns(Ship* ship) override;
+	const char* getWindName() const override { return "storm"; };
 
 private:
 

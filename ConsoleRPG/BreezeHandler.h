@@ -7,9 +7,19 @@
 class BreezeHandler : public WindHandler
 {
 public:
-	int getSailTurns(Ship &ship) override { NoneHandler wind; return wind.getSailTurns(ship); };
-	int getSailTurns(LightShip &ship) { NormalHandler wind; return wind.getSailTurns(ship); };
-	char* getWindName() override { return "breeze"; };
+	int getSailTurns(Ship* ship) override { 
+		if (dynamic_cast<LightShip*>(ship))
+		{
+			NormalHandler wind; 
+			return wind.getSailTurns(ship);
+		}
+		else
+		{
+			NoneHandler wind;
+			return wind.getSailTurns(ship);
+		}
+	};
+	const char* getWindName() const override { return "breeze"; };
 
 private:
 

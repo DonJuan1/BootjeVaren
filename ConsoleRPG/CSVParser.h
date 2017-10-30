@@ -12,18 +12,19 @@
 #include "CityDestination.h"
 #include "Goods.h"
 #include "CustomVector.h"
+#include "ifstreamHandler.h"
 
 class CSVParser
 {
 public:
-	CSVParser();
-	~CSVParser();
+	CSVParser() {};
+	~CSVParser() {};
 
 	void parseCSVShips(CustomVector<Ship*>&);
 	void parseCSVCities(CustomVector<City>&);
 
 private:
 
-	void parseCSVCitiesDestinations(CustomVector<City>&, ifstream&);
-	void parseCSVCitiesGoods(CustomVector<City>&, ifstream&, ifstream&);
+	void parseCSVCitiesDestinations(CustomVector<City>&, ifstreamHandler&);
+	void parseCSVCitiesGoods(CustomVector<City>&, ifstreamHandler&, ifstreamHandler&);
 };

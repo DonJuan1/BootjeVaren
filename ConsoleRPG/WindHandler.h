@@ -5,8 +5,8 @@
 class WindHandler
 {
 public:
-	virtual int getSailTurns(Ship &ship) = 0;
-	virtual char* getWindName() = 0;
+	virtual int getSailTurns(Ship* ship) = 0;
+	virtual const char* getWindName() const = 0;
 
 private:
 

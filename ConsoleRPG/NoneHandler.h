@@ -5,8 +5,8 @@
 class NoneHandler : public WindHandler
 {
 public:
-	int getSailTurns(Ship &ship) override { return 0; };
-	char* getWindName() override { return "none"; };
+	int getSailTurns(Ship* ship) override { return 0; };
+	const char* getWindName() const override { return "none"; };
 
 private:
 

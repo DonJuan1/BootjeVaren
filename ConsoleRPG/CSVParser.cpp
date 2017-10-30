@@ -1,18 +1,8 @@
 #include "CSVParser.h"
 
-CSVParser::CSVParser()
-{
-
-}
-
-CSVParser::~CSVParser()
-{
-
-}
-
 void CSVParser::parseCSVShips(CustomVector<Ship*>& shipVector)
 {
-	ifstream fileIn("./schepen.csv");
+	ifstreamHandler fileIn("./schepen.csv");
 
 	char type[32];
 	char price[32];
@@ -22,21 +12,21 @@ void CSVParser::parseCSVShips(CustomVector<Ship*>& shipVector)
 	char specialties[32];
 
 	//Ignore first line
-	fileIn.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	fileIn.getStream().ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-	while (fileIn.good())
+	while (fileIn.getStream().good())
 	{
 		int intPrice = 0;
 		int intLoadSpace = 0;
 		int intCannonry = 0;
 		int intDamagePoints = 0;
 
-		fileIn.getline(type, 32, ';');
-		fileIn.getline(price, 32, ';');
-		fileIn.getline(loadSpace, 32, ';');
-		fileIn.getline(cannonry, 32, ';');
-		fileIn.getline(damagePoints, 32, ';');
-		fileIn.getline(specialties, 32);
+		fileIn.getStream().getline(type, 32, ';');
+		fileIn.getStream().getline(price, 32, ';');
+		fileIn.getStream().getline(loadSpace, 32, ';');
+		fileIn.getStream().getline(cannonry, 32, ';');
+		fileIn.getStream().getline(damagePoints, 32, ';');
+		fileIn.getStream().getline(specialties, 32);
 
 		if (strlen(type) == 0)
 		{
@@ -75,57 +65,41 @@ void CSVParser::parseCSVShips(CustomVector<Ship*>& shipVector)
 			shipVector.push_back(new NormalShip(type, intPrice, intLoadSpace, intCannonry, intDamagePoints, isSmall));
 		}
 	}
-
-	fileIn.close();
 }
 
 void CSVParser::parseCSVCities(CustomVector<City>& cityVector)
 {
-	ifstream fileIn1;
-	ifstream fileIn2;
-	ifstream fileIn3;
+	ifstreamHandler fileIn1("./afstanden tussen steden.csv");
+	ifstreamHandler fileIn2("./goederen hoeveelheid.csv");
+	ifstreamHandler fileIn3("./goederen prijzen.csv");
 
 	try
 	{
-		fileIn1.open("./afstanden tussen steden.csv");
-		fileIn2.open("./goederen hoeveelheid.csv");
-		fileIn3.open("./goederen prijzen.csv");
-
-		if (!fileIn1.good() || !fileIn2.good() || !fileIn3.good())
+		if (!fileIn1.getStream().good() || !fileIn2.getStream().good() || !fileIn3.getStream().good())
 		{
-			fileIn1.close();
-			fileIn2.close();
-			fileIn3.close();
 			throw std::runtime_error("Could not open file");
 		}
 	}
 	catch (...)
 	{
-		fileIn1.close();
-		fileIn2.close();
-		fileIn3.close();
 		throw std::runtime_error("Could not open file");
 	}
 
 	parseCSVCitiesDestinations(cityVector, fileIn1);
 	parseCSVCitiesGoods(cityVector, fileIn2, fileIn3);
-
-	fileIn1.close();
-	fileIn2.close();
-	fileIn3.close();
 }
 
-void CSVParser::parseCSVCitiesDestinations(CustomVector<City>& cityVector, ifstream& file)
+void CSVParser::parseCSVCitiesDestinations(CustomVector<City>& cityVector, ifstreamHandler& file)
 {
 	
 	//Ignore first 3 lines
 	for (size_t i = 0; i < 3; i++)
 	{
-		file.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		file.getStream().ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	}
 
 	char input[256];
-	file.getline(input, 256);
+	file.getStream().getline(input, 256);
 	char *p = strtok(input, ";");;
 
 	//Get all the cities from the first row
@@ -138,7 +112,7 @@ void CSVParser::parseCSVCitiesDestinations(CustomVector<City>& cityVector, ifstr
 	while (true)
 	{
 		//Get line per City
-		file.getline(input, 256);
+		file.getStream().getline(input, 256);
 
 		//Check if line is empty
 		if (input[0] == 0)
@@ -179,7 +153,7 @@ void CSVParser::parseCSVCitiesDestinations(CustomVector<City>& cityVector, ifstr
 	}
 }
 
-void CSVParser::parseCSVCitiesGoods(CustomVector<City>& cityVector, ifstream& quantityFile, ifstream& priceFile)
+void CSVParser::parseCSVCitiesGoods(CustomVector<City>& cityVector, ifstreamHandler& quantityFile, ifstreamHandler& priceFile)
 {
 	CustomVector<Goods> allGoodsVector;
 	char *save_ptr1, *save_ptr2;
@@ -191,13 +165,13 @@ void CSVParser::parseCSVCitiesGoods(CustomVector<City>& cityVector, ifstream& qu
 	//Ignore first 6 lines
 	for (size_t i = 0; i < 6; i++)
 	{
-		priceFile.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-		quantityFile.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		priceFile.getStream().ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		quantityFile.getStream().ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	}
 
-	priceFile.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	priceFile.getStream().ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-	quantityFile.getline(quantityInput, 256);
+	quantityFile.getStream().getline(quantityInput, 256);
 	quantityPointer = strtok_s(quantityInput, ";", &save_ptr2);
 
 	//Get all the Goods from the first row
@@ -217,8 +191,8 @@ void CSVParser::parseCSVCitiesGoods(CustomVector<City>& cityVector, ifstream& qu
 	while (true)
 	{
 		//Get line per City
-		quantityFile.getline(quantityInput, 256);
-		priceFile.getline(priceInput, 256);
+		quantityFile.getStream().getline(quantityInput, 256);
+		priceFile.getStream().getline(priceInput, 256);
 
 		//Check if line is empty
 		if (quantityInput[0] == 0 || priceInput[0] == 0)

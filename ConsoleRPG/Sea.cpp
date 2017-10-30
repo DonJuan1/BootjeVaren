@@ -56,7 +56,7 @@ void Sea::processState(Game* game)
 		return;
 	}
 
-	turns = turns - currentWind->getSailTurns(*game->getShip());
+	turns = turns - currentWind->getSailTurns(game->getShip());
 
 	int randomBattleChance = RandomGenerator::getInstance().generate(0, 100);
 	if (randomBattleChance <= 20)
