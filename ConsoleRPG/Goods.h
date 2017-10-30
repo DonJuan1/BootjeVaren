@@ -1,6 +1,5 @@
 #pragma once
 
-#include <cstring>
 #include "RandomGenerator.h"
 
 class Goods

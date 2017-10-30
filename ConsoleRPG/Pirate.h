@@ -13,7 +13,6 @@ public:
 	~Pirate();
 
 	Ship* getShip() const;
-	void getHit(int damage) { ship->getHit(damage); };
 
 private:
 	Ship* ship;

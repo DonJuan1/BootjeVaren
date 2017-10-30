@@ -9,8 +9,6 @@ public:
 	virtual ~LocationState() {};
 
 	virtual void processState(Game* game) = 0;
-	
-	const char* lastCommandMessage = "";
 
 private:
 

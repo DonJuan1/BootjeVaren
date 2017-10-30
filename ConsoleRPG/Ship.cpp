@@ -7,7 +7,7 @@ Ship::Ship()
 	
 }
 
-Ship::Ship(char* pType, int pPrice, int pLoadSpace, int pCannory, int pDamagePoint, bool pIsSmall)
+Ship::Ship(const char* pType, int pPrice, int pLoadSpace, int pCannory, int pDamagePoint, bool pIsSmall)
 	: price{ pPrice }, 
 	loadSpace{ pLoadSpace }, 
 	cannonry{ pCannory }, 
@@ -77,7 +77,7 @@ void Ship::addCannon(Cannon* cannon, int amount)
 	cannonsOnShip.push_back(cannon);
 }
 
-void Ship::deleteCannon(Cannon* cannon, int amount)
+void Ship::deleteCannon(const Cannon* cannon, int amount)
 {
 	cannonsUsed -= amount;
 	for (int i = 0; i < cannonsOnShip.size(); i++)
@@ -120,7 +120,7 @@ int Ship::shootCannons() const
 	return damage;
 }
 
-void Ship::addGoods(Goods& goods, int amount)
+void Ship::addGoods(const Goods& goods, int amount)
 {
 	loadSpaceUsed += amount;
 
@@ -138,7 +138,7 @@ void Ship::addGoods(Goods& goods, int amount)
 	goodsOnShip.push_back(newGoods);
 }
 
-void Ship::deleteGoods(Goods& goods, int amount)
+void Ship::deleteGoods(const Goods& goods, int amount)
 {
 	loadSpaceUsed -= amount;
 

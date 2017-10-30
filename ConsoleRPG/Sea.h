@@ -24,7 +24,7 @@ class Sea : public LocationState
 {
 public:
 	Sea() {};
-	Sea(CityDestination* cityDestination);
+	Sea(const CityDestination* cityDestination);
 	Sea(City* city, int turns);
 	~Sea();
 

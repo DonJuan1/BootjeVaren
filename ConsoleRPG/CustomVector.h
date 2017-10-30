@@ -13,12 +13,12 @@ public:
 	CustomVector(const CustomVector<T>&);
 	~CustomVector();
 
-	void push_back(T&);
+	void push_back(const T&);
 	void push_back(T&&);
 	void pop_index(int index);
 
 	int size() const;
-	T& operator[](int);
+	T& operator[](int) const;
 	CustomVector<T>& operator=(const CustomVector<T>&);
 	T& at(int) const;
 
@@ -73,7 +73,7 @@ CustomVector<T>::~CustomVector()
 }
 
 template<class T>
-void CustomVector<T>::push_back(T& i)
+void CustomVector<T>::push_back(const T& i)
 {
 	if (vsize + 1 > maxsize)
 	{
@@ -127,7 +127,7 @@ void CustomVector<T>::pop_index(int index)
 }
 
 template<class T>
-T& CustomVector<T>::operator[](int i)
+T& CustomVector<T>::operator[](int i) const
 {
 	return array[i];
 }

@@ -49,7 +49,7 @@ void Battle::processState(Game* game)
 		case 1:
 		{
 			int dmgToPirate = game->getShip()->shootCannons();
-			pirate->getHit(dmgToPirate);
+			pirate->getShip()->getHit(dmgToPirate);
 			int pirateHitpoints = pirate->getShip()->getHitPoints();
 
 			if (pirate->getShip()->isDead())

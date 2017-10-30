@@ -9,15 +9,15 @@ class Ship
 {
 public:
 	Ship();
-	Ship(char* pType, int pPrice, int pLoadSpace, int pCannory, int pDamagePoint, bool pIsSmall);	
+	Ship(const char* pType, int pPrice, int pLoadSpace, int pCannory, int pDamagePoint, bool pIsSmall);	
 	Ship(const Ship& otherShip);
 	virtual ~Ship();
 
 	void getHit(int damage);
 	
 	virtual Ship* clone() const { return new Ship(*this); };
-	virtual int getBaseFlightChance() { return 0; };
-	virtual int getModifierFlightChance() { return 0; };
+	virtual int getBaseFlightChance() const { return 0; };
+	virtual int getModifierFlightChance() const { return 0; };
 
 	inline const char* getType() const { return this->type; }
 	inline const int& getPrice() const { return this->price; }
@@ -37,10 +37,10 @@ public:
 	void printPirateStats() const;
 	int shootCannons() const;
 
-	void addGoods(Goods& goods, int amount);
-	void deleteGoods(Goods& goods, int amount);
+	void addGoods(const Goods& goods, int amount);
+	void deleteGoods(const Goods& goods, int amount);
 	void addCannon(Cannon* cannon, int amount) ;
-	void deleteCannon(Cannon* cannon, int amount);
+	void deleteCannon(const Cannon* cannon, int amount);
 	void removeAllGoods();
 	void repairShip(int pGoldToRepair);
 	void replaceShip(Ship* newShip);

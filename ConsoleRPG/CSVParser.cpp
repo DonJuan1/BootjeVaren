@@ -164,7 +164,7 @@ void CSVParser::parseCSVCitiesDestinations(CustomVector<City>& cityVector, ifstr
 			cityDestination.turns = distance;
 			cityDestination.destination = &cityVector.at(counter);
 
-			cityRow->getCityDestinationVector().push_back(cityDestination);
+			cityRow->addCityDestination(cityDestination);
 
 			counter++;
 			p = strtok(NULL, ";");

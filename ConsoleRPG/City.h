@@ -19,19 +19,21 @@ class City : public LocationState
 {
 public:
 	City();
-	City(char* pName);
-	City(City& otherCity);
+	City(const char* pName);
+	City(const City& otherCity);
 	~City();
 	City& operator=(City&);
 
 	void processState(Game* game) override;
 
-	char* getName() { return name; };
-	CustomVector<Goods>& getGoodsVector() { return goodsVector; };
-	CustomVector<CityDestination>& getCityDestinationVector() { return cityDestinationVector; };
-	CustomVector<Cannon*>& getCannonVector() { return cannonPointerVector; };
+	const char* getName() const { return name; };
+	const CustomVector<Goods>& getGoodsVector() const { return goodsVector; };
+	const CustomVector<CityDestination>& getCityDestinationVector() const { return cityDestinationVector; };
+	const CustomVector<Cannon*>& getCannonVector() const { return cannonPointerVector; };
 
 	void setGoodsVector(CustomVector<Goods>& pGoodsVector) { goodsVector = pGoodsVector; };
+	void addCityDestination(const CityDestination& cityDestination) { cityDestinationVector.push_back(cityDestination); };
+
 
 private:
 	char name[32];

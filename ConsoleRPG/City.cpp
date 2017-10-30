@@ -6,7 +6,7 @@ City::City()
 
 }
 
-City::City(char* pName)
+City::City(const char* pName)
 {
 	strcpy(name, pName);
 
@@ -15,7 +15,7 @@ City::City(char* pName)
 	cannonPointerVector.push_back(new HeavyCannon());
 }
 
-City::City(City& otherCity)
+City::City(const City& otherCity)
 {	
 	if (this != &otherCity)
 	{

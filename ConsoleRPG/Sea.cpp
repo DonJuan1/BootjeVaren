@@ -1,7 +1,7 @@
 #include "Sea.h"
 #include "Game.h"
 
-Sea::Sea(CityDestination* pCityDestination)
+Sea::Sea(const CityDestination* pCityDestination)
 {
 	city = pCityDestination->destination;
 	turns = pCityDestination->turns;
