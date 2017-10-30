@@ -117,6 +117,9 @@
     <ClCompile Include="LogShip.cpp">
       <Filter>Ship</Filter>
     </ClCompile>
+    <ClCompile Include="ShipReplacer.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CityFactory.h">
@@ -205,6 +208,9 @@
     </ClInclude>
     <ClInclude Include="CityDestination.h">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ShipReplacer.h">
+      <Filter>Utils</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

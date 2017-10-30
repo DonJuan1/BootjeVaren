@@ -8,19 +8,7 @@ Pirate::Pirate()
 Pirate::Pirate(Ship* pShip)
 {
 	ship = pShip;
-
-	ship->addCannon(new LightCannon(), 0);
-	ship->addCannon(new MediumCannon(), 0);
-
-	if (!ship->getIsSmall())
-	{
-		ship->addCannon(new HeavyCannon(), 0);
-	}
-
-	for (int i = 0; i < ship->getCannonsOnShip().size(); i++)
-	{
-		ship->getCannonsOnShip().at(i)->randomAmount();
-	}
+	ship->addPirateCannons();
 }
 
 Pirate::~Pirate()

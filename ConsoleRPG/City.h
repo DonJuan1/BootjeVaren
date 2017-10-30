@@ -2,6 +2,7 @@
 
 #include <iostream>
 
+#include "ShipReplacer.h"
 #include "LocationState.h"
 #include "CityDestination.h"
 #include "Goods.h"
@@ -28,7 +29,7 @@ public:
 	const char* getName() const { return name; };
 	const CustomVector<Goods>& getGoodsVector() const { return goodsVector; };
 	const CustomVector<CityDestination>& getCityDestinationVector() const { return cityDestinationVector; };
-	const CustomVector<Cannon*>& getCannonVector() const { return cannonPointerVector; };
+	const CustomVector<Cannon*>& getCannonVector() const { return cannonVector; };
 
 	void setGoodsVector(const CustomVector<Goods>& pGoodsVector) { goodsVector = pGoodsVector; };
 	void addCityDestination(const CityDestination& cityDestination) { cityDestinationVector.push_back(cityDestination); };
@@ -39,7 +40,7 @@ private:
 
 	CustomVector<Goods> goodsVector;
 	CustomVector<CityDestination> cityDestinationVector;
-	CustomVector<Cannon*> cannonPointerVector;
+	CustomVector<Cannon*> cannonVector;
 
 	void buyGoods(const Game* game);
 	void sellGoods(const Game* game);

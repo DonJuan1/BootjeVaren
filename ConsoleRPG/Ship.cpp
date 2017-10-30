@@ -68,13 +68,13 @@ void Ship::addCannon(Cannon* cannon, int amount)
 		if (strcmp(cannonPointer->getName(), cannon->getName()) == 0)
 		{
 			cannonPointer->setAmount(cannonPointer->getAmount() + amount);
-			delete cannon;
 			return;
 		}
 	}
 
-	cannon->setAmount(amount);
-	cannonsOnShip.push_back(cannon);
+	Cannon* newCannon = cannon->Clone();
+	newCannon->setAmount(amount);
+	cannonsOnShip.push_back(newCannon);
 }
 
 void Ship::deleteCannon(const Cannon* cannon, int amount)
@@ -157,6 +157,21 @@ void Ship::deleteGoods(const Goods& goods, int amount)
 			
 			return;
 		}
+	}
+}
+
+void Ship::addPirateCannons()
+{
+	cannonsOnShip.push_back(new LightCannon);
+	cannonsOnShip.push_back(new MediumCannon);
+	if (!isSmall)
+	{
+		cannonsOnShip.push_back(new HeavyCannon);
+	}
+
+	for (int i = 0; i < cannonsOnShip.size(); i++)
+	{
+		cannonsOnShip.at(i)->randomAmount();
 	}
 }
 

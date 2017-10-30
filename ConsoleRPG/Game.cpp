@@ -31,7 +31,7 @@ Game::Game()
 		return;
 	}
 
-	ship->changeGold(1000000);
+	ship->changeGold(100000);
 
 	while (state != nullptr) {
 		

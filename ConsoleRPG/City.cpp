@@ -10,9 +10,9 @@ City::City(const char* pName)
 {
 	strcpy(name, pName);
 
-	cannonPointerVector.push_back(new LightCannon());
-	cannonPointerVector.push_back(new MediumCannon());
-	cannonPointerVector.push_back(new HeavyCannon());
+	cannonVector.push_back(new LightCannon());
+	cannonVector.push_back(new MediumCannon());
+	cannonVector.push_back(new HeavyCannon());
 }
 
 City::City(const City& otherCity)
@@ -26,8 +26,8 @@ City::City(const City& otherCity)
 		
 		for (int i = 0; i < otherCity.getCannonVector().size(); i++)
 		{
-			cannonPointerVector.push_back(otherCity.getCannonVector().at(i)->Clone());
-			cannonPointerVector.at(i)->randomAmount();
+			cannonVector.push_back(otherCity.getCannonVector().at(i)->Clone());
+			cannonVector.at(i)->randomAmount();
 		}
 
 		for (int i = 0; i < goodsVector.size(); i++)
@@ -39,9 +39,9 @@ City::City(const City& otherCity)
 
 City::~City()
 {
-	for (int i = 0; i < cannonPointerVector.size(); i++)
+	for (int i = 0; i < cannonVector.size(); i++)
 	{
-		delete cannonPointerVector.at(i);
+		delete cannonVector.at(i);
 	}
 }
 
@@ -56,8 +56,8 @@ City& City::operator=(const City& otherCity)
 
 		for (int i = 0; i < otherCity.getCannonVector().size(); i++)
 		{
-			cannonPointerVector.push_back(otherCity.getCannonVector().at(i)->Clone());
-			cannonPointerVector.at(i)->randomAmount();
+			cannonVector.push_back(otherCity.getCannonVector().at(i)->Clone());
+			cannonVector.at(i)->randomAmount();
 		}
 
 		for (int i = 0; i < goodsVector.size(); i++)
@@ -346,9 +346,9 @@ void City::buyCannons(const Game* game)
 
 		printf("%-2s %-12s %-12s %-12s\n", "#", "Name", "Price (G)", "Amount (Unit)");
 
-		for (int i = 1; i < cannonPointerVector.size() + 1; i++)
+		for (int i = 1; i < cannonVector.size() + 1; i++)
 		{
-			Cannon* cannon = cannonPointerVector.at(i - 1);
+			Cannon* cannon = cannonVector.at(i - 1);
 			printf("%-2i %-12s %-12i %-12i\n", i, cannon->getName(), cannon->getPrice(), cannon->getAmount());
 		}
 
@@ -370,9 +370,9 @@ void City::buyCannons(const Game* game)
 		{
 			return;
 		}
-		else if (choice > 0 && choice < cannonPointerVector.size() + 1)
+		else if (choice > 0 && choice < cannonVector.size() + 1)
 		{
-			Cannon* cannon = cannonPointerVector.at(choice - 1);
+			Cannon* cannon = cannonVector.at(choice - 1);
 
 			while (true)
 			{
@@ -402,7 +402,7 @@ void City::buyCannons(const Game* game)
 
 							if (totalPrice <= game->getShip()->getGold())
 							{
-								game->getShip()->addCannon(cannon->Clone(), choice);
+								game->getShip()->addCannon(cannon, choice);
 								game->getShip()->changeGold(-totalPrice);
 								cannon->setAmount(cannon->getAmount() - choice);
 								break;
@@ -495,11 +495,11 @@ void City::sellCannons(const Game* game)
 				{					
 					int totalPrice = choice * cannon->getPrice();
 
-					for (int i = 0; i < cannonPointerVector.size(); i++)
+					for (int i = 0; i < cannonVector.size(); i++)
 					{
-						if (strcmp(cannon->getName(), cannonPointerVector.at(i)->getName()) == 0)
+						if (strcmp(cannon->getName(), cannonVector.at(i)->getName()) == 0)
 						{
-							cannonPointerVector.at(i)->setAmount(cannonPointerVector.at(i)->getAmount() + choice);
+							cannonVector.at(i)->setAmount(cannonVector.at(i)->getAmount() + choice);
 						}
 					}
 
@@ -619,11 +619,9 @@ void City::replaceShip(Game* game)
 						{
 							game->getShip()->changeGold(game->getShip()->getPrice() / 2);
 
-							Ship* newShip = shipToBuy->clone();
-							game->getShip()->replaceShip(newShip);
-							delete game->getShip();
-							game->setShip(newShip);
-
+							ShipReplacer shipReplacer(shipToBuy->clone(), game->getShip());
+							game->setShip(shipReplacer.getNewShip());
+							shipReplacer.clearReplacer();
 							game->getShip()->changeGold(-game->getShip()->getPrice());
 
 							break;

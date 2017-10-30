@@ -4,6 +4,9 @@
 #include "CustomVector.h"
 #include "Goods.h"
 #include <cstring>
+#include "LightCannon.h"
+#include "MediumCannon.h"
+#include "HeavyCannon.h"
 
 class Ship
 {
@@ -27,11 +30,17 @@ public:
 	inline const bool& getIsSmall() const { return this->isSmall; }
 	inline const int& getGold() const { return this->gold; }
 	inline const int& getHitPoints() const { return this->hitPoints; }
+	inline const int& getLoadSpaceUsed() const { return loadSpaceUsed; }
 	inline const int getUnusedLoadSpace() const {return loadSpace - loadSpaceUsed; }
 	inline const int getUnusedCannonSpace() const { return cannonry - cannonsUsed; }
+	
 	inline const void changeGold(const int pGold) { gold += pGold; }
 	inline const CustomVector<Goods>& getGoodsOnShip() const { return goodsOnShip; }
 	inline const CustomVector<Cannon*>& getCannonsOnShip() const { return cannonsOnShip; }
+
+	inline void setGold(int pGold) { gold = pGold; }
+	inline void setLoadSpaceUsed(int spaceUsed) { loadSpaceUsed = spaceUsed; }
+	inline void setGoodsVector(const CustomVector<Goods>& goods) { goodsOnShip = goods; }
 
 	void printStats() const;
 	void printPirateStats() const;
@@ -44,6 +53,8 @@ public:
 	void removeAllGoods();
 	void repairShip(int pGoldToRepair);
 	void replaceShip(Ship* newShip);
+
+	void addPirateCannons();
 
 	bool isHoldingHeavyCannons() const;
 
